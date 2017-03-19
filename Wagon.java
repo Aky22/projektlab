@@ -40,7 +40,8 @@ public class Wagon implements TrainComponent {
      * @param c  - őt hívó komponens
      * @return
      */
-    public void step(Component c) {
+    @Override
+    public void step() {
         System.out.println("[Locomotive].step()");
         // TODO implement here
         //return null;
