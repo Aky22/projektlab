@@ -5,11 +5,12 @@ import java.util.*;
  * 
  */
 public class Switch implements Component {
-
+    private Collection tcCollection;
     /**
      * Default constructor
      */
     public Switch() {
+        tcCollection = new Collection();
     }
 
 
@@ -17,15 +18,19 @@ public class Switch implements Component {
      * @return
      */
     public void Switch() {
-        // TODO implement here
-        //return null;
+        System.out.println("[Switch].switch()");
+        TrainComponent first = tcCollection.getFirst();
+        if(first != null){
+            first.derail();
+        }
     }
 
     /**
      * @param l
      */
     public void operateOn(Locomotive l) {
-        // TODO implement here
+        System.out.println("[Switch].operateOn(Locomotive l)");
+        tcCollection.insert(l);
     }
 
     /**

@@ -5,11 +5,14 @@ import java.util.*;
  * 
  */
 public class TunnelEnd implements Component {
-
+    boolean active;
+    private Collection tcCollection;
     /**
      * Default constructor
      */
     public TunnelEnd() {
+        active = false;
+        tcCollection = new Collection();
     }
 
 
@@ -17,7 +20,10 @@ public class TunnelEnd implements Component {
      * 
      */
     public void activate() {
-        // TODO implement here
+        System.out.println("[TunnelEnd].activate()");
+        if(active) {
+            active = false;
+        } else active = true;
     }
 
     /**
@@ -32,7 +38,11 @@ public class TunnelEnd implements Component {
      * @param l
      */
     public void operateOn(Locomotive l) {
-        // TODO implement here
+        System.out.println("[TunnelEnd].operateOn(l: Locomotive");
+        tcCollection.insert(l);
+        if(active){
+            l.inTunnel();
+        }
     }
 
     /**
