@@ -6,7 +6,8 @@ import java.util.*;
  */
 public abstract class Component {
     protected Collection tcCollection;
-    protected boolean _TESTEND;
+    public boolean _TESTEND;
+    public boolean _TESTCOLLISION;
     protected Component A_End = null;
     protected Component B_End = null;
 
@@ -51,6 +52,13 @@ public abstract class Component {
     public void set_TEST_LocomotiveWillBeAtTheEnd(boolean yes){
         _TESTEND = yes;
     }
+
+    /**
+     * Beállítja hogy a tesztkörnyezetben ezen a pályaelem ütközik-e a vonat
+     * @param yes
+     */
+    public void set_TEST_Collision(boolean yes) {_TESTCOLLISION = yes;}
+
 
     /**
      * Beállítja az A végét az elemnek

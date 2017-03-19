@@ -142,6 +142,8 @@ public class Application {
         Wagon testWagon = new Wagon(); //teszt vagon
         testLocomotive.setNext(testWagon); //hozzákötjük a vagont a mozdonyhoz
 
+        System.out.println("Tesztkörnyezet felépítése\n");
+
         switch(currentType){
             case "S": //sín
                 current = new Rail();
@@ -159,9 +161,13 @@ public class Application {
 
         //ráhelyezzük a mozdonyt
         current.operateOn(testLocomotive);
+        testLocomotive.setCurrent(current);
 
         //megadjuk hogy a lépés során átlép-e másikra
         current.set_TEST_LocomotiveWillBeAtTheEnd(atEnd);
+
+        //megadjuk hogy ütközik-e ezen a pályaelemen
+        current.set_TEST_Collision(collision);
 
         //ha átlép
         if(atEnd) {
@@ -191,6 +197,7 @@ public class Application {
             next.setBEnd(current);
         }
 
+        System.out.println("Teszt kezdete\n");
         //léptetjük
         testLocomotive.step();
 
