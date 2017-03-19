@@ -1,24 +1,13 @@
 
 import java.util.*;
+import java.awt.Color;
 
 /**
  * 
  */
 public interface TrainComponent {
 
-    /**
-     * 
-     */
-    public TrainComponent next = null;
-
-    /**
-     * 
-     */
-    public TrainComponent previous = null;
-
-    /**
-     * @return
-     */
     public void derail();
 
+    public void atStation(Color c);
 }

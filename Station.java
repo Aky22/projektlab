@@ -1,47 +1,58 @@
 
+import java.awt.*;
 import java.util.*;
 
 /**
  * 
  */
 public class Station implements Component {
-
+    private Collection tcCollection;
+    private Color c;
     /**
      * Default constructor
+     * Kollekciót rendel az állomáshoz.
      */
     public Station() {
+        tcCollection = new Collection();
     }
 
     /**
+     * Eltároljuk a mozdonyt és értesítjük hogy állomásra ért.
      * @param l
      */
     public void operateOn(Locomotive l) {
-        // TODO implement here
+        System.out.println("[Locomotive].operateOn(l: Locomotive)");
+        tcCollection.insert(l); //behelyezzük a kollekcióba
+        l.atStation(c); //értesítjük a mozdonyt hogy állomásra ért
     }
 
     /**
-     * @return
+     * Visszaadja a vonatelemeket tartalmazó kollekciót
+     * @return A vonatelemeket tartalmazó kollekció
      */
     public Collection getCollection() {
-        // TODO implement here
-        return null;
+        System.out.println("[Locomotive].getCollection()");
+        return tcCollection;
     }
 
     /**
-     * @param previous 
-     * @param tc 
+     * Visszaadja a következő pályaelemet attól függően hogy honnan jött a mozdony
+     * @param previous - Az a pályakomponens ahonnan ide került
+     * @param tc - A vonatelem ami a függvényt hívja
      * @return
      */
     public Component getNext(Component previous, TrainComponent tc) {
-        // TODO implement here
-        return null;
+        System.out.println("[Locomotive].getNext(Component previous, TrainComponent tc)");
+        return null; //nem vizsgáljuk részletesen, majd később
     }
 
     /**
-     * @param tc
+     * Behelyez egy vonatelemet a kollekcióba (csak vagont!)
+     * @param tc - a vagon
      */
     public void insert(TrainComponent tc) {
-        // TODO implement here
+        System.out.println("[Locomotive].insert(tc: TrainComponent)");
+        tcCollection.insert(tc);
     }
 
 }
