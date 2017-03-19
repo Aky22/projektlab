@@ -5,31 +5,39 @@ import java.util.*;
 /**
  * 
  */
-public class Locomotive implements TrainComponent, Notifiable {
+public class Locomotive implements TrainComponent {
 
+    /**
+     *
+     */
+    private TrainComponent next = null;
+
+    /**
+     *
+     */
+    private TrainComponent previous = null;
+  
     /**
      * Default constructor
      */
     public Locomotive() {
     }
 
-
-
-
     /**
      * @param c 
      * @return
      */
-    public void atStation(Color color) {
-        // TODO implement here
-        //return null;
+    public void atStation(Color c) {
+        System.out.println("[Locomotive].atStation(c: Color)");
+        next.atStation(c); //mivel minimum 1 kocsi van mögötte, ezért feltétel nélkül hívjuk
     }
 
     /**
      * @return
      */
     public void step() {
-        // TODO implement here
+        System.out.println("[Locomotive].step()");
+        //TODO: teljes függvény
         //return null;
     }
 
@@ -37,15 +45,14 @@ public class Locomotive implements TrainComponent, Notifiable {
      * @return
      */
     public void inTunnel() {
-        // TODO implement here
-        //return null;
+        System.out.println("[Locomotive].inTunnel()");
     }
 
     /**
      * @return
      */
     public void destroy() {
-        // TODO implement here
+        System.out.println("[Locomotive].destroy()");
         //return null;
     }
 
@@ -53,16 +60,24 @@ public class Locomotive implements TrainComponent, Notifiable {
      * @return
      */
     public void derail() {
-        // TODO implement here
-        //return null;
+        System.out.println("[Locomotive].derail()");
+        next.derail(); //kisiklatjuk a mögötte lévőt is, mivel minimum 1 kocsi van mögötte.
     }
 
     /**
-     * @return
+     * Mozdonynak jelzés hogy ütközött
+     * @param other - Az ütközésben résztvevő másik mozdony
      */
-    public void notif() {
-        // TODO implement here
-        //return null;
+    public void collision(Locomotive other){
+        System.out.println("[Locomotive].collision(Locomotive other)");
+        other.destroy();
     }
 
+    /**
+     * A mozdfonyt követő elem beállítására szolgál.
+     * @param tc - A következő elem a vonatban
+     */
+    public void setNext(TrainComponent tc) {
+        next = tc;
+    }
 }

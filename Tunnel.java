@@ -5,11 +5,15 @@ import java.util.*;
  * 
  */
 public class Tunnel {
+    TunnelEnd sideA;
+    TunnelEnd sideB;
 
     /**
      * Default constructor
      */
     public Tunnel() {
+        sideA = null;
+        sideB = null;
     }
 
 
@@ -18,15 +22,16 @@ public class Tunnel {
      * @return
      */
     public void setEnd(TunnelEnd t) {
-        // TODO implement here
-
+        System.out.println("[Tunnel].setEnd(TunnelEnd t)");
+        t.activate();
     }
 
     /**
      * @return
      */
     public boolean isActive() {
-        // TODO implement here
+        System.out.println("[Tunnel].isActive()");
+        //TODO valami
         return false;
     }
 
