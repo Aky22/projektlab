@@ -86,13 +86,15 @@ public class Application {
 
     static void test1(boolean thereIsATrainOnIt){
         Switch testSwitch = new Switch();
-        if(thereIsATrainOnIt){
-            Locomotive testLocom = new Locomotive();
-            Wagon testWagon = new Wagon();
-            testLocom.setNext(testWagon);
-            testSwitch.operateOn(testLocom);
+        if(thereIsATrainOnIt){ //ha van rajta valami
+            Locomotive testLocom = new Locomotive(); //létrehozunk egy új mozdonyt
+            Wagon testWagon = new Wagon(); //és egy új kocsit
+            testLocom.setNext(testWagon); //hozzákötjük a mozdonyhoz a kocsit
+            testSwitch.operateOn(testLocom); //"ráléptetjük" a mozdonyt a váltóra
+        } else {
+            //nem történik semmit
         }
-        testSwitch.Switch();
+        testSwitch.Switch(); //átállítjuk a váltót
     }
 
 }

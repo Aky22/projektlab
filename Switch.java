@@ -19,7 +19,10 @@ public class Switch implements Component {
      */
     public void Switch() {
         System.out.println("[Switch].switch()");
-        tcCollection.getFirst().derail();
+        TrainComponent first = tcCollection.getFirst();
+        if(first != null){
+            first.derail();
+        }
     }
 
     /**
