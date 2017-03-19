@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +20,7 @@ public class Application {
         System.out.println("1. Váltó állítás");
         System.out.println("2. Alagútszáj építés");
         System.out.println("3. Vonat mozgatása");
+
         try {
             choose = Integer.parseInt(br.readLine());
         } catch (IOException e) {
@@ -62,22 +61,53 @@ public class Application {
                 }
                 break;
             case 3:
+                String currentType = null;
+                String nextType = null;
+                String ifSwitchGoodDirection = null;
+                boolean collision = false, atEnd = false;
                 System.out.println("*3.1 Jelenlegi elem? Sín, váltó, állomás, alagútszáj. S/V/A/L");
-                System.out.println("*3.2 Történik ütközés a lépés közben? I/N");
-                System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
                 try{
-                    ch = br.readLine();
-                    switch(ch){
-                        case "S":
-                            //TODO: Call function
-                            break;
-                        case "V":
-                            //TODO: Call function
-                            break;
-                    }
+                    currentType = br.readLine();
                 }catch (IOException e){
                     e.printStackTrace();
                 }
+                System.out.println("*3.2 Történik ütközés a lépés közben? I/N");
+                try{
+                    ch = br.readLine();
+                    if(ch.equals("I")) collision = true;
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
+                try{
+                    ch = br.readLine();
+                    if(ch.equals("I")){
+                        atEnd = true;
+                        System.out.println("*3.2.1 Következő elem? (Sín, váltó, állomás, alagútszáj, vakvágány) S/V/A/L/K");
+                        try{
+                            nextType = br.readLine();
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+                        switch (nextType){
+                            case "A":
+                                System.out.println("*3.2.1.3 Leszállás a vonatról");
+                                break;
+                            case "L":
+                                System.out.println("*3.2.1.4 Alagútszájba lépés");
+                                break;
+                            case "K":
+                                System.out.println("*3.2.1.5 Kisiklás");
+                        }
+                        System.out.println("3.2.2 Következő elemre lépés.");
+                    }
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
+                break;
         }
 
     }
@@ -95,7 +125,7 @@ public class Application {
         testSwitch.Switch(); //átállítjuk a váltót
     }
 
-    static void test3(char currentType, boolean collision, boolean atEnd, char nextType, char ifSwitchGoodDirection){
+    static void test3(String currentType, boolean collision, boolean atEnd, String nextType, String ifSwitchGoodDirection){
         Component current = null; //jelenlegi pályaelem
         Locomotive testLocomotive = new Locomotive(); //teszt mozdony
         Wagon testWagon = new Wagon(); //teszt vagon
@@ -104,16 +134,16 @@ public class Application {
 
 
         switch(currentType){
-            case 'S': //sín
+            case "S": //sín
                 current = new Rail();
                 break;
-            case 'V': //váltó
+            case "V": //váltó
                 current = new Switch();
                 break;
-            case 'A': //állomás
+            case "A": //állomás
                 current = new Station();
                 break;
-            case 'L': //alagút
+            case "L": //alagút
                 current = new TunnelEnd();
                 break;
         }
