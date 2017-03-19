@@ -45,15 +45,15 @@ public class Application {
                 }
                 break;
             case 2:
-                System.out.println("*2.1 Építés vagy törlés? E/T");
+                System.out.println("*2.1 Töröljük is utána? I/N");
                 try{
                     ch = br.readLine();
                     switch(ch){
-                        case "E":
-                            //TODO: Call function
+                        case "I":
+                            test2(true);
                             break;
-                        case "T":
-                            //TODO: Call function
+                        case "N":
+                            test2(false);
                             break;
                     }
                 } catch (IOException e){
@@ -125,6 +125,17 @@ public class Application {
         testSwitch.Switch(); //átállítjuk a váltót
     }
 
+    static void test2(boolean delete){
+        Tunnel testTunnel = new Tunnel();
+        TunnelEnd testTunnelEnd = new TunnelEnd();
+        testTunnel.setEnd(testTunnelEnd);
+        if(delete){
+            testTunnel.setEnd(testTunnelEnd);
+        } else {
+            //semmi
+        }
+    }
+
     static void test3(String currentType, boolean collision, boolean atEnd, String nextType, String ifSwitchGoodDirection){
         Component current = null; //jelenlegi pályaelem
         Locomotive testLocomotive = new Locomotive(); //teszt mozdony
@@ -148,6 +159,6 @@ public class Application {
                 break;
         }
 
-
+        //szekvencia fb-on, hajrá
     }
 }
