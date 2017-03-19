@@ -16,7 +16,7 @@ public class Locomotive implements TrainComponent {
      *
      */
     private TrainComponent previous = null;
-
+  
     /**
      * Default constructor
      */
