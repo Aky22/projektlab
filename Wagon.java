@@ -51,7 +51,7 @@ public class Wagon implements TrainComponent {
      * @return
      */
     public void derail() {
-        System.out.println("[Locomotive].derail()");
+        System.out.println("[Wagon].derail()");
         if(next != null){ //ha van mögette lévő kocsi kisiklatjuk
             next.derail();
         }
