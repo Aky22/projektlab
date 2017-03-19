@@ -142,8 +142,6 @@ public class Application {
         Wagon testWagon = new Wagon(); //teszt vagon
         testLocomotive.setNext(testWagon); //hozzákötjük a vagont a mozdonyhoz
 
-
-
         switch(currentType){
             case "S": //sín
                 current = new Rail();
@@ -158,6 +156,43 @@ public class Application {
                 current = new TunnelEnd();
                 break;
         }
+
+        //ráhelyezzük a mozdonyt
+        current.operateOn(testLocomotive);
+
+        //megadjuk hogy a lépés során átlép-e másikra
+        current.set_TEST_LocomotiveWillBeAtTheEnd(atEnd);
+
+        //ha átlép
+        if(atEnd) {
+            //létrehozzuk a következő pályaelemet ha váltunk
+            Component next = null;
+
+            switch (nextType) {
+                case "S": //sín
+                    next = new Rail();
+                    break;
+                case "V": //váltó
+                    next = new Switch();
+                    break;
+                case "A": //állomás
+                    next = new Station();
+                    break;
+                case "L": //alagút
+                    next = new TunnelEnd();
+                    break;
+                case "K":
+                    next = new Siding();
+                    break;
+            }
+
+            //elsőhöz hozzákötjük a következőt
+            current.setAEnd(next);
+            next.setBEnd(current);
+        }
+
+        //léptetjük
+        testLocomotive.step();
 
         //szekvencia fb-on, hajrá
     }
