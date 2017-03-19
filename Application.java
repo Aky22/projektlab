@@ -35,11 +35,9 @@ public class Application {
                     ch = br.readLine();
                     switch(ch){
                         case "I":
-                            //TODO: Call function
                             test1(true);
                             break;
                         case "N":
-                            //TODO: Call function
                             test1(false);
                             break;
                     }
@@ -97,4 +95,27 @@ public class Application {
         testSwitch.Switch(); //átállítjuk a váltót
     }
 
+    static void test3(char currentType, boolean collision, boolean atEnd, char nextType, char ifSwitchGoodDirection){
+        Component current = null; //jelenlegi pályaelem
+        Locomotive testLocomotive = new Locomotive(); //teszt mozdony
+        Wagon testWagon = new Wagon(); //teszt vagon
+        testLocomotive.setNext(testWagon); //hozzákötjük a vagont a mozdonyhoz
+
+        switch(currentType){
+            case 'S': //sín
+                current = new Rail();
+                break;
+            case 'V': //váltó
+                current = new Switch();
+                break;
+            case 'A': //állomás
+                current = new Station();
+                break;
+            case 'L': //alagút
+                current = new TunnelEnd();
+                break;
+        }
+        Collection testCollection = current.getCollection();
+
+    }
 }
