@@ -23,9 +23,6 @@ public class Locomotive implements TrainComponent {
     public Locomotive() {
     }
 
-
-
-
     /**
      * @param c 
      * @return
@@ -65,6 +62,22 @@ public class Locomotive implements TrainComponent {
     public void derail() {
         System.out.println("[Locomotive].derail()");
         next.derail(); //kisiklatjuk a mögötte lévőt is, mivel minimum 1 kocsi van mögötte.
-        //return null;
+    }
+
+    /**
+     * Mozdonynak jelzés hogy ütközött
+     * @param other - Az ütközésben résztvevő másik mozdony
+     */
+    public void collision(Locomotive other){
+        System.out.println("[Locomotive].collision(Locomotive other)");
+        other.destroy();
+    }
+
+    /**
+     * A mozdfonyt követő elem beállítására szolgál.
+     * @param tc - A következő elem a vonatban
+     */
+    public void setNext(TrainComponent tc) {
+        next = tc;
     }
 }
