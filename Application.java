@@ -36,9 +36,11 @@ public class Application {
                     switch(ch){
                         case "I":
                             //TODO: Call function
+                            test1(true);
                             break;
                         case "N":
                             //TODO: Call function
+                            test1(false);
                             break;
                     }
                 } catch (IOException e){
@@ -80,6 +82,17 @@ public class Application {
                 }
         }
 
+    }
+
+    static void test1(boolean thereIsATrainOnIt){
+        Switch testSwitch = new Switch();
+        if(thereIsATrainOnIt){
+            Locomotive testLocom = new Locomotive();
+            Wagon testWagon = new Wagon();
+            testLocom.setNext(testWagon);
+            testSwitch.operateOn(testLocom);
+        }
+        testSwitch.Switch();
     }
 
 }
