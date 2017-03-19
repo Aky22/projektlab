@@ -4,16 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Switch implements Component {
-    private Collection tcCollection;
-    /**
-     * Default constructor
-     */
-    public Switch() {
-        tcCollection = new Collection();
-    }
-
-
+public class Switch extends Component {
     /**
      * @return
      */
@@ -32,30 +23,4 @@ public class Switch implements Component {
         System.out.println("[Switch].operateOn(Locomotive l)");
         tcCollection.insert(l);
     }
-
-    /**
-     * @return
-     */
-    public Collection getCollection() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param previous 
-     * @param tc 
-     * @return
-     */
-    public Component getNext(Component previous, TrainComponent tc) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param tc
-     */
-    public void insert(TrainComponent tc) {
-        // TODO implement here
-    }
-
 }

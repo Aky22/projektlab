@@ -5,16 +5,19 @@ import java.util.*;
 /**
  * 
  */
-public class Station implements Component {
-    private Collection tcCollection;
+public class Station extends Component {
+
     private Color c;
+
     /**
-     * Default constructor
-     * Kollekciót rendel az állomáshoz.
+     *
      */
-    public Station() {
-        tcCollection = new Collection();
-    }
+    public Component A_End = null;
+
+    /**
+     *
+     */
+    public Component B_End = null;
 
     /**
      * Eltároljuk a mozdonyt és értesítjük hogy állomásra ért.
@@ -54,5 +57,4 @@ public class Station implements Component {
         System.out.println("[Locomotive].insert(tc: TrainComponent)");
         tcCollection.insert(tc);
     }
-
 }
