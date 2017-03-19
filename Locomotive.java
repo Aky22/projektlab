@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class Locomotive implements TrainComponent {
 
+    Component current;
+
     /**
      *
      */
@@ -37,8 +39,21 @@ public class Locomotive implements TrainComponent {
      */
     public void step() {
         System.out.println("[Locomotive].step()");
-        //TODO: teljes függvény
-        //return null;
+        Collection c = current.getCollection();
+
+        boolean yesOrNo = c.myComponentAtEnd(this);
+        //ütközés
+        if(current._TESTCOLLISION){
+            Locomotive other = new Locomotive();
+            this.collision(other);
+        }
+
+        if(current._TESTEND){ //ha végére értünk
+            Component nextComponent = current.getNext(null, this);
+            nextComponent.operateOn(this);
+
+            next.step();
+        }
     }
 
     /**
@@ -79,5 +94,9 @@ public class Locomotive implements TrainComponent {
      */
     public void setNext(TrainComponent tc) {
         next = tc;
+    }
+
+    public void setCurrent(Component c){
+        current = c;
     }
 }
