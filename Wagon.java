@@ -65,6 +65,10 @@ public class Wagon implements TrainComponent {
         next = tc;
     }
 
+    /**
+     * A kocsit megelőző elem beállítására szolgál
+     * @param tc
+     */
     public void setPrevious(TrainComponent tc){
         previous = tc;
     }
