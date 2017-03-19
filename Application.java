@@ -131,6 +131,8 @@ public class Application {
         Wagon testWagon = new Wagon(); //teszt vagon
         testLocomotive.setNext(testWagon); //hozzákötjük a vagont a mozdonyhoz
 
+
+
         switch(currentType){
             case "S": //sín
                 current = new Rail();
@@ -145,7 +147,7 @@ public class Application {
                 current = new TunnelEnd();
                 break;
         }
-        Collection testCollection = current.getCollection();
+
 
     }
 }
