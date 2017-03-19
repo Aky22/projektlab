@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +33,14 @@ public class Application {
                 System.out.println("*1.1 Van rajta vonatelem? I/N");
                 try{
                     ch = br.readLine();
+                    switch(ch){
+                        case "I":
+                            //TODO: Call function
+                            break;
+                        case "N":
+                            //TODO: Call function
+                            break;
+                    }
                 } catch (IOException e){
                     e.printStackTrace();
                 }
@@ -39,6 +49,14 @@ public class Application {
                 System.out.println("*2.1 Építés vagy törlés? E/T");
                 try{
                     ch = br.readLine();
+                    switch(ch){
+                        case "E":
+                            //TODO: Call function
+                            break;
+                        case "T":
+                            //TODO: Call function
+                            break;
+                    }
                 } catch (IOException e){
                     e.printStackTrace();
                 }
@@ -47,6 +65,19 @@ public class Application {
                 System.out.println("*3.1 Jelenlegi elem? Sín, váltó, állomás, alagútszáj. S/V/A/L");
                 System.out.println("*3.2 Történik ütközés a lépés közben? I/N");
                 System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
+                try{
+                    ch = br.readLine();
+                    switch(ch){
+                        case "S":
+                            //TODO: Call function
+                            break;
+                        case "V":
+                            //TODO: Call function
+                            break;
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
         }
 
     }
