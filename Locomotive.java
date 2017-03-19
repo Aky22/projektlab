@@ -8,6 +8,16 @@ import java.util.*;
 public class Locomotive implements TrainComponent {
 
     /**
+     *
+     */
+    private TrainComponent next = null;
+
+    /**
+     *
+     */
+    private TrainComponent previous = null;
+  
+    /**
      * Default constructor
      */
     public Locomotive() {
@@ -20,16 +30,17 @@ public class Locomotive implements TrainComponent {
      * @param c 
      * @return
      */
-    public void atStation(Color color) {
-        // TODO implement here
-        //return null;
+    public void atStation(Color c) {
+        System.out.println("[Locomotive].atStation(c: Color)");
+        next.atStation(c); //mivel minimum 1 kocsi van mögötte, ezért feltétel nélkül hívjuk
     }
 
     /**
      * @return
      */
     public void step() {
-        // TODO implement here
+        System.out.println("[Locomotive].step()");
+        //TODO: teljes függvény
         //return null;
     }
 
@@ -37,15 +48,14 @@ public class Locomotive implements TrainComponent {
      * @return
      */
     public void inTunnel() {
-        // TODO implement here
-        //return null;
+        System.out.println("[Locomotive].inTunnel()");
     }
 
     /**
      * @return
      */
     public void destroy() {
-        // TODO implement here
+        System.out.println("[Locomotive].destroy()");
         //return null;
     }
 
@@ -53,16 +63,8 @@ public class Locomotive implements TrainComponent {
      * @return
      */
     public void derail() {
-        // TODO implement here
+        System.out.println("[Locomotive].derail()");
+        next.derail(); //kisiklatjuk a mögötte lévőt is, mivel minimum 1 kocsi van mögötte.
         //return null;
     }
-
-    /**
-     * @return
-     */
-    public void notif() {
-        // TODO implement here
-        //return null;
-    }
-
 }
