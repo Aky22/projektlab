@@ -41,8 +41,11 @@ public class Collection {
     }
 
     public TrainComponent getFirst(){
-        //TODO üresség vizsgálat később
-        return trainComponents.get(0);
+        if(trainComponents.isEmpty()){
+            return null;
+        } else {
+            return trainComponents.get(0);
+        }
     }
 
 }
