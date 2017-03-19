@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Locomotive implements TrainComponent, Notifiable {
+public class Locomotive implements TrainComponent {
 
     /**
      * Default constructor
