@@ -77,7 +77,7 @@ public class Application {
                     switch(ch) {
                         case "I":
                             collision = true;
-                            test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
+                            test3(currentType, collision, atEnd, nextType);
                             break;
                         case "N":
                             System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
@@ -102,7 +102,7 @@ public class Application {
                                             System.out.println("*3.2.1.5 Kisiklás");
                                     }
                                     System.out.println("3.2.2 Következő elemre lépés.");
-                                    test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
+                                    test3(currentType, collision, atEnd, nextType);
                                 }
 
                             }catch (IOException e){
@@ -143,7 +143,7 @@ public class Application {
         }
     }
 
-    static void test3(String currentType, boolean collision, boolean atEnd, String nextType, String ifSwitchGoodDirection){
+    static void test3(String currentType, boolean collision, boolean atEnd, String nextType){
         Component current = null; //jelenlegi pályaelem
         Locomotive testLocomotive = new Locomotive(); //teszt mozdony
         Wagon testWagon = new Wagon(); //teszt vagon
