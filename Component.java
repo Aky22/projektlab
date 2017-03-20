@@ -36,6 +36,7 @@ public abstract class Component {
      */
     public Component getNext(Component previous, TrainComponent tc){
         System.out.println("[Component].getNext(Component previous, TrainComponent tc)");
+        tcCollection.remove(tc);
         return A_End;
     }
 
