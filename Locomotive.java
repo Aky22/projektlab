@@ -52,8 +52,10 @@ public class Locomotive implements TrainComponent {
             Component nextComponent = current.getNext(null, this);
             nextComponent.operateOn(this);
 
-            next.step();
         }
+
+
+        next.step(); //léptetjük a kocsikat
     }
 
     /**

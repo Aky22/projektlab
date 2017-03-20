@@ -103,6 +103,8 @@ public class Application {
                                     }
                                     System.out.println("3.2.2 Következő elemre lépés.");
                                     test3(currentType, collision, atEnd, nextType);
+                                } else if(ch.equals("N")) {
+                                    test3(currentType, collision, atEnd, null);
                                 }
 
                             }catch (IOException e){
