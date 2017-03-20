@@ -74,39 +74,46 @@ public class Application {
                 System.out.println("*3.2 Történik ütközés a lépés közben? I/N");
                 try{
                     ch = br.readLine();
-                    if(ch.equals("I")) collision = true;
+                    switch(ch) {
+                        case "I":
+                            collision = true;
+                            test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
+                            break;
+                        case "N":
+                            System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
+                            try{
+                                ch = br.readLine();
+                                if(ch.equals("I")){
+                                    atEnd = true;
+                                    System.out.println("*3.2.1 Következő elem? (Sín, váltó, állomás, alagútszáj, vakvágány) S/V/A/L/K");
+                                    try{
+                                        nextType = br.readLine();
+                                    }catch (IOException e){
+                                        e.printStackTrace();
+                                    }
+                                    switch (nextType){
+                                        case "A":
+                                            System.out.println("*3.2.1.3 Leszállás a vonatról");
+                                            break;
+                                        case "L":
+                                            System.out.println("*3.2.1.4 Alagútszájba lépés");
+                                            break;
+                                        case "K":
+                                            System.out.println("*3.2.1.5 Kisiklás");
+                                    }
+                                    System.out.println("3.2.2 Következő elemre lépés.");
+                                    test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
+                                }
 
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                System.out.println("*3.3 Jelenlegi elem végére kerül? I/N");
-                try{
-                    ch = br.readLine();
-                    if(ch.equals("I")){
-                        atEnd = true;
-                        System.out.println("*3.2.1 Következő elem? (Sín, váltó, állomás, alagútszáj, vakvágány) S/V/A/L/K");
-                        try{
-                            nextType = br.readLine();
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
-                        switch (nextType){
-                            case "A":
-                                System.out.println("*3.2.1.3 Leszállás a vonatról");
-                                break;
-                            case "L":
-                                System.out.println("*3.2.1.4 Alagútszájba lépés");
-                                break;
-                            case "K":
-                                System.out.println("*3.2.1.5 Kisiklás");
-                        }
-                        System.out.println("3.2.2 Következő elemre lépés.");
+                            }catch (IOException e){
+                                e.printStackTrace();
+                            }
+                            break;
                     }
 
                 }catch (IOException e){
                     e.printStackTrace();
                 }
-                test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
                 break;
         }
 
