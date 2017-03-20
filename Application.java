@@ -96,7 +96,7 @@ public class Application {
                                             System.out.println("*3.2.1.3 Leszállás a vonatról");
                                             break;
                                         case "L":
-                                            System.out.println("*3.2.1.4 Alagútszájba lépés");
+                                            System.out.println("*3.2.1.4 Aktiválatlan lagútszájba lépés");
                                             break;
                                         case "K":
                                             System.out.println("*3.2.1.5 Kisiklás");

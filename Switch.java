@@ -16,6 +16,13 @@ public class Switch extends Component {
         }
     }
 
+
+    @Override
+    public Component getNext(Component previous, TrainComponent tc){
+        System.out.println("[Switch].getNext(Component previous, TrainComponent tc)");
+        return A_End;
+    }
+
     /**
      * @param l
      */
