@@ -10,16 +10,8 @@ public class Siding extends Component {
      */
     @Override
     public void operateOn(Locomotive l) {
-        // TODO implement here
-    }
-
-    /**
-     * @param previous
-     * @param tc
-     * @return
-     */
-    public Component getNext(Component previous, TrainComponent tc) {
-        // TODO implement here kisiklatás
-        return null;
+        System.out.println("[Siding].operateOn(Locomotive l)");
+        tcCollection.insert(l);
+        l.derail();
     }
 }

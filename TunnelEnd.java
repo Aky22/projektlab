@@ -37,7 +37,7 @@ public class TunnelEnd extends Component {
      * @param l
      */
     public void operateOn(Locomotive l) {
-        System.out.println("[TunnelEnd].operateOn(l: Locomotive");
+        System.out.println("[TunnelEnd].operateOn(l: Locomotive)");
         tcCollection.insert(l);
         if(active){
             l.inTunnel();

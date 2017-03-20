@@ -42,7 +42,7 @@ public class Wagon implements TrainComponent {
      */
     @Override
     public void step() {
-        System.out.println("[Locomotive].step()");
+        System.out.println("[Wagon].step()");
         // TODO implement here
         //return null;
     }

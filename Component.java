@@ -25,6 +25,7 @@ public abstract class Component {
      * @return
      */
     public Collection getCollection(){
+        System.out.println("[Component].getCollection()");
         return tcCollection;
     }
 
@@ -34,8 +35,8 @@ public abstract class Component {
      * @return
      */
     public Component getNext(Component previous, TrainComponent tc){
-        //TODO ez
-        return null;
+        System.out.println("[Component].getNext(Component previous, TrainComponent tc)");
+        return A_End;
     }
 
     /**

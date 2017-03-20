@@ -10,6 +10,7 @@ public class Rail extends Component {
      */
     @Override
     public void operateOn(Locomotive l) {
-        // TODO implement here
+        System.out.println("[Rail].operateOn");
+        tcCollection.insert(l);
     }
 }

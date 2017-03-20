@@ -28,7 +28,8 @@ public class Collection {
      * @param l
      */
     public void remove(TrainComponent l) {
-        // TODO implement here
+        System.out.println("[Collection].remove(TrainComponent l)");
+        trainComponents.remove(l);
     }
 
     /**
@@ -36,7 +37,7 @@ public class Collection {
      * @return
      */
     public boolean myComponentAtEnd(TrainComponent l) {
-        // TODO implement here
+        System.out.println("[Collection].myComponentAtEnd(TrainComponent l)");
         return false;
     }
 
