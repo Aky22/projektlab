@@ -7,31 +7,27 @@ import java.util.*;
  */
 public class Locomotive implements TrainComponent {
 
-    Component current;
 
-    /**
-     *
-     */
-    private TrainComponent next = null;
+    public TrainComponent previous = null;
+    public TrainComponent next = null;
+    public Component current = null;
+    public boolean destroyed = false;
+    public boolean derailed = false;
+    public boolean inTunnel = false;
 
-    /**
-     *
-     */
-    private TrainComponent previous = null;
-  
-    /**
-     * Default constructor
-     */
+
     public Locomotive() {
     }
+
+
 
     /**
      * @param c 
      * @return
      */
-    public void atStation(Color c) {
+    public void atStation(Color c, int passengerNumber) {
         System.out.println("[Locomotive].atStation(c: Color)");
-        next.atStation(c); //mivel minimum 1 kocsi van mögötte, ezért feltétel nélkül hívjuk
+        next.atStation(c, passengerNumber); //mivel minimum 1 kocsi van mögötte, ezért feltétel nélkül hívjuk
     }
 
     /**
@@ -56,10 +52,21 @@ public class Locomotive implements TrainComponent {
         }
     }
 
+    @Override
+    public void connect(char side, TrainComponent tc) {
+
+    }
+
+    @Override
+    public void place(Component current) {
+
+    }
+
     /**
      * @return
      */
     public void inTunnel() {
+        inTunnel = true;
         System.out.println("[Locomotive].inTunnel()");
     }
 
@@ -67,6 +74,7 @@ public class Locomotive implements TrainComponent {
      * @return
      */
     public void destroy() {
+        destroyed = true;
         System.out.println("[Locomotive].destroy()");
         //return null;
     }
@@ -79,6 +87,8 @@ public class Locomotive implements TrainComponent {
         next.derail(); //kisiklatjuk a mögötte lévőt is, mivel minimum 1 kocsi van mögötte.
     }
 
+
+
     /**
      * Mozdonynak jelzés hogy ütközött
      * @param other - Az ütközésben résztvevő másik mozdony
@@ -86,6 +96,7 @@ public class Locomotive implements TrainComponent {
     public void collision(Locomotive other){
         System.out.println("[Locomotive].collision(Locomotive other)");
         other.destroy();
+        this.destroy();
     }
 
     /**
@@ -99,4 +110,10 @@ public class Locomotive implements TrainComponent {
     public void setCurrent(Component c){
         current = c;
     }
+
+    public void placeLocomotive(Component current){
+
+    }
+
+
 }

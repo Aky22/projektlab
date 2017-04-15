@@ -5,8 +5,11 @@ import java.util.*;
  * 
  */
 public class Tunnel {
-    TunnelEnd sideA;
-    TunnelEnd sideB;
+
+    private TunnelEnd sideA;
+    private TunnelEnd sideB;
+    private boolean trainInside;
+    private boolean active;
 
     /**
      * Default constructor
@@ -14,6 +17,8 @@ public class Tunnel {
     public Tunnel() {
         sideA = null;
         sideB = null;
+        trainInside = false;
+        active = false;
     }
 
 
@@ -32,7 +37,7 @@ public class Tunnel {
     public boolean isActive() {
         System.out.println("[Tunnel].isActive()");
         //TODO valami
-        return false;
+        return active;
     }
 
     /**
@@ -40,7 +45,7 @@ public class Tunnel {
      */
     public boolean trainInside() {
         // TODO implement here
-        return false;
+        return trainInside;
     }
 
 }

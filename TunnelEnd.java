@@ -5,7 +5,8 @@ import java.util.*;
  * 
  */
 public class TunnelEnd extends Component {
-    boolean active;
+
+    private boolean active;
 
     /**
      * Default constructor
@@ -18,19 +19,20 @@ public class TunnelEnd extends Component {
     /**
      * 
      */
-    public void activate() {
+    protected void activate() {
         System.out.println("[TunnelEnd].activate()");
-        if(active) {
+        active = !active;
+        /*if(active) {
             active = false;
-        } else active = true;
+        } else active = true;*/
     }
 
     /**
      * @return
      */
-    public boolean isActive() {
+    private boolean isActive() {
         // TODO implement here
-        return false;
+        return active;
     }
 
     /**

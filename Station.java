@@ -19,6 +19,13 @@ public class Station extends Component {
      */
     public Component B_End = null;
 
+
+
+    public Station(double x0, double y0, double x1, double y1, Color color){
+        super(x0, y0, y1, x1, 0);
+        c = color;
+    }
+
     /**
      * Eltároljuk a mozdonyt és értesítjük hogy állomásra ért.
      * @param l
@@ -26,7 +33,7 @@ public class Station extends Component {
     public void operateOn(Locomotive l) {
         System.out.println("[Locomotive].operateOn(l: Locomotive)");
         tcCollection.insert(l); //behelyezzük a kollekcióba
-        l.atStation(c); //értesítjük a mozdonyt hogy állomásra ért
+        l.atStation(c,0); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
     }
 
     /**

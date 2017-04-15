@@ -5,14 +5,32 @@ import java.util.*;
  * 
  */
 public abstract class Component {
+
     protected Collection tcCollection;
-    public boolean _TESTEND;
-    public boolean _TESTCOLLISION;
     protected Component A_End = null;
     protected Component B_End = null;
+    protected double lenght;
+    protected double x0, y0, x1, y1;
+
+    public boolean _TESTEND;
+    public boolean _TESTCOLLISION;
 
     public Component(){
+        x0 = 0;
+        y0 = 0;
+        x1 = 0;
+        y1 = 0;
+        lenght = 0;
+    }
+
+    public Component(double x_0, double y_0, double x_1, double y_1, double len ){
         tcCollection = new Collection();
+        x0 = x_0;
+        y0 = y_0;
+        x1 = x_1;
+        y1 = y_1;
+        lenght = len;
+
         _TESTEND = false;
     }
 
@@ -33,7 +51,9 @@ public abstract class Component {
      * @param tc 
      * @return
      */
-    public Component getNext(Component previous, TrainComponent tc){
+    public Component getNext(Component previous, TrainComponent tc){        // <--
+
+
         //TODO ez
         return null;
     }
@@ -41,7 +61,8 @@ public abstract class Component {
     /**
      * @param tc
      */
-    public void insert(TrainComponent tc){
+    public void insert(TrainComponent tc){      //<-- ??
+        tcCollection.insert(tc);
         //TODO
     }
 

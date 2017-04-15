@@ -6,6 +6,10 @@ import java.util.*;
  * 
  */
 public class Wagon implements TrainComponent {
+
+    private Color color;
+    private int passengerNumber;
+
     /**
      *
      */
@@ -22,16 +26,24 @@ public class Wagon implements TrainComponent {
     public Wagon() {
     }
 
+    public Wagon(Color c, int i){
+        color =  c;
+        passengerNumber = i;
+    }
+
     /**
      * Állomásra érve hívódik meg.
      * @param c Az állomás színe
      * @return
      */
-    public void atStation(Color c) {
+    public void atStation(Color c, int passengerNumber) {
         System.out.println("[Wagon].atStation(c: Color)");
+        if(color == c){
+            getOff(passengerNumber);    //ez így elég fura és kéne ellenőrizni az elötte lévő wagonokon van-e még utas
+        }
         if(next != null){ //ha van mögötte lévő kocsi akkor értesítjük hogy állomáson vagyunk
             //üresség vizsgálata itt még nem jelenik meg.
-            next.atStation(c);
+            next.atStation(c, passengerNumber);
         }
     }
 
@@ -47,6 +59,16 @@ public class Wagon implements TrainComponent {
         //return null;
     }
 
+    @Override
+    public void connect(char side, TrainComponent tc) {
+
+    }
+
+    @Override
+    public void place(Component current) {
+
+    }
+
     /**
      * Kisiklatja a kocsit
      * @return
@@ -57,6 +79,8 @@ public class Wagon implements TrainComponent {
             next.derail();
         }
     }
+
+
 
     /**
      * A kocsit követő elem beállítására szolgál.
@@ -72,6 +96,14 @@ public class Wagon implements TrainComponent {
      */
     public void setPrevious(TrainComponent tc){
         previous = tc;
+    }
+
+    private void getOn(int n){
+        passengerNumber += n;
+    }
+
+    private void getOff(int n){
+        passengerNumber -= n;
     }
 
 }
