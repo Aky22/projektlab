@@ -7,12 +7,10 @@ import java.util.*;
 public class Switch extends Component {
 
     private boolean state;
-    private Component CEnd;
 
-    public Switch(double x0, double y0, double x1, double y1, boolean s, Component comp){
-        super(x0, y0, y1, x1, 0);
-        state = s;
-        CEnd = comp;
+    public Switch(double x0, double y0, double x1, double y1){
+        super(x0, y0, y1, x1);
+        state = false;
     }
 
     /**

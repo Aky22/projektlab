@@ -5,6 +5,11 @@ import java.util.*;
  * 
  */
 public class Rail extends Component {
+    public Rail(double x_0, double y_0, double x_1, double y_1){
+        super(x_0, y_0, x_1, y_1);
+    }
+
+
     /**
      * @param l
      */
@@ -14,18 +19,6 @@ public class Rail extends Component {
     }
 
     public void placeLocomotive(char side, Locomotive locomotive){
-
-    }
-
-    private void inTunel(){
-
-    }
-
-    private void destroy(){
-
-    }
-
-    private void collision(Locomotive l){
 
     }
 }

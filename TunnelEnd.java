@@ -8,13 +8,10 @@ public class TunnelEnd extends Component {
 
     private boolean active;
 
-    /**
-     * Default constructor
-     */
-    public TunnelEnd() {
+    public TunnelEnd(double x_0, double y_0, double x_1, double y_1){
+        super(x_0, y_0, x_1, y_1);
         active = false;
     }
-
 
     /**
      * 
@@ -42,7 +39,7 @@ public class TunnelEnd extends Component {
         System.out.println("[TunnelEnd].operateOn(l: Locomotive");
         tcCollection.insert(l);
         if(active){
-            l.inTunnel();
+            //l.inTunnel();
         }
     }
 }

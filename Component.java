@@ -27,15 +27,13 @@ public abstract class Component {
         lenght = 0;
     }
 
-    public Component(double x_0, double y_0, double x_1, double y_1, double len ){
+    public Component(double x_0, double y_0, double x_1, double y_1){
         tcCollection = new Collection();
         x0 = x_0;
         y0 = y_0;
         x1 = x_1;
         y1 = y_1;
-        lenght = len;
-
-       // _TESTEND = false;
+        lenght = Math.sqrt(Math.pow(x_0 - x_1, 2) + Math.pow(y_0 - y_1, 2));
     }
 
     /**

@@ -5,26 +5,9 @@ import java.util.*;
 /**
  * 
  */
-public class Wagon implements TrainComponent {
-
-    private Color color;
-    private int passengerNumber;
-
-    /**
-     *
-     */
-    private TrainComponent next = null;
-
-    /**
-     *
-     */
-    private TrainComponent previous = null;
-
-    /**
-     * Default constructor
-     */
-    public Wagon() {
-    }
+public class Wagon extends TrainComponent {
+    Color color;
+    int passengerNumber;
 
     public Wagon(Color c, int i){
         color =  c;
@@ -34,17 +17,25 @@ public class Wagon implements TrainComponent {
     /**
      * Állomásra érve hívódik meg.
      * @param c Az állomás színe
-     * @return
+     * @return - Leszállt utasok száma
      */
-    public void atStation(Color c, int passengerNumber) {
-        System.out.println("[Wagon].atStation(c: Color)");
+    public int atStation(Color c, int passengerNumber) {
+        int ret = 0;
         if(color == c){
-            getOff(passengerNumber);    //ez így elég fura és kéne ellenőrizni az elötte lévő wagonokon van-e még utas
+            //utasok leszállása:
+            ret = passengerNumber; //mivel kikötöttük hogy mindenki leszáll
+
+            //utasok felszállása (mindenki felszáll):
+            this.passengerNumber = passengerNumber;
+
+            //mivel ekkor ez már "üres":
+            if(next != null){
+                ret += next.atStation(c, 0); //következőre már nem száll fel ezért senki
+            }
+
+            return ret; //visszatérünk a leszállt utasok számával
         }
-        if(next != null){ //ha van mögötte lévő kocsi akkor értesítjük hogy állomáson vagyunk
-            //üresség vizsgálata itt még nem jelenik meg.
-            next.atStation(c, passengerNumber);
-        }
+        return ret; //ha nem egyezik a szín felesleges tovább hívni...
     }
 
     /**
@@ -56,54 +47,11 @@ public class Wagon implements TrainComponent {
     public void step() {
         System.out.println("[Locomotive].step()");
         // TODO implement here
-        //return null;
     }
 
-    @Override
-    public void connect(char side, TrainComponent tc) {
-
-    }
 
     @Override
     public void place(Component current) {
 
     }
-
-    /**
-     * Kisiklatja a kocsit
-     * @return
-     */
-    public void derail() {
-        System.out.println("[Wagon].derail()");
-        if(next != null){ //ha van mögette lévő kocsi kisiklatjuk
-            next.derail();
-        }
-    }
-
-
-
-    /**
-     * A kocsit követő elem beállítására szolgál.
-     * @param tc - A következő elem a vonatban
-     */
-    public void setNext(TrainComponent tc){
-        next = tc;
-    }
-
-    /**
-     * A kocsit megelőző elem beállítására szolgál
-     * @param tc
-     */
-    public void setPrevious(TrainComponent tc){
-        previous = tc;
-    }
-
-    private void getOn(int n){
-        passengerNumber += n;
-    }
-
-    private void getOff(int n){
-        passengerNumber -= n;
-    }
-
 }

@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.awt.Color;
 
 /**
  * Created by domba on 2017. 04. 14..
@@ -96,32 +97,65 @@ public class Game {
      * @param params - parancs paraméterei lsd. 7. doksi
      */
     public void create(String[] params){
-        //TODO konstruktor hívások, konstruktorok még hiányoznak azokból az osztályokból
-        //TODO hozzáadás az arraylisthez
         switch(params[1]){
             case "t":
                 switch(params[2]){
                     case "Locomotive":
+                        alTrain.add(new Locomotive());
                         break;
                     case "Wagon":
+                        switch(params[3]){ //leszarom, ennyi szín
+                            case "blue":
+                                alTrain.add(new Wagon(Color.BLUE, Integer.parseInt(params[4])));
+                                break;
+                            case "red":
+                                alTrain.add(new Wagon(Color.RED, Integer.parseInt(params[4])));
+                                break;
+                            case "yellow":
+                                alTrain.add(new Wagon(Color.YELLOW, Integer.parseInt(params[4])));
+                                break;
+                        }
                         break;
                     case "CoalWagon":
+                        alTrain.add(new CoalWagon());
                         break;
                 }
                 break;
             case "m":
+                double x_0 = Double.parseDouble(params[2]);
+                double y_0 = Double.parseDouble(params[3]);
                 switch(params[4]){
                     case "Intersection":
+                        alMap.add(new Intersection(x_0, y_0, x_0, y_0));
                         break;
                     case "Rail":
+                        alMap.add(new Rail(x_0, y_0,
+                                Double.parseDouble(params[5]),
+                                Double.parseDouble(params[6])));
                         break;
                     case "Station":
+                        Color color;
+                        switch(params[5]){ //szintén leszarom és ennyi lesz
+                            case "blue":
+                                color = Color.BLUE;
+                                break;
+                            case "yellow":
+                                color = Color.YELLOW;
+                                break;
+                            case "red":
+                                color = Color.RED;
+                                break;
+                        }
+                        alMap.add(new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6])));
                         break;
                     case "TunnelEnd":
+                        alMap.add(new TunnelEnd(x_0, y_0, x_0, y_0));
                         break;
                     case "Switch":
+                        alMap.add(new Switch(x_0, y_0, x_0, y_0));
                         break;
                     case "Siding":
+                        alMap.add(new Siding(x_0, y_0, x_0, y_0));
                         break;
                 }
                 break;
@@ -135,10 +169,18 @@ public class Game {
     public void connect(String[] params){
         switch(params[1]){
             case "t":
-                //TODO connectek, hiányoznak a metódusok még
+                int firstID = Integer.parseInt(params[2]);
+                int secondID = Integer.parseInt(params[3]);
+                alTrain.get(firstID).connect('N', alTrain.get(secondID));
+                alTrain.get(secondID).connect('P', alTrain.get(firstID));
                 break;
             case "m":
-                //TODO hiányozik a set char End-el
+                int id1 = Integer.parseInt(params[3]);
+                int id2 = Integer.parseInt(params[5]);
+                char side1 = params[4].charAt(0);
+                char side2 = params[6].charAt(0);
+                alMap.get(id1).setEnd(side1, alMap.get(id2));
+                alMap.get(id2).setEnd(side2, alMap.get(id1));
                 break;
         }
     }
