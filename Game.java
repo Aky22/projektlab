@@ -64,7 +64,7 @@ public class Game {
                     break;
                 case "save":
                     switch(split[1]){
-                        case "save":
+                        case "start":
                             try {
                                 fw = new FileWriter(split[2]);
                                 saving = true;

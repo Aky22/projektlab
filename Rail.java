@@ -15,10 +15,10 @@ public class Rail extends Component {
      */
     @Override
     public void operateOn(Locomotive l) {
-        // TODO implement here
+        tcCollection.insert(l); //behelyezzük a kollekcióba
     }
 
     public void placeLocomotive(char side, Locomotive locomotive){
-
+        //TODO
     }
 }

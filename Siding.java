@@ -13,8 +13,9 @@ public class Siding extends Component {
      * @param l
      */
     @Override
-    public void operateOn(Locomotive l) {
-        // TODO implement here
+    public void operateOn(Locomotive l) { //kész
+        tcCollection.insert(l); //behelyezzük a kollekcióba
+        l.derail();
     }
 
     /**
@@ -23,7 +24,7 @@ public class Siding extends Component {
      * @return
      */
     public Component getNext(Component previous, TrainComponent tc) {
-        // TODO implement here kisiklatás
+        //teljesen mindegy idáig úgyse jut el
         return null;
     }
 }

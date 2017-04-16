@@ -55,6 +55,7 @@ public abstract class Component {
      */
     public Component getNext(Component previous, TrainComponent tc){        // <--
         //TODO asszem ki is kell szedni kollekcióból - D.
+        tcCollection.remove(tc);
         if(previous == A_End){
             return B_End;
         }
@@ -73,7 +74,7 @@ public abstract class Component {
     /**
      * @param tc
      */
-    public void insert(TrainComponent tc){      //<-- ??
+    public void insert(TrainComponent tc){      //vagont helyez be
         tcCollection.insert(tc);
         //TODO
     }
