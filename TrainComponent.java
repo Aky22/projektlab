@@ -17,7 +17,7 @@ public interface TrainComponent {
 
     public void derail();
 
-    public void atStation(Color c, int passengerNumber);
+    public int atStation(Color c, int passengerNumber);
 
     public void step();
 

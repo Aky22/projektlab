@@ -9,11 +9,15 @@ public abstract class Component {
     protected Collection tcCollection;
     protected Component A_End = null;
     protected Component B_End = null;
+    protected Component C_End = null;
+    protected Component D_End = null;
     protected double lenght;
     protected double x0, y0, x1, y1;
 
+    /** Ezek az előző teszthez kellettek, törölhető majd - D.
     public boolean _TESTEND;
     public boolean _TESTCOLLISION;
+     */
 
     public Component(){
         x0 = 0;
@@ -31,7 +35,7 @@ public abstract class Component {
         y1 = y_1;
         lenght = len;
 
-        _TESTEND = false;
+       // _TESTEND = false;
     }
 
     /**
@@ -52,9 +56,19 @@ public abstract class Component {
      * @return
      */
     public Component getNext(Component previous, TrainComponent tc){        // <--
-
-
-        //TODO ez
+        //TODO asszem ki is kell szedni kollekcióból - D.
+        if(previous == A_End){
+            return B_End;
+        }
+        if(previous == B_End){
+            return A_End;
+        }
+        if(previous == C_End){
+            return D_End;
+        }
+        if(previous == D_End){
+            return C_End;
+        }
         return null;
     }
 
@@ -66,34 +80,58 @@ public abstract class Component {
         //TODO
     }
 
+
+    /**
+     * Beállítja az adott elem adott végét
+     * @param side - Az az oldal ahova csatlakozik a másik elem
+     * @param end - Ehhez az elemhez kapcsolódó másik elem
+     */
+    public void setEnd(char side, Component end){
+        switch (side){
+            case 'A':
+                A_End = end;
+                break;
+            case 'B':
+                B_End = end;
+                break;
+            case 'C':
+                C_End = end;
+                break;
+            case 'D':
+                D_End = end;
+                break;
+        }
+    }
+
+
     /**
      * Beállítja hogy a tesztkörnyezetben a vonat a lépés végén átlép-e a következő elemre
      * @param yes
      */
-    public void set_TEST_LocomotiveWillBeAtTheEnd(boolean yes){
+    /*public void set_TEST_LocomotiveWillBeAtTheEnd(boolean yes){
         _TESTEND = yes;
-    }
+    }*/
 
     /**
      * Beállítja hogy a tesztkörnyezetben ezen a pályaelem ütközik-e a vonat
      * @param yes
      */
-    public void set_TEST_Collision(boolean yes) {_TESTCOLLISION = yes;}
+    //public void set_TEST_Collision(boolean yes) {_TESTCOLLISION = yes;}
 
 
     /**
      * Beállítja az A végét az elemnek
      * @param a
      */
-    public void setAEnd(Component a){
+   /* public void setAEnd(Component a){
         A_End = a;
-    }
+    }*/
 
     /**
      * Beállítja az B végét az elemnek
      * @param b
      */
-    public void setBEnd(Component b){
+    /*public void setBEnd(Component b){
         B_End = b;
-    }
+    }*/
 }

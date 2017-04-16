@@ -7,23 +7,22 @@ import java.util.*;
  */
 public class Station extends Component {
 
+    /**
+     * Állomás színe
+     */
     private Color c;
 
     /**
-     *
+     * Utasok száma az állomáson
      */
-    public Component A_End = null;
-
-    /**
-     *
-     */
-    public Component B_End = null;
+    private int passengerNumber;
 
 
 
-    public Station(double x0, double y0, double x1, double y1, Color color){
+    public Station(double x0, double y0, double x1, double y1, Color color, int pNumber){
         super(x0, y0, y1, x1, 0);
         c = color;
+        passengerNumber = pNumber;
     }
 
     /**
@@ -31,9 +30,9 @@ public class Station extends Component {
      * @param l
      */
     public void operateOn(Locomotive l) {
-        System.out.println("[Locomotive].operateOn(l: Locomotive)");
+        //System.out.println("[Locomotive].operateOn(l: Locomotive)");
         tcCollection.insert(l); //behelyezzük a kollekcióba
-        l.atStation(c,0); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
+        l.atStation(c,passengerNumber); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
     }
 
     /**

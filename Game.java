@@ -151,7 +151,7 @@ public class Game {
         if(params.length == 1){
             //TODO csak a mozdonyok léptetése (hogyan????)
         } else {
-            //TODO alTrain.get(Integer.parseInt(params[1])).step();
+            alTrain.get(Integer.parseInt(params[1])).step();
         }
     }
 

@@ -25,9 +25,11 @@ public class Locomotive implements TrainComponent {
      * @param c 
      * @return
      */
-    public void atStation(Color c, int passengerNumber) {
-        System.out.println("[Locomotive].atStation(c: Color)");
-        next.atStation(c, passengerNumber); //mivel minimum 1 kocsi van mögötte, ezért feltétel nélkül hívjuk
+    public int atStation(Color c, int passengerNumber) {
+        int ret = 0;
+        //System.out.println("[Locomotive].atStation(c: Color)");
+        ret += next.atStation(c, passengerNumber); //leszállók száma
+        return ret;
     }
 
     /**
@@ -37,7 +39,7 @@ public class Locomotive implements TrainComponent {
         System.out.println("[Locomotive].step()");
         Collection c = current.getCollection();
 
-        boolean yesOrNo = c.myComponentAtEnd(this);
+        /*boolean yesOrNo = c.myComponentAtEnd(this);
         //ütközés
         if(current._TESTCOLLISION){
             Locomotive other = new Locomotive();
@@ -49,7 +51,7 @@ public class Locomotive implements TrainComponent {
             nextComponent.operateOn(this);
 
             next.step();
-        }
+        }*/
     }
 
     @Override
