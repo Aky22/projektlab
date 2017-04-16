@@ -12,7 +12,9 @@ public class Application {
      * @param args
      */
     public static void main(String[] args){
-
+        Game game = new Game();
+        game.startGame();
+/*
         int choose = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String ch;
@@ -108,11 +110,11 @@ public class Application {
                 }
                 test3(currentType, collision, atEnd, nextType, ifSwitchGoodDirection);
                 break;
-        }
+        }*/
 
     }
 
-    static void test1(boolean thereIsATrainOnIt){
+   /* static void test1(boolean thereIsATrainOnIt){
         Switch testSwitch = new Switch();
         if(thereIsATrainOnIt){ //ha van rajta valami
             Locomotive testLocom = new Locomotive(); //létrehozunk egy új mozdonyt
@@ -202,5 +204,5 @@ public class Application {
         testLocomotive.step();
 
         //szekvencia fb-on, hajrá
-    }
+    }*/
 }
