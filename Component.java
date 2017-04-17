@@ -60,7 +60,8 @@ public abstract class Component {
     /**
      * @param previous 
      * @param tc 
-     * @return
+     * @return Component
+     * Átlépteti a következő elemre a vonatkomponenst
      */
     public Component getNext(Component previous, TrainComponent tc){        // átlépteti a következő elemre a paraméterként kapott komponenst
         //asszem ki is kell szedni kollekcióból - D.

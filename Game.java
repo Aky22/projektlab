@@ -8,6 +8,7 @@ import java.awt.Color;
 public class Game {
     ArrayList<Component> alMap = new ArrayList<>();
     ArrayList<TrainComponent> alTrain = new ArrayList<>();
+    ArrayList<TrainComponent> alLocomotive = new ArrayList<>();
     Tunnel tunnel = new Tunnel();
     boolean exit;
 
@@ -105,9 +106,11 @@ public class Game {
         switch(params[1]){
             case "t":
                 int newId = alTrain.size() + 1;
+                int newLocomotiveId = alLocomotive.size() +1;
                 switch(params[2]){
                     case "Locomotive":
                         alTrain.add(new Locomotive(newId));
+                        alLocomotive.add(new Locomotive(newLocomotiveId));
                         break;
                     case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
@@ -202,7 +205,10 @@ public class Game {
      */
     public void step(String[] params){
         if(params.length == 1){
-            //TODO csak a mozdonyok léptetése (hogyan????)
+            //Összes mozdony léptetése
+            for(int i = 0; i < alTrain.size(); i++){
+                alLocomotive.get(i).step();
+            }
         } else {
             alTrain.get(Integer.parseInt(params[1])).step();
         }
@@ -230,7 +236,7 @@ public class Game {
      * @param params
      */
     public void place(String[] params){
-        //TODO ötletem sincs...
+        alTrain.get(Integer.parseInt(params[1])).place(alMap.get(Integer.parseInt(params[2])), params[3].charAt(0));
     }
 
     /**
