@@ -9,8 +9,8 @@ public class Intersection extends Component{
     }
 
     @Override
-    public void operateOn(Locomotive l) { //kész
-        tcCollection.insert(l); //behelyezzük a kollekcióba
+    public void operateOn(Locomotive l, char side) { //kész
+        tcCollection.insert(l, side); //behelyezzük a kollekcióba
     }
 
     @Override

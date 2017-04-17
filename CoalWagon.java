@@ -36,7 +36,15 @@ public class CoalWagon extends TrainComponent{
             current = next;
 
             //vagont helyez be
-            current.insert(this);
+            if(previousComponent == current.getNextSide('A'))   //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+                current.insert(this, 'A');
+            else if(previousComponent == current.getNextSide('B'))
+                current.insert(this, 'B');
+            else if(previousComponent == current.getNextSide('C'))
+                current.insert(this, 'C');
+            else if(previousComponent == current.getNextSide('D'))
+                current.insert(this, 'D');
+
         }
         //következőt lépteti ha van
         if(next != null)
@@ -44,7 +52,7 @@ public class CoalWagon extends TrainComponent{
     }
 
     @Override
-    public void place(Component current) {      // ??
+    public void place(Component current, char side) {      // ??
         //TODO !!!!!
     }
 

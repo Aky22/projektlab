@@ -30,8 +30,8 @@ public class Station extends Component {
      * Eltároljuk a mozdonyt és értesítjük hogy állomásra ért.
      * @param l
      */
-    public void operateOn(Locomotive l) {
-        tcCollection.insert(l); //behelyezzük a kollekcióba
+    public void operateOn(Locomotive l, char side) {
+        tcCollection.insert(l, side); //behelyezzük a kollekcióba
         l.atStation(c,passengerNumber); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
     }
 

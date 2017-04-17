@@ -77,7 +77,7 @@ public class Wagon extends TrainComponent {
 
 
     @Override
-    public void place(Component current) {
+    public void place(Component current, char side) {
 
     }
 

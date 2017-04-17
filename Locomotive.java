@@ -51,7 +51,7 @@ public class Locomotive extends TrainComponent {
 
 
     @Override
-    public void place(Component current) {
+    public void place(Component current, char side) {
         //TODO
     }
 

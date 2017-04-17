@@ -22,7 +22,7 @@ public class Rail extends Component {
     public void placeLocomotive(char side, Locomotive locomotive){
         //TODO
         insert(locomotive, side);
-        locomotive.next.place(this);
+        locomotive.next.place(this, side);
 
 
 
