@@ -29,7 +29,7 @@ public class Switch extends Component {
 
     @Override
     public Component getNext(Component previous, TrainComponent tc){
-        //TODO talán így jó???
+        //talán így jó???
         tcCollection.remove(tc);
         //       B (false)
         // A---<

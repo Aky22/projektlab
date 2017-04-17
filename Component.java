@@ -63,7 +63,7 @@ public abstract class Component {
      * @return
      */
     public Component getNext(Component previous, TrainComponent tc){        // átlépteti a következő elemre a paraméterként kapott komponenst
-        //TODO asszem ki is kell szedni kollekcióból - D.
+        //asszem ki is kell szedni kollekcióból - D.
         tcCollection.remove(tc);
         if(previous == A_End){
             return B_End;

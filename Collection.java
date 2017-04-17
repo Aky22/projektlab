@@ -45,7 +45,6 @@ public class Collection {
      * @return
      */
     public boolean myComponentAtEnd(TrainComponent l) {
-        //TODO ide kéne ütközésdetektálás...
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
         for(int i = 0; i < trainComponents.size(); i++){        // vagy féltávon ütköznek vagy szembementek egymással
             //szembe mennek

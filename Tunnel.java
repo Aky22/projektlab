@@ -48,7 +48,7 @@ public class Tunnel {
      */
     public boolean isActive() {
         System.out.println("[Tunnel].isActive()");
-        //TODO valami
+        //valami
         return active;
     }
 
@@ -56,7 +56,7 @@ public class Tunnel {
      * @return
      */
     public boolean trainInside() {
-        // TODO implement here
+        //implement here
         return trainInside;
     }
 
