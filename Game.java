@@ -85,7 +85,7 @@ public class Game {
                     }
                     break;
                 case "list":
-                    //TODO
+                    list(split);
                     break;
             }
         }
@@ -99,42 +99,45 @@ public class Game {
     public void create(String[] params){
         switch(params[1]){
             case "t":
+                int newId = alTrain.size() + 1;
                 switch(params[2]){
                     case "Locomotive":
-                        alTrain.add(new Locomotive());
+                        alTrain.add(new Locomotive(newId));
                         break;
                     case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
                             case "blue":
-                                alTrain.add(new Wagon(Color.BLUE, Integer.parseInt(params[4])));
+                                alTrain.add(new Wagon(Color.BLUE, Integer.parseInt(params[4]), newId));
                                 break;
                             case "red":
-                                alTrain.add(new Wagon(Color.RED, Integer.parseInt(params[4])));
+                                alTrain.add(new Wagon(Color.RED, Integer.parseInt(params[4]), newId));
                                 break;
                             case "yellow":
-                                alTrain.add(new Wagon(Color.YELLOW, Integer.parseInt(params[4])));
+                                alTrain.add(new Wagon(Color.YELLOW, Integer.parseInt(params[4]), newId));
                                 break;
                         }
                         break;
                     case "CoalWagon":
-                        alTrain.add(new CoalWagon());
+                        alTrain.add(new CoalWagon(newId));
                         break;
                 }
+                System.out.print(alTrain.size() + "\n");
                 break;
             case "m":
                 double x_0 = Double.parseDouble(params[2]);
                 double y_0 = Double.parseDouble(params[3]);
+                int newId2 = alMap.size() + 1;
                 switch(params[4]){
                     case "Intersection":
-                        alMap.add(new Intersection(x_0, y_0, x_0, y_0));
+                        alMap.add(new Intersection(x_0, y_0, x_0, y_0, newId2));
                         break;
                     case "Rail":
                         alMap.add(new Rail(x_0, y_0,
                                 Double.parseDouble(params[5]),
-                                Double.parseDouble(params[6])));
+                                Double.parseDouble(params[6]), newId2));
                         break;
                     case "Station":
-                        Color color;
+                        Color color = Color.BLACK;
                         switch(params[5]){ //szintén leszarom és ennyi lesz
                             case "blue":
                                 color = Color.BLUE;
@@ -146,18 +149,19 @@ public class Game {
                                 color = Color.RED;
                                 break;
                         }
-                        alMap.add(new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6])));
+                        alMap.add(new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6]), newId2));
                         break;
                     case "TunnelEnd":
-                        alMap.add(new TunnelEnd(x_0, y_0, x_0, y_0));
+                        alMap.add(new TunnelEnd(x_0, y_0, x_0, y_0, newId2));
                         break;
                     case "Switch":
-                        alMap.add(new Switch(x_0, y_0, x_0, y_0));
+                        alMap.add(new Switch(x_0, y_0, x_0, y_0, newId2));
                         break;
                     case "Siding":
-                        alMap.add(new Siding(x_0, y_0, x_0, y_0));
+                        alMap.add(new Siding(x_0, y_0, x_0, y_0, newId2));
                         break;
                 }
+                System.out.print(alMap.size() + "\n");
                 break;
         }
     }
@@ -169,18 +173,20 @@ public class Game {
     public void connect(String[] params){
         switch(params[1]){
             case "t":
-                int firstID = Integer.parseInt(params[2]);
-                int secondID = Integer.parseInt(params[3]);
-                alTrain.get(firstID).connect('N', alTrain.get(secondID));
-                alTrain.get(secondID).connect('P', alTrain.get(firstID));
+                int firstID = Integer.parseInt(params[2]) - 1;
+                int secondID = Integer.parseInt(params[3]) - 1;
+                alTrain.get(firstID).connect('N', alTrain.get(secondID), secondID+1);
+                alTrain.get(secondID).connect('P', alTrain.get(firstID), firstID + 1);
+                System.out.println("connected " + firstID + " to " + secondID);
                 break;
             case "m":
-                int id1 = Integer.parseInt(params[3]);
-                int id2 = Integer.parseInt(params[5]);
-                char side1 = params[4].charAt(0);
-                char side2 = params[6].charAt(0);
-                alMap.get(id1).setEnd(side1, alMap.get(id2));
-                alMap.get(id2).setEnd(side2, alMap.get(id1));
+                int id1 = Integer.parseInt(params[2]);
+                int id2 = Integer.parseInt(params[4]);
+                char side1 = params[3].charAt(0);
+                char side2 = params[5].charAt(0);
+                alMap.get(id1 - 1).setEnd(side1, alMap.get(id2 - 1), id2);
+                alMap.get(id2 - 1).setEnd(side2, alMap.get(id1 - 1), id1);
+                System.out.println("connected (" + id1 + " to " + side2 + " side of " + id2 + ") and (" + id2 + " to " + side1 + " side of " + id1 + ")");
                 break;
         }
     }
@@ -221,4 +227,24 @@ public class Game {
     public void place(String[] params){
         //TODO ötletem sincs...
     }
+
+    /**
+     * Státuszok lekérdezésére szolgál
+     * @param params
+     */
+    public void list(String[] params){
+        switch(params[1]){
+            case "map":
+                for(Component item : alMap){
+                    item.list();
+                }
+                break;
+            case "train":
+                for(TrainComponent item : alTrain){
+                    item.list();
+                }
+                break;
+        }
+    }
 }
+

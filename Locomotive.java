@@ -7,6 +7,11 @@ import java.util.*;
  */
 public class Locomotive extends TrainComponent {
 
+    public Locomotive(int id){
+        super(id);
+        System.out.print("created Locomotive with id: ");
+    }
+
     @Override
     public int atStation(Color c, int passengerNumber) {
         int ret = 0;
@@ -16,12 +21,35 @@ public class Locomotive extends TrainComponent {
 
     @Override
     public void step() {
-        //TODO
+        Collection collection = current.getCollection();
+
+        //ellenőrzi, hogy a végén van-e
+        boolean atEnd = collection.myComponentAtEnd(this);
+
+        //ha igen
+        if(atEnd){
+            //lekéri a következő pályaelemet
+            Component next = current.getNext(previousComponent, this);
+
+            //beállítja az aktuálisat és az előzőt
+            previousComponent = current;
+            current = next;
+
+            current.operateOn(this);
+        }
+        //következőt lépteti ha van
+        if(next != null)
+            next.step();
     }
 
 
     @Override
     public void place(Component current) {
         //TODO
+    }
+
+    @Override
+    public void list(){
+
     }
 }

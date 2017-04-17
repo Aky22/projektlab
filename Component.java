@@ -14,26 +14,35 @@ public abstract class Component {
     protected double lenght;
     protected double x0, y0, x1, y1;
 
+    protected int id = 0;
+    protected int A_id = 0;
+    protected int B_id = 0;
+    protected int C_id = 0;
+    protected int D_id = 0;
+
+
     /** Ezek az előző teszthez kellettek, törölhető majd - D.
     public boolean _TESTEND;
     public boolean _TESTCOLLISION;
      */
 
-    public Component(){
+    public Component(int id){
         x0 = 0;
         y0 = 0;
         x1 = 0;
         y1 = 0;
         lenght = 0;
+        this.id = id;
     }
 
-    public Component(double x_0, double y_0, double x_1, double y_1){
+    public Component(double x_0, double y_0, double x_1, double y_1, int id){
         tcCollection = new Collection();
         x0 = x_0;
         y0 = y_0;
         x1 = x_1;
         y1 = y_1;
         lenght = Math.sqrt(Math.pow(x_0 - x_1, 2) + Math.pow(y_0 - y_1, 2));
+        this.id = id;
     }
 
     /**
@@ -85,22 +94,31 @@ public abstract class Component {
      * @param side - Az az oldal ahova csatlakozik a másik elem
      * @param end - Ehhez az elemhez kapcsolódó másik elem
      */
-    public void setEnd(char side, Component end){
+    public void setEnd(char side, Component end, int otherId){
         switch (side){
             case 'A':
                 A_End = end;
+                A_id = otherId;
                 break;
             case 'B':
                 B_End = end;
+                B_id = otherId;
                 break;
             case 'C':
                 C_End = end;
+                C_id = otherId;
                 break;
             case 'D':
                 D_End = end;
+                D_id = otherId;
                 break;
         }
     }
+
+    /**
+     * Státusz lekérdezésre szolgál list parancs kiadása esetén
+     */
+    abstract public void list();
 
 
     /**

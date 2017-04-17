@@ -10,9 +10,17 @@ public abstract class TrainComponent {
     public TrainComponent previous = null;
     public TrainComponent next = null;
     public Component current = null;
+    protected Component previousComponent = null;
     public boolean destroyed = false;
     public boolean derailed = false;
     public boolean inTunnel = false;
+    public int id = 0;
+    protected int nextId = 0;
+    protected int previousId = 0;
+
+    public TrainComponent(int id){
+        this.id = id;
+    }
 
     /**
      * Kisiklatás - derailed flaget a teljes vonaton beállítja
@@ -52,13 +60,15 @@ public abstract class TrainComponent {
      * @param side - Melyik oldalára P - előző; N következő
      * @param tc - A hozzákapcsolandó elem
      */
-    public void connect(char side, TrainComponent tc){
+    public void connect(char side, TrainComponent tc, int otherId){
         switch(side){
             case 'P':
                 previous = tc;
+                previousId = otherId;
                 break;
             case 'N':
                 next = tc;
+                nextId = otherId;
                 break;
         }
     }
@@ -77,4 +87,9 @@ public abstract class TrainComponent {
         return derailed;
     }
 
+
+    /**
+     * Státusz lekérdezésre szolgál list parancs kiadása esetén
+     */
+    abstract public void list();
 }

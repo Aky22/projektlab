@@ -8,9 +8,10 @@ public class Switch extends Component {
 
     private boolean state;
 
-    public Switch(double x0, double y0, double x1, double y1){
-        super(x0, y0, y1, x1);
+    public Switch(double x0, double y0, double x1, double y1, int id){
+        super(x0, y0, y1, x1, id);
         state = false;
+        System.out.print("created Switch with id: ");
     }
 
     /**
@@ -57,5 +58,18 @@ public class Switch extends Component {
      */
     public void operateOn(Locomotive l) {
         tcCollection.insert(l);
+    }
+
+    @Override
+    public void list(){
+        char s;
+        if(state){
+            s = 'C';
+        } else s = 'B';
+
+        System.out.println("Switch " + id + " at " + x0 + ", " + y0 + " switched to: " + s + "\n" +
+                "A side connected to " + A_id + "\n" +
+                "B side connected to " + B_id + "\n" +
+                "C side connected to " + C_id);
     }
 }

@@ -42,6 +42,7 @@ public class Collection {
      * @return
      */
     public boolean myComponentAtEnd(TrainComponent l) {
+        //TODO ide kéne ütközésdetektálás...
         if(trainComponents.contains(l)){
             return l.current.lenght <= trainComponentsPozotions.get(trainComponents.indexOf(l));
         }

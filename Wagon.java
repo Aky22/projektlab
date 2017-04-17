@@ -9,9 +9,11 @@ public class Wagon extends TrainComponent {
     Color color;
     int passengerNumber;
 
-    public Wagon(Color c, int i){
+    public Wagon(Color c, int i, int id){
+        super(id);
         color =  c;
         passengerNumber = i;
+        System.out.print("created Wagon with id: ");
     }
 
     /**
@@ -40,18 +42,39 @@ public class Wagon extends TrainComponent {
 
     /**
      * Vagon léptetési metódusa.
-     * @param c  - őt hívó komponens
-     * @return
      */
     @Override
     public void step() {
-        System.out.println("[Locomotive].step()");
-        // TODO implement here
+        Collection collection = current.getCollection();
+
+        //ellenőrzi, hogy a végén van-e
+        boolean atEnd = collection.myComponentAtEnd(this);
+
+        //ha igen
+        if(atEnd){
+            //lekéri a következő pályaelemet
+            Component next = current.getNext(previousComponent, this);
+
+            //beállítja az aktuálisat és az előzőt
+            previousComponent = current;
+            current = next;
+
+            //vagon behelyezés
+            current.insert(this);
+        }
+        //következőt lépteti ha van
+        if(next != null)
+            next.step();
     }
 
 
     @Override
     public void place(Component current) {
 
+    }
+
+    @Override
+    public void list(){
+        //TODO
     }
 }
