@@ -9,6 +9,12 @@ public class Wagon extends TrainComponent {
     Color color;
     int passengerNumber;
 
+    /**
+     * 
+     * @param c
+     * @param i
+     * @param id
+     */
     public Wagon(Color c, int i, int id){
         super(id);
         color =  c;

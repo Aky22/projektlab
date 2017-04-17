@@ -18,7 +18,16 @@ public class Station extends Component {
     private int passengerNumber;
 
 
-
+    /**
+     *
+     * @param x0
+     * @param y0
+     * @param x1
+     * @param y1
+     * @param color
+     * @param pNumber
+     * @param id
+     */
     public Station(double x0, double y0, double x1, double y1, Color color, int pNumber, int id){
         super(x0, y0, y1, x1, id);
         c = color;

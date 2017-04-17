@@ -8,6 +8,14 @@ public class Switch extends Component {
 
     private boolean state;
 
+    /**
+     *
+     * @param x0
+     * @param y0
+     * @param x1
+     * @param y1
+     * @param id
+     */
     public Switch(double x0, double y0, double x1, double y1, int id){
         super(x0, y0, y1, x1, id);
         state = false;

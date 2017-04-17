@@ -5,6 +5,15 @@ import java.util.*;
  * 
  */
 public class Rail extends Component {
+
+    /**
+     *
+     * @param x_0
+     * @param y_0
+     * @param x_1
+     * @param y_1
+     * @param id
+     */
     public Rail(double x_0, double y_0, double x_1, double y_1, int id){
         super(x_0, y_0, x_1, y_1, id);
         System.out.print("created Rail with id: ");

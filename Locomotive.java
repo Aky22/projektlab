@@ -7,6 +7,10 @@ import java.util.*;
  */
 public class Locomotive extends TrainComponent {
 
+    /**
+     *
+     * @param id
+     */
     public Locomotive(int id){
         super(id);
         System.out.print("created Locomotive with id: ");
@@ -18,6 +22,7 @@ public class Locomotive extends TrainComponent {
         ret += next.atStation(c, passengerNumber); //leszállók száma
         return ret;
     }
+
 
     @Override
     public void step() {
@@ -35,7 +40,9 @@ public class Locomotive extends TrainComponent {
             previousComponent = current;
             current = next;
 
-            if(previousComponent == current.getNextSide('A'))   //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+            //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a
+            //jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+            if(previousComponent == current.getNextSide('A'))
                 current.operateOn(this, 'A');
             else if(previousComponent == current.getNextSide('B'))
                 current.operateOn(this, 'B');
@@ -63,6 +70,5 @@ public class Locomotive extends TrainComponent {
     public void list(){
         System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
                 ";"+"\n"+" next: "+nextId+"; collied "+ this.destroyed+"; destoyed "+this.destroyed+"; derailed "+derailed);
-
     }
 }

@@ -35,6 +35,14 @@ public abstract class Component {
         this.id = id;
     }
 
+    /**
+     *
+     * @param x_0
+     * @param y_0
+     * @param x_1
+     * @param y_1
+     * @param id
+     */
     public Component(double x_0, double y_0, double x_1, double y_1, int id){
         tcCollection = new Collection();
         x0 = x_0;
@@ -81,6 +89,11 @@ public abstract class Component {
         return null;
     }
 
+    /**
+     *
+     * @param side
+     * @return
+     */
     public Component getNextSide(char side){
 
         switch (side){

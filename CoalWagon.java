@@ -4,7 +4,10 @@ import java.awt.*;
  * Created by Andras on 2017.04.15..
  */
 public class CoalWagon extends TrainComponent{
-
+    /**
+     *
+     * @param id
+     */
     public CoalWagon(int id){
         super(id);
         System.out.print("created CoalWagon with id: ");
@@ -36,7 +39,9 @@ public class CoalWagon extends TrainComponent{
             current = next;
 
             //vagont helyez be
-            if(previousComponent == current.getNextSide('A'))   //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+            //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal
+            //akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+            if(previousComponent == current.getNextSide('A'))
                 current.insert(this, 'A');
             else if(previousComponent == current.getNextSide('B'))
                 current.insert(this, 'B');

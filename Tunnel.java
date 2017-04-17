@@ -60,6 +60,9 @@ public class Tunnel {
         return trainInside;
     }
 
+    /**
+     *
+     */
     public void list(){
         String a;
         if(active)

@@ -46,18 +46,22 @@ public class Collection {
      */
     public boolean myComponentAtEnd(TrainComponent l) {
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
-        for(int i = 0; i < trainComponents.size(); i++){        // vagy féltávon ütköznek vagy szembementek egymással
+        // vagy féltávon ütköznek vagy szembementek egymással
+        for(int i = 0; i < trainComponents.size(); i++){
             //szembe mennek
+
             if(trainComponents.get(i) != l &&
             (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&
             (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
-            tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B') || ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
+            tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B') ||
+            ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
             tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D'))&&
              current_poz == l.current.lenght - trainComponentsPozotions.get(i))
             {
                 l.derail();
                 trainComponents.get(i).derail();
             }
+            //kereszteződés közepén ütköznek
             else if(trainComponents.get(i) != l &&
                     (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&    //nem ugyan az az irány
                     (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
@@ -78,6 +82,10 @@ public class Collection {
         }
     }
 
+    /**
+     *
+     * @return first
+     */
     public TrainComponent getFirst(){
         if(trainComponents.isEmpty()){
             return null;
@@ -87,13 +95,20 @@ public class Collection {
     }
 
 
-
-
+    /**
+     *
+     * @param l
+     */
     private void updatePositionOf(TrainComponent l){
         if(trainComponents.contains(l))
             trainComponentsPozotions.add(trainComponents.indexOf(l),(float)1);
     }
 
+    /**
+     *
+     * @param position
+     * @return
+     */
     private boolean checkForComponentAt(float position){       //<-- átírtam a visszatérést boolean-ra, így látom értelmét
         return trainComponentsPozotions.contains(position);
     }

@@ -18,6 +18,10 @@ public abstract class TrainComponent {
     protected int nextId = 0;
     protected int previousId = 0;
 
+    /**
+     *
+     * @param id
+     */
     public TrainComponent(int id){
         this.id = id;
     }
