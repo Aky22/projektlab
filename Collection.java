@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -8,6 +9,7 @@ public class Collection {
 
     private ArrayList<TrainComponent> trainComponents;
     private ArrayList<Float> trainComponentsPozotions;
+   // private ArrayList<Character> tranComponentsStartSide;      //a komponens beérkezésének oldala
 
 
     /**
@@ -26,6 +28,7 @@ public class Collection {
         System.out.println("[Collection].insert(TrainComponent l)");
         trainComponents.add(l);
         trainComponentsPozotions.add((float)0);
+        //tranComponentsStartSide.add(startSide);
     }
 
     /**
@@ -34,7 +37,6 @@ public class Collection {
     public void remove(TrainComponent l) {
         trainComponentsPozotions.remove(trainComponents.indexOf(l));
         trainComponents.remove(l);
-        // TODO implement here
     }
 
     /**

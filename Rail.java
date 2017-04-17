@@ -21,7 +21,7 @@ public class Rail extends Component {
 
     public void placeLocomotive(char side, Locomotive locomotive){
         //TODO
-        switch(side){       //még nincs kész
+        switch(side){       //még nincs kész, oldal nincs kezelve
             case 'A':
                 insert(locomotive);
                 locomotive.next.place(this);

@@ -85,7 +85,6 @@ public abstract class Component {
      */
     public void insert(TrainComponent tc){      //vagont helyez be
         tcCollection.insert(tc);
-        //TODO
     }
 
 
