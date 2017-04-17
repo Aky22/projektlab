@@ -78,7 +78,8 @@ public class Wagon extends TrainComponent {
 
     @Override
     public void place(Component current, char side) {
-
+        this.current = current;
+        this.current.insert(this, side);
     }
 
     @Override

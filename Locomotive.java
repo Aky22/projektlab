@@ -52,7 +52,8 @@ public class Locomotive extends TrainComponent {
 
     @Override
     public void place(Component current, char side) {
-        //TODO
+        this.current = current;
+        this.current.operateOn(this, side);
     }
 
     @Override

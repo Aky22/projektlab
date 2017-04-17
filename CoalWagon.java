@@ -53,7 +53,8 @@ public class CoalWagon extends TrainComponent{
 
     @Override
     public void place(Component current, char side) {      // ??
-        //TODO !!!!!
+        this.current = current;
+        this.current.insert(this, side);
     }
 
     @Override

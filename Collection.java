@@ -18,6 +18,7 @@ public class Collection {
     public Collection() {
         trainComponents = new ArrayList<TrainComponent>();
         trainComponentsPozotions = new ArrayList<Float>();
+        tranComponentsStartSide = new ArrayList<Character>();
     }
 
 
