@@ -60,7 +60,11 @@ public class Wagon extends TrainComponent {
             current = next;
 
             //vagon behelyezés
-            current.insert(this);
+            if(this.next == current.A_End)
+
+            {
+                current.insert(this, );
+            }
         }
         //következőt lépteti ha van
         if(next != null)

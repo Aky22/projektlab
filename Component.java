@@ -48,7 +48,7 @@ public abstract class Component {
     /**
      * @param l
      */
-    abstract public void operateOn(Locomotive l);
+    abstract public void operateOn(Locomotive l, char startSide);
 
     /**
      * @return
@@ -80,11 +80,27 @@ public abstract class Component {
         return null;
     }
 
+    public Component getNextSide(char side){
+
+        switch (side){
+            case 'A':
+                return A_End;
+            case 'B':
+                return B_End;
+            case 'C':
+                return C_End;
+            case 'D':
+                return D_End;
+            default:
+                return null;
+        }
+    }
+
     /**
      * @param tc
      */
-    public void insert(TrainComponent tc){      //vagont helyez be
-        tcCollection.insert(tc);
+    public void insert(TrainComponent tc, char startSide){      //vagont helyez be
+        tcCollection.insert(tc, startSide);
     }
 
 

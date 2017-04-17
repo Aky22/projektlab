@@ -15,25 +15,15 @@ public class Rail extends Component {
      * @param l
      */
     @Override
-    public void operateOn(Locomotive l) {
-        tcCollection.insert(l); //behelyezzük a kollekcióba
+    public void operateOn(Locomotive l, char startSide) {
+        tcCollection.insert(l, startSide); //behelyezzük a kollekcióba
     }
 
     public void placeLocomotive(char side, Locomotive locomotive){
         //TODO
-        switch(side){       //még nincs kész, oldal nincs kezelve
-            case 'A':
-                insert(locomotive);
-                locomotive.next.place(this);
+        insert(locomotive, side);
+        locomotive.next.place(this);
 
-                break;
-            case 'B':
-                insert(locomotive);
-                locomotive.next.place(this);
-
-                break;
-
-        }
 
 
     }

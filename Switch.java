@@ -56,8 +56,8 @@ public class Switch extends Component {
     /**
      * @param l
      */
-    public void operateOn(Locomotive l) {
-        tcCollection.insert(l);
+    public void operateOn(Locomotive l, char startSide) {
+        tcCollection.insert(l, startSide);
     }
 
     @Override

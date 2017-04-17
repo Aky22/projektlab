@@ -9,7 +9,7 @@ public class Collection {
 
     private ArrayList<TrainComponent> trainComponents;
     private ArrayList<Float> trainComponentsPozotions;
-   // private ArrayList<Character> tranComponentsStartSide;      //a komponens beérkezésének oldala
+    private ArrayList<Character> tranComponentsStartSide;      //a komponens beérkezésének oldala
 
 
     /**
@@ -24,11 +24,11 @@ public class Collection {
     /**
      * @param l
      */
-    public void insert(TrainComponent l) {
+    public void insert(TrainComponent l, char startSide) {
         System.out.println("[Collection].insert(TrainComponent l)");
         trainComponents.add(l);
         trainComponentsPozotions.add((float)0);
-        //tranComponentsStartSide.add(startSide);
+        tranComponentsStartSide.add(startSide);
     }
 
     /**
@@ -45,6 +45,7 @@ public class Collection {
      */
     public boolean myComponentAtEnd(TrainComponent l) {
         //TODO ide kéne ütközésdetektálás...
+
         if(trainComponents.contains(l)){
             return l.current.lenght <= trainComponentsPozotions.get(trainComponents.indexOf(l));
         }
