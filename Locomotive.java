@@ -57,8 +57,12 @@ public class Locomotive extends TrainComponent {
         //ellenőrizni kell még hogy van-e már ott traincomponent
     }
 
+
+    //poz-t nem tudom meghivatkozni és az ütközéat a megsemmisüléssel jelzem, máshogy nincs tárolva
     @Override
     public void list(){
+        System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
+                ";"+"\n"+" next: "+nextId+"; collied "+ this.destroyed+"; destoyed "+this.destroyed+"; derailed "+derailed);
 
     }
 }

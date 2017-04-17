@@ -85,6 +85,7 @@ public class Wagon extends TrainComponent {
 
     @Override
     public void list(){
-        //TODO
+        System.out.println("Wagon "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
+                "; next: "+nextId+", previous: "+ previousId +";"+"\n"+" collied "+ this.destroyed+"; destoyed "+this.destroyed+"; derailed "+derailed+"\n"+"passenger number: "+passengerNumber);
     }
 }
