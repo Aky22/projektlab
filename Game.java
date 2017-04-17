@@ -27,6 +27,9 @@ public class Game {
         FileWriter fw = null;
         String input = "";
         boolean saving = false;
+
+        System.out.println("Magic vonatos játék 1.0\nKilépés >quit<-al.");
+
         while(!exit){
 
             try { //olvasás
@@ -87,6 +90,8 @@ public class Game {
                 case "list":
                     list(split);
                     break;
+                case "quit":
+                    exit = true;
             }
         }
     }
@@ -209,7 +214,7 @@ public class Game {
      */
     public void activate(String[] params){
         //TODO lehet kéne oldal is???
-        tunnel.setEnd((TunnelEnd)alMap.get(Integer.parseInt(params[1])));
+        tunnel.setEnd((TunnelEnd)alMap.get(Integer.parseInt(params[1]) - 1), Integer.parseInt(params[1]));
     }
 
     /**
@@ -217,7 +222,7 @@ public class Game {
      * @param params
      */
     public void _switch(String[] params){
-        ((Switch)alMap.get(Integer.parseInt(params[1]))).Switch();
+        ((Switch)alMap.get(Integer.parseInt(params[1]) - 1)).Switch();
     }
 
     /**
@@ -238,6 +243,7 @@ public class Game {
                 for(Component item : alMap){
                     item.list();
                 }
+                tunnel.list();
                 break;
             case "train":
                 for(TrainComponent item : alTrain){

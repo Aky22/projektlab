@@ -92,4 +92,8 @@ public abstract class TrainComponent {
      * Státusz lekérdezésre szolgál list parancs kiadása esetén
      */
     abstract public void list();
+
+    public void setInTunnel(){
+        inTunnel = !inTunnel;
+    }
 }

@@ -8,6 +8,8 @@ public class Tunnel {
 
     private TunnelEnd sideA;
     private TunnelEnd sideB;
+    private int A_id = 0;
+    private int B_id = 0;
     private boolean trainInside;
     private boolean active;
 
@@ -26,9 +28,19 @@ public class Tunnel {
      * @param t 
      * @return
      */
-    public void setEnd(TunnelEnd t) {
-        System.out.println("[Tunnel].setEnd(TunnelEnd t)");
-        t.activate();
+    public void setEnd(TunnelEnd t, int newId) {
+        //ez így elég fos de aki akarja majd megcsinálja
+        t.activate(this);
+        if(sideA == null) {
+            sideA = t;
+            A_id = newId;
+        } else if(sideB == null) {
+            sideB = t;
+            B_id = newId;
+        }
+        if(sideA != null && sideB != null){
+            active = true;
+        }
     }
 
     /**
@@ -46,6 +58,18 @@ public class Tunnel {
     public boolean trainInside() {
         // TODO implement here
         return trainInside;
+    }
+
+    public void list(){
+        String a;
+        if(active)
+            a = "activated";
+        else a = "deactivated";
+
+        System.out.println(
+                "Tunnel is " + a + "\n" +
+                        "A side connected to " + A_id + "\n" +
+                        "B side connected to " + B_id + "\n");
     }
 
 }
