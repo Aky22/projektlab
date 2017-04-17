@@ -90,8 +90,9 @@ public class Collection {
 
 
 
-    private void updatePositionOf(TrainComponent l){        //<--
-
+    private void updatePositionOf(TrainComponent l){
+        if(trainComponents.contains(l))
+            trainComponentsPozotions.add(trainComponents.indexOf(l),(float)1);
     }
 
     private boolean checkForComponentAt(float position){       //<-- átírtam a visszatérést boolean-ra, így látom értelmét
