@@ -21,6 +21,18 @@ public class Rail extends Component {
 
     public void placeLocomotive(char side, Locomotive locomotive){
         //TODO
+        switch(side){       //még nincs kész
+            case 'A':
+                locomotive.next.place(this);
+
+                break;
+            case 'B':
+                locomotive.next.place(this);
+                break;
+
+        }
+
+
     }
 
     @Override
