@@ -23,11 +23,14 @@ public class Rail extends Component {
         //TODO
         switch(side){       //még nincs kész
             case 'A':
+                insert(locomotive);
                 locomotive.next.place(this);
 
                 break;
             case 'B':
+                insert(locomotive);
                 locomotive.next.place(this);
+
                 break;
 
         }
