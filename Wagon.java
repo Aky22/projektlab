@@ -60,11 +60,15 @@ public class Wagon extends TrainComponent {
             current = next;
 
             //vagon behelyezés
-            if(this.next == current.A_End)
+            if(previousComponent == current.getNextSide('A'))   //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+                current.insert(this, 'A');
+                else if(previousComponent == current.getNextSide('B'))
+                    current.insert(this, 'B');
+                    else if(previousComponent == current.getNextSide('C'))
+                        current.insert(this, 'C');
+                        else if(previousComponent == current.getNextSide('D'))
+                            current.insert(this, 'D');
 
-            {
-                current.insert(this, );
-            }
         }
         //következőt lépteti ha van
         if(next != null)

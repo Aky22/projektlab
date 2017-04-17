@@ -14,8 +14,8 @@ public class Siding extends Component {
      * @param l
      */
     @Override
-    public void operateOn(Locomotive l) { //kész
-        tcCollection.insert(l); //behelyezzük a kollekcióba
+    public void operateOn(Locomotive l, char side) { //kész
+        tcCollection.insert(l, side); //behelyezzük a kollekcióba
         l.derail();
     }
 

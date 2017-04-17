@@ -35,7 +35,14 @@ public class Locomotive extends TrainComponent {
             previousComponent = current;
             current = next;
 
-            current.operateOn(this);
+            if(previousComponent == current.getNextSide('A'))   //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+                current.operateOn(this, 'A');
+            else if(previousComponent == current.getNextSide('B'))
+                current.operateOn(this, 'B');
+            else if(previousComponent == current.getNextSide('C'))
+                current.operateOn(this, 'C');
+            else if(previousComponent == current.getNextSide('D'))
+                current.operateOn(this, 'D');
         }
         //következőt lépteti ha van
         if(next != null)
