@@ -16,7 +16,8 @@ public class TunnelEnd extends Component {
     }
 
     /**
-     * 
+     *
+     * @param t
      */
     protected void activate(Tunnel t) {
         active = !active;

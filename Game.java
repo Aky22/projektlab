@@ -206,7 +206,7 @@ public class Game {
     public void step(String[] params){
         if(params.length == 1){
             //Összes mozdony léptetése
-            for(int i = 0; i < alTrain.size(); i++){
+            for(int i = 0; i < alLocomotive.size(); i++){
                 alLocomotive.get(i).step();
             }
         } else {
