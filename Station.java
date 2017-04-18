@@ -41,7 +41,7 @@ public class Station extends Component {
      */
     public void operateOn(Locomotive l, char side) {
         tcCollection.insert(l, side); //behelyezzük a kollekcióba
-        l.atStation(c,passengerNumber); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
+        passengerNumber -= l.atStation(c,passengerNumber); //értesítjük a mozdonyt hogy állomásra ért //felszállók száma kell
     }
 
     @Override

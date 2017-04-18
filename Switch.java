@@ -30,8 +30,10 @@ public class Switch extends Component {
         if(first != null){
             first.derail();
         }
-
         state = !state; //+ valami az iránnyal??
+        if(state)
+            System.out.println("switched " + id + " new position: C");
+        else System.out.println("switched " + id + " new position: B");
     }
 
     @Override
