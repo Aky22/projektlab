@@ -49,16 +49,19 @@ public class Collection {
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
 
         //Ha nem 0-a a hossz akkor sín
+       // System.out.println("mycomponentatend curr lenght"+ l.current.lenght+" size "+trainComponents.size());
         if(l.current.lenght != 0 && trainComponents.size() > 1){
+
             for(int i = 0; i < trainComponents.size(); i++){
                 //szembe mennek
                 boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
 
                 //nem egyeznek meg És különböző oldalról indultak ÉS azonos ponton vannal
-                if((trainComponents.indexOf(l) != i) && (side_) && current_poz == l.current.lenght - trainComponentsPozotions.get(i)){
+                if((trainComponents.indexOf(l) != i) && (side_) && (current_poz == l.current.lenght - trainComponentsPozotions.get(i))){
                     l.derail();
                     trainComponents.get(i).derail();
                 }
+             //   System.out.println("\n"+"nem egyeznek meg: "+ (trainComponents.indexOf(l) != i)+" oldal egyezés : "+ (side_)+" azonos pont: "+(current_poz == l.current.lenght - trainComponentsPozotions.get(i))+ "Egyik: "+current_poz+" Masik: "+ (l.current.lenght - trainComponentsPozotions.get(i)));
             }
         }
         //ha nem sín akkor a hossz nem 0-a és ha ütközés van akkor a tárolt elemek szám nagyobb mint 1
