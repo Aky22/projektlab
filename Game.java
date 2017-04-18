@@ -110,7 +110,7 @@ public class Game {
                 switch(params[2]){
                     case "Locomotive":
                         alTrain.add(new Locomotive(newId));
-                        alLocomotive.add(new Locomotive(newLocomotiveId));
+                        alLocomotive.add(alTrain.get(newId - 1));
                         break;
                     case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
