@@ -52,11 +52,13 @@ public class Locomotive extends TrainComponent {
             else if(previousComponent == current.getNextSide('D'))
                 current.operateOn(this, 'D');
         }
+
+        System.out.println("stepped " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
+
         //következőt lépteti ha van
         if(next != null)
             next.step();
 
-        System.out.println("stepped " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
     }
 
 
@@ -64,6 +66,9 @@ public class Locomotive extends TrainComponent {
     public void place(Component current, char side) {
         this.current = current;
         this.current.operateOn(this, side);
+        if(next != null){
+            next.place(current, side);
+        }
         //ellenőrizni kell még hogy van-e már ott traincomponent
     }
 
