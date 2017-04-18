@@ -149,6 +149,10 @@ public abstract class Component {
      */
     abstract public void list();
 
+    public int _getId(){
+        return id;
+    }
+
 
     /**
      * Beállítja hogy a tesztkörnyezetben a vonat a lépés végén átlép-e a következő elemre

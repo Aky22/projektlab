@@ -13,6 +13,7 @@ public abstract class TrainComponent {
     protected Component previousComponent = null;
     public boolean destroyed = false;
     public boolean derailed = false;
+    public boolean collided = false;
     public boolean inTunnel = false;
     public int id = 0;
     protected int nextId = 0;

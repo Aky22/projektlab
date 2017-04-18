@@ -19,8 +19,10 @@ public class Locomotive extends TrainComponent {
     @Override
     public int atStation(Color c, int passengerNumber) {
         int ret = 0;
-        ret += next.atStation(c, passengerNumber); //leszállók száma
-        return ret;
+        if(next != null) {
+            ret += next.atStation(c, passengerNumber); //leszállók száma
+        }//
+         return ret;
     }
 
 
@@ -54,7 +56,7 @@ public class Locomotive extends TrainComponent {
         if(next != null)
             next.step();
 
-        System.out.println("stepped " + id + " new position " + current.getCollection()._getMyPosition(this));
+        System.out.println("stepped " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
     }
 
 
@@ -70,6 +72,6 @@ public class Locomotive extends TrainComponent {
     @Override
     public void list(){
         System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at " + current.getCollection()._getMyPosition(this) +
-                ";"+"\n"+" next: "+nextId+"; collided "+ this.destroyed+"; destroyed "+this.destroyed+"; derailed "+derailed);
+                " next: "+nextId+";\ncollided "+ this.collided +"; destroyed "+this.destroyed+"; derailed "+derailed);
     }
 }
