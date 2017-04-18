@@ -30,7 +30,6 @@ public class Locomotive extends TrainComponent {
 
         //ellenőrzi, hogy a végén van-e
         boolean atEnd = collection.myComponentAtEnd(this);
-
         //ha igen
         if(atEnd){
             //lekéri a következő pályaelemet

@@ -100,8 +100,8 @@ public class Collection {
      * @param l
      */
     private void updatePositionOf(TrainComponent l){
-        if(trainComponents.contains(l))
-            trainComponentsPozotions.add(trainComponents.indexOf(l),(float)1);
+        float current = trainComponentsPozotions.get(trainComponents.indexOf(l));
+        trainComponentsPozotions.set(trainComponents.indexOf(l), current + 1.0f);
     }
 
     /**
