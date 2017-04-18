@@ -29,6 +29,7 @@ public class TunnelEnd extends Component {
      */
     protected void activate(Tunnel t) {
         active = !active;
+        System.out.println("activated " + id + " " + active);
         tunnel = t;
     }
 

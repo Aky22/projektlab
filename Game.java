@@ -236,7 +236,7 @@ public class Game {
      * @param params
      */
     public void place(String[] params){
-        alTrain.get(Integer.parseInt(params[1])).place(alMap.get(Integer.parseInt(params[2])), params[3].charAt(0));
+        alTrain.get(Integer.parseInt(params[1]) - 1).place(alMap.get(Integer.parseInt(params[2]) - 1), params[3].charAt(0));
     }
 
     /**
