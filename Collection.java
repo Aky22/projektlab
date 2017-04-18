@@ -47,33 +47,24 @@ public class Collection {
         updatePositionOf(l);
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
         // vagy féltávon ütköznek vagy szembementek egymással
-        for(int i = 0; i < trainComponents.size(); i++){
-            //szembe mennek
+        //Ha nem 0-a a hossz akkor sín
+        if(l.current.lenght != 0 && trainComponents.size() > 1){
+            for(int i = 0; i < trainComponents.size(); i++){
+                //szembe mennek
+                boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
 
-            if(trainComponents.get(i) != l &&
-            (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&
-            (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
-                    (tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B')) ||
-            ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
-                    (tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D')))&&
-             current_poz == l.current.lenght - trainComponentsPozotions.get(i))
-            {
-                l.derail();
-                trainComponents.get(i).derail();
-            }
-            //kereszteződés közepén ütköznek
-            else if(trainComponents.get(i) != l &&
-                    (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&    //nem ugyan az az irány
-                    (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
-                            (tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D')) ||
-                            ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
-                                    (tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B')))&&
-                    current_poz == (l.current.lenght)/2 && trainComponentsPozotions.get(i) == (l.current.lenght)/2){
-                l.derail();
-                trainComponents.get(i).derail();
+                //nem egyeznek meg És különböző oldalról indultak ÉS azonos ponton vannal
+                if((trainComponents.get(i) != l) && (side_) && current_poz == l.current.lenght - trainComponentsPozotions.get(i)){
+                    l.derail();
+                    trainComponents.get(i).derail();
+                }
             }
         }
-
+        //ha nem sín akkor a hossz nem 0-a és ha ütközés van akkor a tárolt elemek szám nagyobb mint 1
+        else if(l.current.lenght == 0 && trainComponents.size() > 1){
+            l.derail();
+            trainComponents.get(1).derail();
+        }
 
         if(trainComponents.contains(l)){
             return l.current.lenght <= trainComponentsPozotions.get(trainComponents.indexOf(l));
