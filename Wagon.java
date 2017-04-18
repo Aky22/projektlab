@@ -30,8 +30,8 @@ public class Wagon extends TrainComponent {
     public int atStation(Color c, int passengerNumber) {
         int ret = 0;
         if (color == c) {
-            //utasok leszállása:
-            ret = passengerNumber; //mivel kikötöttük hogy mindenki leszáll
+            //ez a különbség
+            ret = passengerNumber - this.passengerNumber;
 
             //utasok felszállása (mindenki felszáll):
             this.passengerNumber = passengerNumber;
