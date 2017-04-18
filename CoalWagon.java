@@ -51,9 +51,13 @@ public class CoalWagon extends TrainComponent{
                 current.insert(this, 'D');
 
         }
+
+        System.out.println("which moved " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
+
         //következőt lépteti ha van
         if(next != null)
             next.step();
+
     }
 
     @Override
@@ -61,6 +65,9 @@ public class CoalWagon extends TrainComponent{
         this.current = current;
         this.current.insert(this, side);
         //ellenőrizni kell még hogy van-e már ott traincomponent
+        if(next != null){
+            next.place(current, side);
+        }
     }
 
     @Override
