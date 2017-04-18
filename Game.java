@@ -210,7 +210,7 @@ public class Game {
                 alLocomotive.get(i).step();
             }
         } else {
-            alTrain.get(Integer.parseInt(params[1])).step();
+            alTrain.get(Integer.parseInt(params[1]) - 1).step();
         }
     }
 

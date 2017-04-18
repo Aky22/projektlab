@@ -44,6 +44,7 @@ public class Collection {
      * @return
      */
     public boolean myComponentAtEnd(TrainComponent l) {
+        updatePositionOf(l);
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
         // vagy féltávon ütköznek vagy szembementek egymással
         for(int i = 0; i < trainComponents.size(); i++){
