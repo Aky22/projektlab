@@ -10,7 +10,7 @@ public class Wagon extends TrainComponent {
     int passengerNumber;
 
     /**
-     * 
+     *
      * @param c
      * @param i
      * @param id
