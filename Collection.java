@@ -56,7 +56,7 @@ public class Collection {
             tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B') ||
             ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
             tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D'))&&
-             current_poz == l.current.lenght - trainComponentsPozotions.get(i))
+             current_poz == trainComponentsPozotions.get(i))
             {
                 l.derail();
                 trainComponents.get(i).derail();

@@ -26,7 +26,6 @@ public class Switch extends Component {
      * @return
      */
     public void Switch() {
-        System.out.println("[Switch].switch()");
         TrainComponent first = tcCollection.getFirst(); ///<<< ez mi a...?
         if(first != null){
             first.derail();
