@@ -53,9 +53,9 @@ public class Collection {
             if(trainComponents.get(i) != l &&
             (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&
             (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
-            tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B') ||
+                    (tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B')) ||
             ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
-            tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D'))&&
+                    (tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D')))&&
              current_poz == trainComponentsPozotions.get(i))
             {
                 l.derail();
@@ -65,8 +65,9 @@ public class Collection {
             else if(trainComponents.get(i) != l &&
                     (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i) &&    //nem ugyan az az irány
                     (((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'A' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'B') &&
-                            tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D') || ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
-                            tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B'))&&
+                            (tranComponentsStartSide.get(i) == 'C' || tranComponentsStartSide.get(i) == 'D')) ||
+                            ((tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'C' || tranComponentsStartSide.get(trainComponents.indexOf(l)) == 'D') &&
+                                    (tranComponentsStartSide.get(i) == 'A' || tranComponentsStartSide.get(i) == 'B')))&&
                     current_poz == (l.current.lenght)/2 && trainComponentsPozotions.get(i) == (l.current.lenght)/2){
                 l.derail();
                 trainComponents.get(i).derail();
