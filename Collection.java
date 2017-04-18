@@ -26,7 +26,6 @@ public class Collection {
      * @param l
      */
     public void insert(TrainComponent l, char startSide) {
-        System.out.println("[Collection].insert(TrainComponent l)");
         trainComponents.add(l);
         trainComponentsPozotions.add((float)0);
         tranComponentsStartSide.add(startSide);
@@ -111,6 +110,10 @@ public class Collection {
      */
     private boolean checkForComponentAt(float position){       //<-- átírtam a visszatérést boolean-ra, így látom értelmét
         return trainComponentsPozotions.contains(position);
+    }
+
+    public float _getMyPosition(TrainComponent t){
+        return trainComponentsPozotions.get(trainComponents.indexOf(t));
     }
 
 }

@@ -54,6 +54,8 @@ public class Locomotive extends TrainComponent {
         //következőt lépteti ha van
         if(next != null)
             next.step();
+
+        System.out.println("stepped " + id + " new position " + current.getCollection()._getMyPosition(this));
     }
 
 
@@ -68,7 +70,7 @@ public class Locomotive extends TrainComponent {
     //poz-t nem tudom meghivatkozni és az ütközéat a megsemmisüléssel jelzem, máshogy nincs tárolva
     @Override
     public void list(){
-        System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
-                ";"+"\n"+" next: "+nextId+"; collied "+ this.destroyed+"; destoyed "+this.destroyed+"; derailed "+derailed);
+        System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at " + current.getCollection()._getMyPosition(this) +
+                ";"+"\n"+" next: "+nextId+"; collided "+ this.destroyed+"; destroyed "+this.destroyed+"; derailed "+derailed);
     }
 }
