@@ -9,4 +9,8 @@ public class GraphicTunnel extends Drawable {
 
     protected Tunnel tunel;
 
+    GraphicTunnel(Tunnel tunel){
+        this.tunel = tunel;
+    }
+
 }

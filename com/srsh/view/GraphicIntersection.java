@@ -9,4 +9,8 @@ public class GraphicIntersection extends Drawable {
 
     protected Intersection intersection;
 
+    GraphicIntersection(Intersection intersection){
+        this.intersection = intersection;
+    }
+
 }

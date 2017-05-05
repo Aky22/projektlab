@@ -2,68 +2,98 @@ package com.srsh.view; /**
  * Created by erosa on 2017. 05. 05..
  */
 
-import com.srsh.model.Component;
-import com.srsh.model.Switch;
-import com.srsh.model.TrainComponent;
-import com.srsh.model.TunnelEnd;
+import com.srsh.model.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class View{
+public class View {
     protected JFrame frame;
     protected JPanel panel;
     protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
 
-    public View(){
+    public View() {
         frame = new JFrame("srsh magic vonatos játék 1.0");
-        frame.setSize(400,400);
+        frame.setSize(400, 400);
+        panel = new JPanel();
+        frame.add(panel);
         //TODO
     }
 
 
-    public void addComponent(String[] params, Component c){
+    public void addComponent(String[] params, Component c) {
+        switch (params[0]) {
+            case "Intersection":
+                drawables.add(new GraphicIntersection((Intersection) c));
+                break;
+            case "Rail":
+                drawables.add(new GraphicRail((Rail) c));
+                break;
+            case "Siding":
+                drawables.add(new GraphicSiding((Siding) c));
+                break;
+            case "Station":
+                drawables.add(new GraphicStation((Station) c));
+                break;
+            case "Switch":
+                drawables.add(new GraphicSwitch((Switch) c));
+                break;
+            case "TunnelEnd":
+                drawables.add(new GraphicTunnelEnd((TunnelEnd) c));
+                break;
+            default: break;
+        }
+    }
+
+    public void addTrainComponent(String[] params, TrainComponent c) {
+        switch (params[0]) {
+            case "CoalWagon":
+                drawables.add(new GraphicCoalWagon((CoalWagon) c));
+                break;
+            case "Locomotive":
+                drawables.add(new GraphicLocomotive((Locomotive) c));
+                break;
+            case "Wagon":
+                drawables.add(new GraphicWagon((Wagon) c));
+                break;
+            default: break;
+        }
+    }
+
+    public void trainComponentDerailed(TrainComponent tc) {
         //TODO
     }
 
-    public void addTrainComponent(String[] params, TrainComponent c){
+    public void rainComponentCollided(TrainComponent tc) {
         //TODO
     }
 
-    public void trainComponentDerailed(TrainComponent tc){
+    public void _switch(Switch s) {
         //TODO
     }
 
-    public void rainComponentCollided(TrainComponent tc){
+    public void tunnelEndActivated(TunnelEnd end) {
         //TODO
     }
 
-    public void _switch(Switch s){
-        //TODO
-    }
-
-    public void tunnelEndActivated(TunnelEnd end){
-        //TODO
-    }
-
-    public void tunnelActivated(){
+    public void tunnelActivated() {
         //TODO
     }
 
     /**
      * Draw all component
      */
-    public void drawAll(){
-        for(int i = 0; i < drawables.size(); i++){
+    public void drawAll() {
+        for (int i = 0; i < drawables.size(); i++) {
             drawables.get(i).draw(this.panel);
         }
     }
 
-    public void clear(){
+    public void clear() {
         //TODO
     }
 
-    public void setVisible(boolean value){
+    public void setVisible(boolean value) {
         frame.setVisible(value);
     }
 
