@@ -45,25 +45,33 @@ public class Collection {
      */
     public boolean myComponentAtEnd(TrainComponent l) {
         updatePositionOf(l);
+
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
-        // vagy féltávon ütköznek vagy szembementek egymással
+
         //Ha nem 0-a a hossz akkor sín
+       // System.out.println("mycomponentatend curr lenght"+ l.current.lenght+" size "+trainComponents.size());
         if(l.current.lenght != 0 && trainComponents.size() > 1){
+
             for(int i = 0; i < trainComponents.size(); i++){
                 //szembe mennek
                 boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
 
-                //nem egyeznek meg És különböző oldalról indultak ÉS azonos ponton vannal
-                if((trainComponents.get(i) != l) && (side_) && current_poz == l.current.lenght - trainComponentsPozotions.get(i)){
+                //nem egyeznek meg És különböző oldalról indultak ÉS abs értékben 1-nél közelebb vannak egymáshoz
+                if((trainComponents.indexOf(l) != i) && (side_) && (1 >=  Math.abs((l.current.lenght - trainComponentsPozotions.get(i))-current_poz))){
                     l.derail();
                     trainComponents.get(i).derail();
                 }
+             //   System.out.println("\n"+"nem egyeznek meg: "+ (trainComponents.indexOf(l) != i)+" oldal egyezés : "+ (side_)+" azonos pont: "+(current_poz == l.current.lenght - trainComponentsPozotions.get(i))+ "Egyik: "+current_poz+" Masik: "+ (l.current.lenght - trainComponentsPozotions.get(i)));
             }
         }
         //ha nem sín akkor a hossz nem 0-a és ha ütközés van akkor a tárolt elemek szám nagyobb mint 1
         else if(l.current.lenght == 0 && trainComponents.size() > 1){
-            l.derail();
             trainComponents.get(1).derail();
+            trainComponents.get(0).derail();
+            if(trainComponents.size() > 2)
+                trainComponents.get(2).derail();
+            if(trainComponents.size() > 3)
+                trainComponents.get(3).derail();
         }
 
         if(trainComponents.contains(l)){
