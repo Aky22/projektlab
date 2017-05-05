@@ -56,8 +56,8 @@ public class Collection {
                 //szembe mennek
                 boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
 
-                //nem egyeznek meg És különböző oldalról indultak ÉS azonos ponton vannal
-                if((trainComponents.indexOf(l) != i) && (side_) && (current_poz == l.current.lenght - trainComponentsPozotions.get(i))){
+                //nem egyeznek meg És különböző oldalról indultak ÉS abs értékben 1-nél közelebb vannak egymáshoz
+                if((trainComponents.indexOf(l) != i) && (side_) && (1 >=  Math.abs((l.current.lenght - trainComponentsPozotions.get(i))-current_poz))){
                     l.derail();
                     trainComponents.get(i).derail();
                 }
@@ -66,12 +66,12 @@ public class Collection {
         }
         //ha nem sín akkor a hossz nem 0-a és ha ütközés van akkor a tárolt elemek szám nagyobb mint 1
         else if(l.current.lenght == 0 && trainComponents.size() > 1){
-            //l.derail();
             trainComponents.get(1).derail();
             trainComponents.get(0).derail();
-            //ha kereszteződés és pont egyszerre érnek oda mind a 4-en
-            // trainComponents.get(2).derail();
-            // trainComponents.get(3).derail();
+            if(trainComponents.size() > 2)
+                trainComponents.get(2).derail();
+            if(trainComponents.size() > 3)
+                trainComponents.get(3).derail();
         }
 
         if(trainComponents.contains(l)){
