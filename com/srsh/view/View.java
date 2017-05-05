@@ -22,7 +22,7 @@ public class View {
 
 
     public void addComponent(String[] params, Component c) {
-        switch (params[0]) {
+        switch (params[4]) {
             case "Intersection":
                 drawables.add(new GraphicIntersection((Intersection) c));
                 break;
@@ -46,7 +46,7 @@ public class View {
     }
 
     public void addTrainComponent(String[] params, TrainComponent c) {
-        switch (params[0]) {
+        switch (params[2]) {
             case "CoalWagon":
                 drawables.add(new GraphicCoalWagon((CoalWagon) c));
                 break;
