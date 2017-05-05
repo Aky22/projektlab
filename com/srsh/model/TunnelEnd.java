@@ -1,5 +1,4 @@
-
-import java.util.*;
+package com.srsh.model;
 
 /**
  * 
@@ -20,7 +19,7 @@ public class TunnelEnd extends Component {
     public TunnelEnd(double x_0, double y_0, double x_1, double y_1, int id){
         super(x_0, y_0, x_1, y_1, id);
         active = false;
-        System.out.print("created TunnelEnd with id: ");
+        System.out.print("created com.srsh.model.TunnelEnd with id: ");
     }
 
     /**
@@ -58,7 +57,7 @@ public class TunnelEnd extends Component {
             act = "activated";
         else act = "deactivated";
 
-        System.out.println("TunnelEnd " + id + " at " + x0 + ", " + y0 + ": " + act + "\n" +
+        System.out.println("com.srsh.model.TunnelEnd " + id + " at " + x0 + ", " + y0 + ": " + act + "\n" +
                 "A side connected to " + A_id + "\n" +
                 "B side connected to " + B_id);
     }

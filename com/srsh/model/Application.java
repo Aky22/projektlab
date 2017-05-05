@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package com.srsh.model;
 
 /**
  * Created by erosa on 2017. 03. 19..

@@ -1,3 +1,5 @@
+package com.srsh.model;
+
 import java.awt.*;
 
 /**
@@ -10,7 +12,7 @@ public class CoalWagon extends TrainComponent{
      */
     public CoalWagon(int id){
         super(id);
-        System.out.print("created CoalWagon with id: ");
+        System.out.print("created com.srsh.model.CoalWagon with id: ");
     }
 
     @Override
@@ -72,7 +74,7 @@ public class CoalWagon extends TrainComponent{
 
     @Override
     public void list(){
-        System.out.println("Wagon "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
+        System.out.println("com.srsh.model.Wagon "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
                 "; next: "+nextId+", previous: "+ previousId +";"+"\n"+ "collied "+ this.destroyed+"; destoyed "+this.destroyed+"; derailed "+derailed);
     }
 }

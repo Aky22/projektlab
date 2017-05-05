@@ -1,6 +1,6 @@
+package com.srsh.model;
 
 import java.awt.*;
-import java.util.*;
 
 /**
  * 
@@ -32,7 +32,7 @@ public class Station extends Component {
         super(x0, y0, y1, x1, id);
         c = color;
         passengerNumber = pNumber;
-        System.out.print("created Station with id: ");
+        System.out.print("created com.srsh.model.Station with id: ");
     }
 
     /**
@@ -46,7 +46,7 @@ public class Station extends Component {
 
     @Override
     public void list(){
-        System.out.println("Station " + id + " at " + x0 + ", " + y0 + " with " + passengerNumber +
+        System.out.println("com.srsh.model.Station " + id + " at " + x0 + ", " + y0 + " with " + passengerNumber +
                 " passengers and " + c.toString() + " color\n"+
                 "A side connected to " + A_id + "\n" +
                 "B side connected to " + B_id);

@@ -1,3 +1,5 @@
+package com.srsh.model;
+
 import java.io.*;
 import java.util.*;
 import java.awt.Color;
@@ -20,7 +22,7 @@ public class Game {
      * Végtelen ciklusban olvassa az inputban megjelenő parancsokat.
      * Parancsnak megfelelő privát metódusokat hív a parancs végrehajtására
      * a megadott paraméterekkel.
-     * Application main függvénye hívja.
+     * com.srsh.model.Application main függvénye hívja.
      */
     public void startGame(){
         //TODO függvényhívások, azok implementálása
@@ -108,11 +110,11 @@ public class Game {
                 int newId = alTrain.size() + 1;
                 int newLocomotiveId = alLocomotive.size() +1;
                 switch(params[2]){
-                    case "Locomotive":
+                    case "com.srsh.model.Locomotive":
                         alTrain.add(new Locomotive(newId));
                         alLocomotive.add(alTrain.get(newId - 1));
                         break;
-                    case "Wagon":
+                    case "com.srsh.model.Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
                             case "blue":
                                 alTrain.add(new Wagon(Color.BLUE, Integer.parseInt(params[4]), newId));
@@ -125,7 +127,7 @@ public class Game {
                                 break;
                         }
                         break;
-                    case "CoalWagon":
+                    case "com.srsh.model.CoalWagon":
                         alTrain.add(new CoalWagon(newId));
                         break;
                 }
@@ -136,15 +138,15 @@ public class Game {
                 double y_0 = Double.parseDouble(params[3]);
                 int newId2 = alMap.size() + 1;
                 switch(params[4]){
-                    case "Intersection":
+                    case "com.srsh.model.Intersection":
                         alMap.add(new Intersection(x_0, y_0, x_0, y_0, newId2));
                         break;
-                    case "Rail":
+                    case "com.srsh.model.Rail":
                         alMap.add(new Rail(x_0, y_0,
                                 Double.parseDouble(params[5]),
                                 Double.parseDouble(params[6]), newId2));
                         break;
-                    case "Station":
+                    case "com.srsh.model.Station":
                         Color color = Color.BLACK;
                         switch(params[5]){ //szintén leszarom és ennyi lesz
                             case "blue":
@@ -159,13 +161,13 @@ public class Game {
                         }
                         alMap.add(new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6]), newId2));
                         break;
-                    case "TunnelEnd":
+                    case "com.srsh.model.TunnelEnd":
                         alMap.add(new TunnelEnd(x_0, y_0, x_0, y_0, newId2));
                         break;
-                    case "Switch":
+                    case "com.srsh.model.Switch":
                         alMap.add(new Switch(x_0, y_0, x_0, y_0, newId2));
                         break;
-                    case "Siding":
+                    case "com.srsh.model.Siding":
                         alMap.add(new Siding(x_0, y_0, x_0, y_0, newId2));
                         break;
                 }

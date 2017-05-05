@@ -1,5 +1,4 @@
-
-import java.util.*;
+package com.srsh.model;
 
 /**
  * 
@@ -47,7 +46,7 @@ public class Tunnel {
      * @return
      */
     public boolean isActive() {
-        System.out.println("[Tunnel].isActive()");
+        System.out.println("[com.srsh.model.Tunnel].isActive()");
         //valami
         return active;
     }
@@ -70,7 +69,7 @@ public class Tunnel {
         else a = "deactivated";
 
         System.out.println(
-                "Tunnel is " + a + "\n" +
+                "com.srsh.model.Tunnel is " + a + "\n" +
                         "A side connected to " + A_id + "\n" +
                         "B side connected to " + B_id + "\n");
     }

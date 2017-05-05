@@ -1,5 +1,4 @@
-
-import java.util.*;
+package com.srsh.model;
 
 /**
  * 
@@ -68,7 +67,7 @@ public abstract class Component {
     /**
      * @param previous 
      * @param tc 
-     * @return Component
+     * @return com.srsh.model.Component
      * Átlépteti a következő elemre a vonatkomponenst
      */
     public Component getNext(Component previous, TrainComponent tc){        // átlépteti a következő elemre a paraméterként kapott komponenst
@@ -173,7 +172,7 @@ public abstract class Component {
      * Beállítja az A végét az elemnek
      * @param a
      */
-   /* public void setAEnd(Component a){
+   /* public void setAEnd(com.srsh.model.Component a){
         A_End = a;
     }*/
 
@@ -181,7 +180,7 @@ public abstract class Component {
      * Beállítja az B végét az elemnek
      * @param b
      */
-    /*public void setBEnd(Component b){
+    /*public void setBEnd(com.srsh.model.Component b){
         B_End = b;
     }*/
 }

@@ -1,5 +1,5 @@
+package com.srsh.model;
 
-import java.util.*;
 import java.awt.Color;
 
 /**
@@ -56,7 +56,7 @@ public abstract class TrainComponent {
     abstract public int atStation(Color c, int passengerNumber);
 
     /**
-     * Léptetés, adott elemet megelőző elem hívja (vagy mozdonyét a Game)
+     * Léptetés, adott elemet megelőző elem hívja (vagy mozdonyét a com.srsh.model.Game)
      */
     abstract public void step();
 

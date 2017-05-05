@@ -1,3 +1,5 @@
+package com.srsh.view;
+
 import javax.swing.*;
 import java.awt.*;
 

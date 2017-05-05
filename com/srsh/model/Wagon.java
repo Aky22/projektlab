@@ -1,6 +1,6 @@
+package com.srsh.model;
 
 import java.awt.*;
-import java.util.*;
 
 /**
  * 
@@ -18,7 +18,7 @@ public class Wagon extends TrainComponent {
         super(id);
         color = c;
         passengerNumber = i;
-        System.out.print("created Wagon with id: ");
+        System.out.print("created com.srsh.model.Wagon with id: ");
     }
 
     /**
@@ -97,7 +97,7 @@ public class Wagon extends TrainComponent {
 
     @Override
     public void list() {
-        System.out.println("Wagon " + this.id + " on " + this.current.id + " at " + current.getCollection()._getMyPosition(this) +
+        System.out.println("com.srsh.model.Wagon " + this.id + " on " + this.current.id + " at " + current.getCollection()._getMyPosition(this) +
                 " next: " + nextId  + ", previous " + previousId+ ";\ncollided " + this.collided + "; destroyed " + this.destroyed + "; derailed " + derailed +
                 "\npassenger number: " + passengerNumber + ", color: " + color);
     }

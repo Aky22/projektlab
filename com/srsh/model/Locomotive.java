@@ -1,6 +1,6 @@
+package com.srsh.model;
 
 import java.awt.*;
-import java.util.*;
 
 /**
  * 
@@ -13,7 +13,7 @@ public class Locomotive extends TrainComponent {
      */
     public Locomotive(int id){
         super(id);
-        System.out.print("created Locomotive with id: ");
+        System.out.print("created com.srsh.model.Locomotive with id: ");
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Locomotive extends TrainComponent {
     //poz-t nem tudom meghivatkozni és az ütközéat a megsemmisüléssel jelzem, máshogy nincs tárolva
     @Override
     public void list(){
-        System.out.println("Locomotive "+ this.id +" on "+ this.current.id +  " at " + current.getCollection()._getMyPosition(this) +
+        System.out.println("com.srsh.model.Locomotive "+ this.id +" on "+ this.current.id +  " at " + current.getCollection()._getMyPosition(this) +
                 " next: "+nextId+";\ncollided "+ this.collided +"; destroyed "+this.destroyed+"; derailed "+derailed);
     }
 }

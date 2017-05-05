@@ -1,6 +1,11 @@
-/**
+package com.srsh.view; /**
  * Created by erosa on 2017. 05. 05..
  */
+
+import com.srsh.model.Component;
+import com.srsh.model.Switch;
+import com.srsh.model.TrainComponent;
+import com.srsh.model.TunnelEnd;
 
 import javax.swing.*;
 import java.util.ArrayList;

@@ -1,5 +1,4 @@
-
-import java.util.*;
+package com.srsh.model;
 
 /**
  * 
@@ -19,7 +18,7 @@ public class Switch extends Component {
     public Switch(double x0, double y0, double x1, double y1, int id){
         super(x0, y0, y1, x1, id);
         state = false;
-        System.out.print("created Switch with id: ");
+        System.out.print("created com.srsh.model.Switch with id: ");
     }
 
     /**
@@ -76,7 +75,7 @@ public class Switch extends Component {
             s = 'C';
         } else s = 'B';
 
-        System.out.println("Switch " + id + " at " + x0 + ", " + y0 + " switched to: " + s + "\n" +
+        System.out.println("com.srsh.model.Switch " + id + " at " + x0 + ", " + y0 + " switched to: " + s + "\n" +
                 "A side connected to " + A_id + "\n" +
                 "B side connected to " + B_id + "\n" +
                 "C side connected to " + C_id);
