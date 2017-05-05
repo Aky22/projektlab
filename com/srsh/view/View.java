@@ -28,7 +28,7 @@ public class View {
                 drawables.add(new GraphicIntersection((Intersection) c));
                 break;
             case "Rail":
-                drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
+                drawables.add(new GraphicRail((Rail) c));
                 break;
             case "Siding":
                 drawables.add(new GraphicSiding((Siding) c));
