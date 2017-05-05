@@ -4,6 +4,7 @@ import com.srsh.model.Rail;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -16,7 +17,13 @@ public class GraphicRail extends Drawable {
 
     GraphicRail(Rail rail, String img) throws IOException {
         this.rail = rail;
-        this.img = ImageIO.read(new File(img));
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File(img));
+        } catch (IOException e) {
+        }
+
+        this.img = image;
     }
 
 }
