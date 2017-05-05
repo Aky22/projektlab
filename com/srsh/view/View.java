@@ -3,8 +3,10 @@ package com.srsh.view; /**
  */
 
 import com.srsh.model.*;
+import com.srsh.model.Component;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -16,7 +18,13 @@ public class View {
     public View() {
         frame = new JFrame("srsh magic vonatos játék 1.0");
         frame.setSize(400, 400);
-        panel = new JPanel();
+        panel = new JPanel() {
+          @Override
+            public void paintComponent(Graphics g){
+              super.paintComponent(g);
+              drawAll(g);
+          }
+        };
         frame.add(panel);
         //TODO
     }
@@ -89,9 +97,9 @@ public class View {
     /**
      * Draw all component
      */
-    public void drawAll() {
+    public void drawAll(Graphics g) {
         for (int i = 0; i < drawables.size(); i++) {
-            drawables.get(i).draw(this.panel);
+            drawables.get(i).draw(g);
         }
     }
 

@@ -29,10 +29,10 @@ public class Drawable {
 
     /**
      *
-     * @param panel
+     * @param
      */
-    public void draw(JPanel panel){
-        panel.getGraphics().drawImage(img, 10,10, 100,100, null);
+    public void draw(Graphics g){
+        g.drawImage(img, 10,10, 100,100, null);
     }
 
     /**
