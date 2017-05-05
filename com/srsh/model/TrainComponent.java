@@ -1,6 +1,6 @@
 package com.srsh.model;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * 
@@ -101,4 +101,5 @@ public abstract class TrainComponent {
     public void setInTunnel(){
         inTunnel = !inTunnel;
     }
+
 }

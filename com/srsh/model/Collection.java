@@ -1,5 +1,6 @@
 package com.srsh.model;
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -9,7 +10,7 @@ public class Collection {
 
     private ArrayList<TrainComponent> trainComponents;
     private ArrayList<Float> trainComponentsPozotions;
-    private ArrayList<Character> tranComponentsStartSide;      //a komponens beérkezésének oldala
+    private ArrayList<Character> trainComponentsStartSide;      //a komponens beérkezésének oldala
 
 
     /**
@@ -18,7 +19,7 @@ public class Collection {
     public Collection() {
         trainComponents = new ArrayList<TrainComponent>();
         trainComponentsPozotions = new ArrayList<Float>();
-        tranComponentsStartSide = new ArrayList<Character>();
+        trainComponentsStartSide = new ArrayList<Character>();
     }
 
 
@@ -28,7 +29,7 @@ public class Collection {
     public void insert(TrainComponent l, char startSide) {
         trainComponents.add(l);
         trainComponentsPozotions.add((float)0);
-        tranComponentsStartSide.add(startSide);
+        trainComponentsStartSide.add(startSide);
     }
 
     /**
@@ -54,7 +55,7 @@ public class Collection {
 
             for(int i = 0; i < trainComponents.size(); i++){
                 //szembe mennek
-                boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
+                boolean side_ = (char) trainComponentsStartSide.get(trainComponents.indexOf(l)) != (char) trainComponentsStartSide.get(i);
 
                 //nem egyeznek meg És különböző oldalról indultak ÉS abs értékben 1-nél közelebb vannak egymáshoz
                 if((trainComponents.indexOf(l) != i) && (side_) && (1 >=  Math.abs((l.current.lenght - trainComponentsPozotions.get(i))-current_poz))){
@@ -117,4 +118,32 @@ public class Collection {
         return trainComponentsPozotions.get(trainComponents.indexOf(t));
     }
 
+    public Point getPosition(TrainComponent tc){
+        int idx = trainComponents.indexOf(tc);
+        Character startSide = trainComponentsStartSide.get(idx);
+        Point current = null;
+        double lenght = trainComponentsPozotions.get(idx);
+        double v1;
+        double v2;
+        double x0;
+        double y0;
+        double a;
+        if(startSide == 'A'){
+            v1 = tc.current.x1 - tc.current.x0;
+            v2 = tc.current.y1 - tc.current.y0;
+            x0 = tc.current.x0;
+            y0 = tc.current.y0;
+            a = Math.sqrt((lenght*lenght)/(v1*v1+v2*v2));
+            current = new Point((int)(x0+v1*a),(int)(y0+v2*a));
+        }
+        else if(startSide == 'B'){
+            v1 = tc.current.x0 - tc.current.x1;
+            v2 = tc.current.y0 - tc.current.y1;
+            x0 = tc.current.x1;
+            y0 = tc.current.y1;
+            a = Math.sqrt((lenght*lenght)/(v1*v1+v2*v2));
+            current = new Point((int)(x0+v1*a),(int)(y0+v2*a));
+        }
+        return current;
+    }
 }
