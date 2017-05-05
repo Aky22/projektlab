@@ -31,21 +31,20 @@ public abstract class DrawableComponent extends Drawable{
             Point a = c.getAEnd();
             Point b = c.getBEnd();
 
-            int centerX;
-            int centerY;
-            if(a.x > b.x)
-                centerX = a.x - b.x;
-            else centerX = b.x - a.x;
-            if(a.y > b.y)
-                centerY = a.y - b.y;
-            else centerY = b.y - a.y;
+            int rotationAnchorX = img.getWidth(null) / 2;
+            int rotationAnchorY = img.getHeight(null) / 2;
+            double rotation = Math.toRadians(30);
 
-            double rotation = Math.toRadians(45);
+            AffineTransform at = new AffineTransform();
+            at.translate(img.getWidth(null) / 2, img.getHeight(null) / 2);
+            at.rotate(Math.toRadians(45));
+            at.translate(-img.getWidth(null)/2, img.getHeight(null)/2);
 
-            AffineTransform tx = AffineTransform.getRotateInstance(rotation, centerX, centerY);
-            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+            //TODO AF !!!!!!!!!!!!!!!
 
-            g.drawImage(op.filter((BufferedImage) img, null), centerX, centerY, 200, 200, null);
+
+            g.drawImage(op.filter((BufferedImage) img, null), 0, 0, 400, 200, null);
 
 
             //g.drawImage(img, a.x, a.y, , 100, null);
