@@ -31,31 +31,36 @@ public class View {
                 drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
                 break;
             case "Siding":
-                drawables.add(new GraphicSiding((Siding) c));
+                drawables.add(new GraphicSiding((Siding) c, "resources/vakvagany.png"));
                 break;
             case "Station":
                 drawables.add(new GraphicStation((Station) c, "resources/station.png"));
                 break;
             case "Switch":
-                drawables.add(new GraphicSwitch((Switch) c));
+                drawables.add(new GraphicSwitch((Switch) c, "resources/valto.png"));
                 break;
             case "TunnelEnd":
-                drawables.add(new GraphicTunnelEnd((TunnelEnd) c));
+                TunnelEnd t = (TunnelEnd)c;
+                if(t.isActive()){
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/aktiv_alagut.png"));
+                }else{
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/inaktiv_alagut.png"));
+                }
                 break;
             default: break;
         }
     }
 
-    public void addTrainComponent(String[] params, TrainComponent c) {
+    public void addTrainComponent(String[] params, TrainComponent c) throws IOException {
         switch (params[2]) {
             case "CoalWagon":
-                drawables.add(new GraphicCoalWagon((CoalWagon) c));
+                drawables.add(new GraphicCoalWagon((CoalWagon) c, "resources/szenes.png"));
                 break;
             case "Locomotive":
-                drawables.add(new GraphicLocomotive((Locomotive) c));
+                drawables.add(new GraphicLocomotive((Locomotive) c, "resources/locomotive.png"));
                 break;
             case "Wagon":
-                drawables.add(new GraphicWagon((Wagon) c));
+                drawables.add(new GraphicWagon((Wagon) c, "resources/kocsi.png"));
                 break;
             default: break;
         }

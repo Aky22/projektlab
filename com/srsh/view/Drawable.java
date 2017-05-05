@@ -33,6 +33,7 @@ public class Drawable {
      */
     public void draw(JPanel panel){
         JLabel picLabel = new JLabel(new ImageIcon(this.img));
+        picLabel.setSize(10,10);
         panel.add(picLabel);
     }
 

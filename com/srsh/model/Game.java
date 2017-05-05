@@ -93,7 +93,7 @@ public class Game {
      * Parancs részletes leírását lsd. 7. dokumentumban.
      * @param params - parancs paraméterei lsd. 7. doksi
      */
-    public void create(String[] params){
+    public void create(String[] params) {
         switch(params[1]){
             case "t":
                 int newId = alTrain.size() + 1;
@@ -122,7 +122,11 @@ public class Game {
                         break;
                 }
                 alTrain.add(newComponent);
-                view.addTrainComponent(params, newComponent);
+                try {
+                    view.addTrainComponent(params, newComponent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.print(alTrain.size() + "\n");
                 break;
             case "m":

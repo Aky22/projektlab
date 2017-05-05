@@ -2,6 +2,8 @@ package com.srsh.view;
 
 import com.srsh.model.CoalWagon;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -11,8 +13,9 @@ public class GraphicCoalWagon extends Drawable {
 
     protected CoalWagon coalwagon;
 
-    GraphicCoalWagon(CoalWagon coalwagon){
+    GraphicCoalWagon(CoalWagon coalwagon, String img) throws IOException {
         this.coalwagon = coalwagon;
+        this.img = ImageIO.read(new File(img));
     }
 
 }
