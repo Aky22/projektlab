@@ -1,5 +1,7 @@
 package com.srsh.model;
 
+import com.srsh.view.View;
+
 import java.io.*;
 import java.util.*;
 import java.awt.Color;
@@ -12,9 +14,11 @@ public class Game {
     ArrayList<TrainComponent> alTrain = new ArrayList<>();
     ArrayList<TrainComponent> alLocomotive = new ArrayList<>();
     Tunnel tunnel = new Tunnel();
+    private View view;
     boolean exit;
 
-    public Game() {
+    public Game(View view) {
+        this.view = view;
         exit = false;
     }
 
@@ -24,80 +28,65 @@ public class Game {
      * a megadott paraméterekkel.
      * com.srsh.model.Application main függvénye hívja.
      */
-    public void startGame(){
+    public void giveCommand(String command) {
         //TODO függvényhívások, azok implementálása
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        FileWriter fw = null;
-        String input = "";
-        boolean saving = false;
 
-        System.out.println("Magic vonatos játék 1.0\nKilépés >quit<-al.");
-
-        while(!exit){
-
-            try { //olvasás
-                input = br.readLine();
-                if(saving) fw.write(input + '\n');
-            } catch (IOException e) {
-                System.out.println("Invalid input!");
-            }
-
-            String[] split = input.split(" "); //split szóközök mentén
-            switch(split[0]){ //megfelelő metódus hívás, vagy "inline"
-                case "create":
-                    create(split);
-                    break;
-                case "connect":
-                    connect(split);
-                    break;
-                case "step":
-                    step(split);
-                    break;
-                case "activate":
-                    activate(split);
-                    break;
-                case "switch":
-                    _switch(split);
-                    break;
-                case "place":
-                    place(split);
-                    break;
-                case "load":
-                    //TODO
-                    break;
-                case "retry":
-                    //TODO
-                    break;
-                case "save":
-                    switch(split[1]){
-                        case "start":
-                            try {
-                                fw = new FileWriter(split[2]);
-                                saving = true;
-                            } catch(java.io.IOException e){
-                                //TODO
-                                e.printStackTrace();
-                            }
-                            break;
-                        case "end":
-                            try {
-                                fw.close();
-                                saving = false;
-                            } catch (IOException e) {
-                                //TODO
-                                e.printStackTrace();
-                            }
-                            break;
-                    }
-                    break;
-                case "list":
-                    list(split);
-                    break;
-                case "quit":
-                    exit = true;
-            }
+        String[] split = command.split(" "); //split szóközök mentén
+        switch (split[0]) { //megfelelő metódus hívás, vagy "inline"
+            case "create":
+                create(split);
+                break;
+            case "connect":
+                connect(split);
+                break;
+            case "step":
+                step(split);
+                break;
+            case "activate":
+                activate(split);
+                break;
+            case "switch":
+                _switch(split);
+                break;
+            case "place":
+                place(split);
+                break;
+            case "load":
+                //TODO
+                break;
+            case "retry":
+                //TODO
+                break;
+            case "save":
+                /*switch (split[1]) {
+                    case "start":
+                        try {
+                            //fw = new FileWriter(split[2]);
+                            //saving = true;
+                        } catch (java.io.IOException e) {
+                            //TODO
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "end":
+                        try {
+                            fw.close();
+                            saving = false;
+                        } catch (IOException e) {
+                            //TODO
+                            e.printStackTrace();
+                        }
+                        break;
+                }*/
+                break;
+            case "list":
+                list(split);
+                break;
+            case "quit":
+                exit = true;
         }
     }
+
 
     /**
      * Új pályaelemet vagy vonatelemet hoz létre a paramétereknek megfelelően.
@@ -109,44 +98,48 @@ public class Game {
             case "t":
                 int newId = alTrain.size() + 1;
                 int newLocomotiveId = alLocomotive.size() +1;
+                TrainComponent newComponent = null;
                 switch(params[2]){
-                    case "com.srsh.model.Locomotive":
-                        alTrain.add(new Locomotive(newId));
+                    case "Locomotive":
+                        newComponent = new Locomotive((newId));
                         alLocomotive.add(alTrain.get(newId - 1));
                         break;
-                    case "com.srsh.model.Wagon":
+                    case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
                             case "blue":
-                                alTrain.add(new Wagon(Color.BLUE, Integer.parseInt(params[4]), newId));
+                                newComponent = new Wagon(Color.BLUE, Integer.parseInt(params[4]), newId);
                                 break;
                             case "red":
-                                alTrain.add(new Wagon(Color.RED, Integer.parseInt(params[4]), newId));
+                                newComponent = new Wagon(Color.RED, Integer.parseInt(params[4]), newId);
                                 break;
                             case "yellow":
-                                alTrain.add(new Wagon(Color.YELLOW, Integer.parseInt(params[4]), newId));
+                                newComponent = new Wagon(Color.YELLOW, Integer.parseInt(params[4]), newId);
                                 break;
                         }
                         break;
-                    case "com.srsh.model.CoalWagon":
-                        alTrain.add(new CoalWagon(newId));
+                    case "CoalWagon":
+                        newComponent = new CoalWagon(newId);
                         break;
                 }
+                alTrain.add(newComponent);
+                view.addTrainComponent(params, newComponent);
                 System.out.print(alTrain.size() + "\n");
                 break;
             case "m":
                 double x_0 = Double.parseDouble(params[2]);
                 double y_0 = Double.parseDouble(params[3]);
                 int newId2 = alMap.size() + 1;
+                Component newMapComponent = null;
                 switch(params[4]){
-                    case "com.srsh.model.Intersection":
-                        alMap.add(new Intersection(x_0, y_0, x_0, y_0, newId2));
+                    case "Intersection":
+                        newMapComponent = new Intersection(x_0, y_0, x_0, y_0, newId2);
                         break;
-                    case "com.srsh.model.Rail":
-                        alMap.add(new Rail(x_0, y_0,
+                    case "Rail":
+                        newMapComponent = new Rail(x_0, y_0,
                                 Double.parseDouble(params[5]),
-                                Double.parseDouble(params[6]), newId2));
+                                Double.parseDouble(params[6]), newId2);
                         break;
-                    case "com.srsh.model.Station":
+                    case "Station":
                         Color color = Color.BLACK;
                         switch(params[5]){ //szintén leszarom és ennyi lesz
                             case "blue":
@@ -159,18 +152,20 @@ public class Game {
                                 color = Color.RED;
                                 break;
                         }
-                        alMap.add(new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6]), newId2));
+                        newMapComponent = new Station(x_0, y_0, x_0, y_0, color, Integer.parseInt(params[6]), newId2);
                         break;
-                    case "com.srsh.model.TunnelEnd":
-                        alMap.add(new TunnelEnd(x_0, y_0, x_0, y_0, newId2));
+                    case "TunnelEnd":
+                        newMapComponent = new TunnelEnd(x_0, y_0, x_0, y_0, newId2);
                         break;
-                    case "com.srsh.model.Switch":
-                        alMap.add(new Switch(x_0, y_0, x_0, y_0, newId2));
+                    case "Switch":
+                        newMapComponent = new Switch(x_0, y_0, x_0, y_0, newId2);
                         break;
-                    case "com.srsh.model.Siding":
-                        alMap.add(new Siding(x_0, y_0, x_0, y_0, newId2));
+                    case "Siding":
+                        newMapComponent = new Siding(x_0, y_0, x_0, y_0, newId2);
                         break;
                 }
+                alMap.add(newMapComponent);
+                view.addComponent(params, newMapComponent);
                 System.out.print(alMap.size() + "\n");
                 break;
         }
