@@ -26,7 +26,7 @@ public abstract class DrawableComponent extends Drawable{
 
         if(c.isPoint()){
             Point p = c.getPoint();
-            g.drawImage(img, p.x, p.y, 100, 100, null);
+            g.drawImage(img, p.x - 25, p.y - 25, 50, 50, null);
         }else{
             Point a = c.getAEnd();
             Point b = c.getBEnd();
