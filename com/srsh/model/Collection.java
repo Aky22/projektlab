@@ -9,7 +9,7 @@ public class Collection {
 
     private ArrayList<TrainComponent> trainComponents;
     private ArrayList<Float> trainComponentsPozotions;
-    private ArrayList<Character> tranComponentsStartSide;      //a komponens beérkezésének oldala
+    private ArrayList<Character> trainComponentsStartSide;      //a komponens beérkezésének oldala
 
 
     /**
@@ -18,7 +18,7 @@ public class Collection {
     public Collection() {
         trainComponents = new ArrayList<TrainComponent>();
         trainComponentsPozotions = new ArrayList<Float>();
-        tranComponentsStartSide = new ArrayList<Character>();
+        trainComponentsStartSide = new ArrayList<Character>();
     }
 
 
@@ -28,7 +28,7 @@ public class Collection {
     public void insert(TrainComponent l, char startSide) {
         trainComponents.add(l);
         trainComponentsPozotions.add((float)0);
-        tranComponentsStartSide.add(startSide);
+        trainComponentsStartSide.add(startSide);
     }
 
     /**
@@ -54,7 +54,7 @@ public class Collection {
 
             for(int i = 0; i < trainComponents.size(); i++){
                 //szembe mennek
-                boolean side_ = (char)tranComponentsStartSide.get(trainComponents.indexOf(l)) != (char)tranComponentsStartSide.get(i);
+                boolean side_ = (char) trainComponentsStartSide.get(trainComponents.indexOf(l)) != (char) trainComponentsStartSide.get(i);
 
                 //nem egyeznek meg És különböző oldalról indultak ÉS abs értékben 1-nél közelebb vannak egymáshoz
                 if((trainComponents.indexOf(l) != i) && (side_) && (1 >=  Math.abs((l.current.lenght - trainComponentsPozotions.get(i))-current_poz))){
