@@ -11,11 +11,15 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class View{
-
+    protected JFrame frame;
     protected JPanel panel;
     protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
 
-
+    public View(){
+        frame = new JFrame("srsh magic vonatos játék 1.0");
+        frame.setSize(400,400);
+        //TODO
+    }
 
 
     public void addComponent(String[] params, Component c){
@@ -57,6 +61,10 @@ public class View{
 
     public void clear(){
         //TODO
+    }
+
+    public void setVisible(boolean value){
+        frame.setVisible(value);
     }
 
 }

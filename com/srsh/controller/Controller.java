@@ -25,5 +25,6 @@ public class Controller {
 
     public void run(){
         //TODO
+        view.setVisible(true);
     }
 }

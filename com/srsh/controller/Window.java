@@ -30,8 +30,11 @@ public class Window {
         list.setVisibleRowCount(3); //lehet több
         JScrollPane listScrollPane = new JScrollPane(list);
 
-        exit.addActionListener(e -> { System.exit(0); });
-        startGame.addActionListener(e -> {controller.loadMap((String)list.getSelectedValue());});
+        exit.addActionListener(e -> System.exit(0));
+        startGame.addActionListener(e -> {
+            controller.loadMap((String)list.getSelectedValue());
+            controller.run();
+        });
 
         frame.setSize(400,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
