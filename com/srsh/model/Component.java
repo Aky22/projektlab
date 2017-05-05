@@ -1,5 +1,7 @@
 package com.srsh.model;
 
+import java.awt.*;
+
 /**
  * 
  */
@@ -152,6 +154,35 @@ public abstract class Component {
         return id;
     }
 
+    /**
+     * Megadja, hogy pontszerű-e
+     * @return
+     */
+    abstract public boolean isPoint();
+
+    /**
+     * Ha pontszerű, visszaadja a pontot
+     * @return
+     */
+    public Point getPoint(){
+        return new Point((int)x0, (int)y0);
+    }
+
+    /**
+     * Ha nem pontszerű az A vég
+     * @return
+     */
+    public Point getAEnd(){
+        return getPoint();
+    }
+
+    /**
+     * Ha nem pontszerű a B vég
+     * @return
+     */
+    public Point getBEnd(){
+        return new Point((int)x1,(int)y1);
+    }
 
     /**
      * Beállítja hogy a tesztkörnyezetben a vonat a lépés végén átlép-e a következő elemre

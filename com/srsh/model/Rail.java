@@ -42,4 +42,9 @@ public class Rail extends Component {
                 "A side connected to " + A_id + "\n" +
                 "B side connected to " + B_id);
     }
+
+    @Override
+    public boolean isPoint() {
+        return false;
+    }
 }

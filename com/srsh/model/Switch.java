@@ -80,4 +80,9 @@ public class Switch extends Component {
                 "B side connected to " + B_id + "\n" +
                 "C side connected to " + C_id);
     }
+
+    @Override
+    public boolean isPoint() {
+        return true;
+    }
 }

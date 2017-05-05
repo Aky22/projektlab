@@ -30,4 +30,9 @@ public class Intersection extends Component{
                 "C side connected to " + C_id + "\n" +
                 "D side connected to " + D_id);
     }
+
+    @Override
+    public boolean isPoint() {
+        return true;
+    }
 }
