@@ -1,5 +1,6 @@
 package com.srsh.model;
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -117,4 +118,32 @@ public class Collection {
         return trainComponentsPozotions.get(trainComponents.indexOf(t));
     }
 
+    public Point getPosition(TrainComponent tc){
+        int idx = trainComponents.indexOf(tc);
+        Character startSide = trainComponentsStartSide.get(idx);
+        Point current = null;
+        double lenght = trainComponentsPozotions.get(idx);
+        double v1;
+        double v2;
+        double x0;
+        double y0;
+        double a;
+        if(startSide == 'A'){
+            v1 = tc.current.x1 - tc.current.x0;
+            v2 = tc.current.y1 - tc.current.y0;
+            x0 = tc.current.x0;
+            y0 = tc.current.y0;
+            a = Math.sqrt((lenght*lenght)/(v1*v1+v2*v2));
+            current = new Point((int)(x0+v1*a),(int)(y0+v2*a));
+        }
+        else if(startSide == 'B'){
+            v1 = tc.current.x0 - tc.current.x1;
+            v2 = tc.current.y0 - tc.current.y1;
+            x0 = tc.current.x1;
+            y0 = tc.current.y1;
+            a = Math.sqrt((lenght*lenght)/(v1*v1+v2*v2));
+            current = new Point((int)(x0+v1*a),(int)(y0+v2*a));
+        }
+        return current;
+    }
 }
