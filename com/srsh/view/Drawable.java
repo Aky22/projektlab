@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class Drawable {
 
-    protected static Image img;
+    protected Image img;
     protected int z_index;
 
     /**

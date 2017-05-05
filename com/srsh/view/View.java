@@ -28,13 +28,13 @@ public class View {
                 drawables.add(new GraphicIntersection((Intersection) c));
                 break;
             case "Rail":
-                drawables.add(new GraphicRail((Rail) c));
+                drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
                 break;
             case "Siding":
                 drawables.add(new GraphicSiding((Siding) c));
                 break;
             case "Station":
-                drawables.add(new GraphicStation((Station) c));
+                drawables.add(new GraphicStation((Station) c, "resources/station.png"));
                 break;
             case "Switch":
                 drawables.add(new GraphicSwitch((Switch) c));

@@ -13,16 +13,10 @@ import java.io.IOException;
 public class GraphicRail extends Drawable {
 
     protected Rail rail;
-    static{
-        try {
-            img = ImageIO.read(new File("resources/rail.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    GraphicRail(Rail rail) throws IOException {
+    GraphicRail(Rail rail, String img) throws IOException {
         this.rail = rail;
+        this.img = ImageIO.read(new File(img));
     }
 
 }

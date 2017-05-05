@@ -13,16 +13,9 @@ public class GraphicStation extends Drawable {
 
     protected Station station;
 
-    static{
-        try {
-            img = ImageIO.read(new File("resources/station.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    GraphicStation(Station station){
+    GraphicStation(Station station, String img) throws IOException {
         this.station = station;
+        this.img = ImageIO.read(new File(img));
     }
 
 }
