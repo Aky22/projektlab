@@ -9,4 +9,8 @@ public class GraphicWagon extends Drawable {
 
     protected Wagon wagon;
 
+    GraphicWagon(Wagon wagon){
+        this.wagon = wagon;
+    }
+
 }

@@ -9,4 +9,8 @@ public class GraphicSiding extends Drawable {
 
     protected Siding siding;
 
+    GraphicSiding(Siding siding){
+        this.siding = siding;
+    }
+
 }

@@ -9,4 +9,8 @@ public class GraphicRail extends Drawable {
 
     protected Rail rail;
 
+    GraphicRail(Rail rail){
+        this.rail = rail;
+    }
+
 }

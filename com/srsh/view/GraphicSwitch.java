@@ -9,4 +9,8 @@ public class GraphicSwitch extends Drawable {
 
     protected Switch _switch;
 
+    GraphicSwitch(Switch _switch){
+        this._switch = _switch;
+    }
+
 }

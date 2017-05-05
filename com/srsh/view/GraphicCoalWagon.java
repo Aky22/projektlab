@@ -10,4 +10,9 @@ import java.io.IOException;
 public class GraphicCoalWagon extends Drawable {
 
     protected CoalWagon coalwagon;
+
+    GraphicCoalWagon(CoalWagon coalwagon){
+        this.coalwagon = coalwagon;
+    }
+
 }

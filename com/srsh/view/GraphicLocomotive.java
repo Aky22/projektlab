@@ -9,4 +9,8 @@ public class GraphicLocomotive extends Drawable {
 
     protected Locomotive locomotive;
 
+    GraphicLocomotive(Locomotive locomotive){
+        this.locomotive = locomotive;
+    }
+
 }

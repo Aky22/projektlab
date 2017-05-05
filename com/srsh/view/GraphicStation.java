@@ -9,4 +9,8 @@ public class GraphicStation extends Drawable {
 
     protected Station station;
 
+    GraphicStation(Station station){
+        this.station = station;
+    }
+
 }
