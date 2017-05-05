@@ -165,7 +165,11 @@ public class Game {
                         break;
                 }
                 alMap.add(newMapComponent);
-                view.addComponent(params, newMapComponent);
+                try {
+                    view.addComponent(params, newMapComponent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.print(alMap.size() + "\n");
                 break;
         }
