@@ -20,6 +20,14 @@ public abstract class DrawableComponent extends Drawable{
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(img, 10, 10, 100, 100, null);
+        if(c.isPoint()){
+            Point p = c.getPoint();
+            g.drawImage(img, p.x, p.y, 100, 100, null);
+        }else{
+            Point a = c.getAEnd();
+            Point b = c.getBEnd();
+            g.drawImage(img, a.x, a.y, , 100, null);
+        }
+
     }
 }
