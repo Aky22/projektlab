@@ -5,7 +5,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class View extends Drawable{
+public class View{
 
     protected JPanel panel;
     protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
