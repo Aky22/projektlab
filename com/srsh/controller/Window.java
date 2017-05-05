@@ -8,8 +8,11 @@ import java.awt.*;
  */
 public class Window {
     private JFrame frame;
+    private Controller controller;
 
     public Window(){
+        controller = new Controller();
+
         frame = new JFrame("srsh magic vonatos játék 1.0");
         JLabel info = new JLabel("Pálya kiválasztása");
         JButton startGame = new JButton("Start");
@@ -28,6 +31,7 @@ public class Window {
         JScrollPane listScrollPane = new JScrollPane(list);
 
         exit.addActionListener(e -> { System.exit(0); });
+        startGame.addActionListener(e -> {controller.loadMap((String)list.getSelectedValue());});
 
         frame.setSize(400,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,4 +56,6 @@ public class Window {
     public void setVisible(boolean value){
         frame.setVisible(value);
     }
+
+
 }

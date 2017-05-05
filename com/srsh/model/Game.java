@@ -260,5 +260,9 @@ public class Game {
                 break;
         }
     }
+
+    public void clear(){
+        //TODO
+    }
 }
 

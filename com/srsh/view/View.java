@@ -15,6 +15,9 @@ public class View{
     protected JPanel panel;
     protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
 
+
+
+
     public void addComponent(String[] params, Component c){
         //TODO
     }
@@ -52,6 +55,8 @@ public class View{
         }
     }
 
-
+    public void clear(){
+        //TODO
+    }
 
 }
