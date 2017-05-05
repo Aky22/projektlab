@@ -25,7 +25,7 @@ public class Controller {
         view.clear();
         game.clear();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(file + ".txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader("resources/" + file + ".txt"))) {
             String line;
             while((line = br.readLine()) != null){
                 game.giveCommand(line);
