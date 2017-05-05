@@ -5,6 +5,9 @@ import com.srsh.model.*;
 import com.srsh.model.Component;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -20,13 +23,32 @@ public abstract class DrawableComponent extends Drawable{
 
     @Override
     public void draw(Graphics g) {
+
         if(c.isPoint()){
             Point p = c.getPoint();
             g.drawImage(img, p.x, p.y, 100, 100, null);
         }else{
             Point a = c.getAEnd();
             Point b = c.getBEnd();
-            g.drawImage(img, a.x, a.y, , 100, null);
+
+            int centerX;
+            int centerY;
+            if(a.x > b.x)
+                centerX = a.x - b.x;
+            else centerX = b.x - a.x;
+            if(a.y > b.y)
+                centerY = a.y - b.y;
+            else centerY = b.y - a.y;
+
+            double rotation = Math.toRadians(45);
+
+            AffineTransform tx = AffineTransform.getRotateInstance(rotation, centerX, centerY);
+            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
+            g.drawImage(op.filter((BufferedImage) img, null), centerX, centerY, 200, 200, null);
+
+
+            //g.drawImage(img, a.x, a.y, , 100, null);
         }
 
     }
