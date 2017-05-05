@@ -9,13 +9,9 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class GraphicSwitch extends Drawable {
-
-    protected Switch _switch;
-
-    GraphicSwitch(Switch _switch, String img) throws IOException {
-        this._switch = _switch;
-        this.img = ImageIO.read(new File(img));
+public class GraphicSwitch extends DrawableComponent {
+    GraphicSwitch(Switch _switch, String img) {
+        super(_switch, img);
     }
 
 }

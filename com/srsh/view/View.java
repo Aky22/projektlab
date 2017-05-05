@@ -32,9 +32,9 @@ public class View {
 
     public void addComponent(String[] params, Component c) throws IOException {
         switch (params[4]) {
-            case "Intersection":
+            /*case "Intersection":
                 drawables.add(new GraphicIntersection((Intersection) c));
-                break;
+                break;*/
             case "Rail":
                 drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
                 break;

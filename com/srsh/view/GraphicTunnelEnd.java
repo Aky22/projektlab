@@ -9,13 +9,10 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class GraphicTunnelEnd extends Drawable {
+public class GraphicTunnelEnd extends DrawableComponent {
 
-    protected TunnelEnd tunelend;
-
-    GraphicTunnelEnd(TunnelEnd tunelend, String img) throws IOException {
-        this.tunelend = tunelend;
-        this.img = ImageIO.read(new File(img));
+    GraphicTunnelEnd(TunnelEnd tunelend, String img){
+        super(tunelend, img);
     }
 
 }

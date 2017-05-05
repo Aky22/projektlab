@@ -9,13 +9,10 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class GraphicWagon extends Drawable {
+public class GraphicWagon extends DrawableTrainComponent {
 
-    protected Wagon wagon;
-
-    GraphicWagon(Wagon wagon, String img) throws IOException {
-        this.wagon = wagon;
-        this.img = ImageIO.read(new File(img));
+    GraphicWagon(Wagon wagon, String img)  {
+        super(wagon, img);
     }
 
 }

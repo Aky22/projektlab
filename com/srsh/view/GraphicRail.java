@@ -11,19 +11,12 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class GraphicRail extends Drawable {
+public class GraphicRail extends DrawableComponent {
 
     protected Rail rail;
 
-    GraphicRail(Rail rail, String img) throws IOException {
-        this.rail = rail;
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(new File(img));
-        } catch (IOException e) {
-        }
-
-        this.img = image;
+    GraphicRail(Rail rail, String img) {
+        super(rail, img);
     }
 
 }

@@ -9,13 +9,11 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class GraphicStation extends Drawable {
+public class GraphicStation extends DrawableComponent {
 
-    protected Station station;
 
-    GraphicStation(Station station, String img) throws IOException {
-        this.station = station;
-        this.img = ImageIO.read(new File(img));
+    GraphicStation(Station station, String img) {
+       super(station, img);
     }
 
 }

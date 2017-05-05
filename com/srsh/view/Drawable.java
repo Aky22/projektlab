@@ -9,10 +9,18 @@ import java.io.IOException;
 /**
  * Created by erosa on 2017. 05. 05..
  */
-public class Drawable {
+public abstract class Drawable {
 
     protected Image img;
     protected int z_index;
+
+    public Drawable(String image){
+        try {
+            this.img = ImageIO.read(new File(image));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      *
@@ -31,9 +39,7 @@ public class Drawable {
      *
      * @param
      */
-    public void draw(Graphics g){
-        g.drawImage(img, 10,10, 100,100, null);
-    }
+    public abstract void draw(Graphics g);
 
     /**
      * Set img
