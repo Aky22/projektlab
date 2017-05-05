@@ -5,6 +5,7 @@ package com.srsh.view; /**
 import com.srsh.model.*;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class View {
@@ -21,13 +22,13 @@ public class View {
     }
 
 
-    public void addComponent(String[] params, Component c) {
+    public void addComponent(String[] params, Component c) throws IOException {
         switch (params[4]) {
             case "Intersection":
                 drawables.add(new GraphicIntersection((Intersection) c));
                 break;
             case "Rail":
-                drawables.add(new GraphicRail((Rail) c));
+                drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
                 break;
             case "Siding":
                 drawables.add(new GraphicSiding((Siding) c));
