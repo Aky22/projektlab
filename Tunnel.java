@@ -29,7 +29,7 @@ public class Tunnel {
      * @return
      */
     public void setEnd(TunnelEnd t, int newId) {
-        //ez így elég fos de aki akarja majd megcsinálja
+        //TODO: Be kéne kérni egy oldalt paraméternek, és ha az már aktív akkor lecserélni az új kapott oldalra, különben aktiválni.
         t.activate(this);
         if(sideA == null) {
             sideA = t;
