@@ -39,6 +39,6 @@ public class Controller {
 
     public void run(){
         view.setVisible(true);
-        view.drawAll();
+        //view.drawAll();
     }
 }

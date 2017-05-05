@@ -3,8 +3,10 @@ package com.srsh.view; /**
  */
 
 import com.srsh.model.*;
+import com.srsh.model.Component;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -16,7 +18,13 @@ public class View {
     public View() {
         frame = new JFrame("srsh magic vonatos játék 1.0");
         frame.setSize(400, 400);
-        panel = new JPanel();
+        panel = new JPanel() {
+          @Override
+            public void paintComponent(Graphics g){
+              super.paintComponent(g);
+              drawAll(g);
+          }
+        };
         frame.add(panel);
         //TODO
     }
@@ -24,38 +32,43 @@ public class View {
 
     public void addComponent(String[] params, Component c) throws IOException {
         switch (params[4]) {
-            case "Intersection":
+            /*case "Intersection":
                 drawables.add(new GraphicIntersection((Intersection) c));
-                break;
+                break;*/
             case "Rail":
                 drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
                 break;
             case "Siding":
-                drawables.add(new GraphicSiding((Siding) c));
+                drawables.add(new GraphicSiding((Siding) c, "resources/vakvagany.png"));
                 break;
             case "Station":
                 drawables.add(new GraphicStation((Station) c, "resources/station.png"));
                 break;
             case "Switch":
-                drawables.add(new GraphicSwitch((Switch) c));
+                drawables.add(new GraphicSwitch((Switch) c, "resources/valto.png"));
                 break;
             case "TunnelEnd":
-                drawables.add(new GraphicTunnelEnd((TunnelEnd) c));
+                TunnelEnd t = (TunnelEnd)c;
+                if(t.isActive()){
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/aktiv_alagut.png"));
+                }else{
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/inaktiv_alagut.png"));
+                }
                 break;
             default: break;
         }
     }
 
-    public void addTrainComponent(String[] params, TrainComponent c) {
+    public void addTrainComponent(String[] params, TrainComponent c) throws IOException {
         switch (params[2]) {
             case "CoalWagon":
-                drawables.add(new GraphicCoalWagon((CoalWagon) c));
+                drawables.add(new GraphicCoalWagon((CoalWagon) c, "resources/szenes.png"));
                 break;
             case "Locomotive":
-                drawables.add(new GraphicLocomotive((Locomotive) c));
+                drawables.add(new GraphicLocomotive((Locomotive) c, "resources/locomotive.png"));
                 break;
             case "Wagon":
-                drawables.add(new GraphicWagon((Wagon) c));
+                drawables.add(new GraphicWagon((Wagon) c, "resources/kocsi.png"));
                 break;
             default: break;
         }
@@ -84,9 +97,9 @@ public class View {
     /**
      * Draw all component
      */
-    public void drawAll() {
+    public void drawAll(Graphics g) {
         for (int i = 0; i < drawables.size(); i++) {
-            drawables.get(i).draw(this.panel);
+            drawables.get(i).draw(g);
         }
     }
 

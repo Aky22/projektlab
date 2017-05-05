@@ -35,7 +35,8 @@ public class TunnelEnd extends Component {
     /**
      * @return
      */
-    private boolean isActive() {
+
+    public boolean isActive() {
         return active;
     }
 
