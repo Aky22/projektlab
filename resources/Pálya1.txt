@@ -1,1 +1,2 @@
 create m 100 100 Rail 300 300
+create m 200 200 Station blue 3
