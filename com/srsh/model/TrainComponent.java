@@ -82,7 +82,7 @@ public abstract class TrainComponent {
      * Init során elhelyezi az elemet az adott pályaelemen
      * @param current
      */
-    abstract public void place(Component current, char side);
+    abstract public void place(Component current, char side, int offset);
 
     /**
      * Megadja, hogy az adott elem kisiklott-e

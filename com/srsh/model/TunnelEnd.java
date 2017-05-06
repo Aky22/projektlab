@@ -43,7 +43,7 @@ public class TunnelEnd extends Component {
      * @param l
      */
     public void operateOn(Locomotive l, char startSide) {
-        tcCollection.insert(l, startSide);
+        tcCollection.insert(l, startSide,0);
         if(active){
             l.setInTunnel();
             tunnel.trainInside();

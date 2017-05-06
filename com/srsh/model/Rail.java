@@ -24,13 +24,13 @@ public class Rail extends Component {
      */
     @Override
     public void operateOn(Locomotive l, char startSide) {
-        tcCollection.insert(l, startSide); //behelyezzük a kollekcióba
+        tcCollection.insert(l, startSide,0); //behelyezzük a kollekcióba
     }
 
     public void placeLocomotive(char side, Locomotive locomotive){
         //TODO
-        insert(locomotive, side);
-        locomotive.next.place(this, side);
+        insert(locomotive, side,0);
+        locomotive.next.place(this, side, 0);
 
 
 

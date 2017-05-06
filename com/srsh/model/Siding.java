@@ -22,7 +22,7 @@ public class Siding extends Component {
      */
     @Override
     public void operateOn(Locomotive l, char side) { //kész
-        tcCollection.insert(l, side); //behelyezzük a kollekcióba
+        tcCollection.insert(l, side,0); //behelyezzük a kollekcióba
         l.derail();
     }
 

@@ -114,8 +114,8 @@ public abstract class Component {
     /**
      * @param tc
      */
-    public void insert(TrainComponent tc, char startSide){      //vagont helyez be
-        tcCollection.insert(tc, startSide);
+    public void insert(TrainComponent tc, char startSide, int offset){      //vagont helyez be
+        tcCollection.insert(tc, startSide, offset);
     }
 
 

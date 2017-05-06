@@ -103,7 +103,6 @@ public class Game {
                 switch(params[2]){
                     case "Locomotive":
                         newComponent = new Locomotive((newId));
-                        alLocomotive.add(alTrain.get(newId - 1));
                         break;
                     case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
@@ -123,6 +122,8 @@ public class Game {
                         break;
                 }
                 alTrain.add(newComponent);
+                if(params[2].equals("Locomotive"))
+                    alLocomotive.add(alTrain.get(newId - 1));
                 try {
                     view.addTrainComponent(params, newComponent);
                 } catch (IOException e) {
@@ -242,7 +243,7 @@ public class Game {
      * @param params
      */
     public void place(String[] params){
-        alTrain.get(Integer.parseInt(params[1]) - 1).place(alMap.get(Integer.parseInt(params[2]) - 1), params[3].charAt(0));
+        alTrain.get(Integer.parseInt(params[1]) - 1).place(alMap.get(Integer.parseInt(params[2]) - 1), params[3].charAt(0), 0);
     }
 
     /**

@@ -63,11 +63,11 @@ public class Locomotive extends TrainComponent {
 
 
     @Override
-    public void place(Component current, char side) {
+    public void place(Component current, char side, int offset) {
         this.current = current;
         this.current.operateOn(this, side);
         if(next != null){
-            next.place(current, side);
+            next.place(current, side, offset + 40);
         }
         //ellenőrizni kell még hogy van-e már ott traincomponent
     }
