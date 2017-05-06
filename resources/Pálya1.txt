@@ -1,2 +1,22 @@
-create m 100 100 Rail 300 300
-create m 200 200 Station blue 3
+create m 100 100 Rail 300 300 1
+create m 300 300 Rail 400 100 2
+create m 300 300 Rail 400 350 3
+create m 300 300 Switch 4
+create m 400 350 TunnelEnd 5
+create m 100 100 Siding 6
+create m 400 100 Station red 10 7
+create m 400 100 Rail 500 200 8
+create m 500 200 TunnelEnd 9
+create m 500 200 Rail 600 400 10
+create m 600 400 TunnelEnd 11
+connect m 6 B 1 A
+connect m 1 B 4 A
+connect m 4 C 2 A
+connect m 4 B 3 A
+connect m 3 B 5 A
+connect m 6 A 2 B
+connect m 7 A 6 B
+connect m 8 A 7 B
+connect m 9 A 8 B
+connect m 10 A 9 B
+connect m 11 A 10 B

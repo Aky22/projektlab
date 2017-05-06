@@ -3,6 +3,7 @@ package com.srsh.view;
 import com.srsh.model.TunnelEnd;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,4 +16,14 @@ public class GraphicTunnelEnd extends DrawableComponent {
         super(tunelend, img);
     }
 
+    @Override
+    public void draw(Graphics g) {
+
+        if(((TunnelEnd)c).isActive())
+            g.setColor(Color.GREEN);
+        else g.setColor(Color.RED);
+
+        g.fillOval(c.getPoint().x - 5, c.getPoint().y - 5, 10, 10);
+        g.setColor(Color.BLACK);
+    }
 }

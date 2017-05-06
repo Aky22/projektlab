@@ -19,4 +19,8 @@ public class GraphicRail extends DrawableComponent {
         super(rail, img);
     }
 
+    @Override
+    public void draw(Graphics g) {
+        g.drawLine(c.getAEnd().x, c.getAEnd().y, c.getBEnd().x, c.getBEnd().y);
+    }
 }

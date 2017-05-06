@@ -52,8 +52,28 @@ public class Station extends Component {
                 "B side connected to " + B_id);
     }
 
+    /**
+     * Megadja hogy pontszerű-e (override)
+     * @return
+     */
     @Override
     public boolean isPoint() {
         return true;
+    }
+
+    /**
+     * Visszaadja az állomás színét
+     * @return
+     */
+    public Color getColor(){
+        return c;
+    }
+
+    /**
+     * Visszatér az utasok számával
+     * @return
+     */
+    public int getPassengerNumber(){
+        return passengerNumber;
     }
 }

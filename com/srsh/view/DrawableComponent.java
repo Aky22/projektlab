@@ -22,13 +22,17 @@ public abstract class DrawableComponent extends Drawable{
     }
 
     @Override
-    public void draw(Graphics g) {
+    public abstract void draw(Graphics g);
+//if(c.isPoint()){
 
-        if(c.isPoint()){
-            Point p = c.getPoint();
+        //TODO kép aki ráér.. (ez amúgy kb jó)
+            /*Point p = c.getPoint();
             g.drawImage(img, p.x - 25, p.y - 25, 50, 50, null);
-        }else{
-            Point a = c.getAEnd();
+            */
+   // }else{
+
+        //TODO kép aki ráér, ez teljesen rossz
+            /*Point a = c.getAEnd();
             Point b = c.getBEnd();
 
             int rotationAnchorX = img.getWidth(null) / 2;
@@ -47,8 +51,8 @@ public abstract class DrawableComponent extends Drawable{
             g.drawImage(op.filter((BufferedImage) img, null), 0, 0, 400, 200, null);
 
 
-            //g.drawImage(img, a.x, a.y, , 100, null);
-        }
+            //g.drawImage(img, a.x, a.y, , 100, null);*/
+    //}
 
-    }
 }
+

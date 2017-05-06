@@ -85,4 +85,10 @@ public class Switch extends Component {
     public boolean isPoint() {
         return true;
     }
+
+    public Component getSelected(){
+        if(state)
+            return C_End;
+        else return B_End;
+    }
 }

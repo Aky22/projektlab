@@ -3,6 +3,7 @@ package com.srsh.view;
 import com.srsh.model.Wagon;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,4 +16,8 @@ public class GraphicWagon extends DrawableTrainComponent {
         super(wagon, img);
     }
 
+    @Override
+    public void draw(Graphics g) {
+        //TODO
+    }
 }

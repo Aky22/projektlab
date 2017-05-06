@@ -14,9 +14,4 @@ public  abstract class DrawableTrainComponent extends Drawable {
         super(image);
         this.tc = tc;
     }
-
-    @Override
-    public void draw(Graphics g) {
-        g.drawImage(img, 10, 10, 100, 100, null);
-    }
 }

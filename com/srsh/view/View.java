@@ -17,7 +17,7 @@ public class View {
 
     public View() {
         frame = new JFrame("srsh magic vonatos játék 1.0");
-        frame.setSize(400, 400);
+        frame.setSize(800, 800);
         panel = new JPanel() {
           @Override
             public void paintComponent(Graphics g){

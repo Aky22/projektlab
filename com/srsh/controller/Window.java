@@ -36,7 +36,7 @@ public class Window {
             controller.run();
         });
 
-        frame.setSize(400,400);
+        frame.setSize(200,200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPane = new JPanel();

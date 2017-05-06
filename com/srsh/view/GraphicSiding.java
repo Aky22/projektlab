@@ -3,6 +3,7 @@ package com.srsh.view;
 import com.srsh.model.Siding;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,4 +15,10 @@ public class GraphicSiding extends DrawableComponent {
         super(siding, img);
     }
 
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.RED);
+        g.drawOval(c.getPoint().x - 5, c.getPoint().y - 5, 10, 10);
+        g.setColor(Color.BLACK);
+    }
 }

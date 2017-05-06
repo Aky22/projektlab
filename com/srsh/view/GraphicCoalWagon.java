@@ -4,6 +4,7 @@ import com.srsh.model.CoalWagon;
 import com.srsh.model.TrainComponent;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,5 +14,10 @@ import java.io.IOException;
 public class GraphicCoalWagon extends DrawableTrainComponent {
     public GraphicCoalWagon(TrainComponent tc, String image){
         super(tc, image);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        //TODO
     }
 }
