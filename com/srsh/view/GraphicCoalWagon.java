@@ -26,12 +26,12 @@ public class GraphicCoalWagon extends DrawableTrainComponent {
         //pozicio lekerdezese a kirajzolashoz
         Point p = w.current.getCollection().getPosition(tc);
 
-
+        //Szenes kocsi fekete lesz
+        g2d.setColor(Color.BLACK);
 
         //x,y, magas, mely
         g2d.fillRect(p.x,p.y,20,20);
 
-        //Szenes kocsi fekete lesz
-        g2d.setColor(Color.BLACK);
+
     }
 }
