@@ -2,11 +2,14 @@ package com.srsh.view; /**
  * Created by erosa on 2017. 05. 05..
  */
 
+import com.srsh.controller.Controller;
 import com.srsh.model.*;
 import com.srsh.model.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,8 +17,10 @@ public class View {
     protected JFrame frame;
     protected JPanel panel;
     protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
+    protected Controller controller;
 
-    public View() {
+    public View(Controller controller) {
+        this.controller = controller;
         frame = new JFrame("srsh magic vonatos játék 1.0");
         frame.setSize(800, 800);
         panel = new JPanel() {
@@ -25,6 +30,15 @@ public class View {
               drawAll(g);
           }
         };
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               controller.handleClick(e.getX(), e.getY());
+               panel.repaint();
+            }
+        });
+
+
         frame.add(panel);
         //TODO
     }
@@ -110,5 +124,4 @@ public class View {
     public void setVisible(boolean value) {
         frame.setVisible(value);
     }
-
 }

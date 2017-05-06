@@ -184,6 +184,10 @@ public abstract class Component {
         return new Point((int)x1,(int)y1);
     }
 
+    public void click(){
+
+    }
+
     /**
      * Beállítja hogy a tesztkörnyezetben a vonat a lépés végén átlép-e a következő elemre
      * @param yes

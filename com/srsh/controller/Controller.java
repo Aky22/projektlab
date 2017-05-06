@@ -16,7 +16,7 @@ public class Controller {
     private Game game;
 
     public Controller(){
-        view = new View();
+        view = new View(this);
         game = new Game(view);
     }
 
@@ -40,5 +40,9 @@ public class Controller {
     public void run(){
         view.setVisible(true);
         //view.drawAll();
+    }
+
+    public void handleClick(int x, int y){
+        game.handleClick(x, y);
     }
 }

@@ -91,4 +91,9 @@ public class Switch extends Component {
             return C_End;
         else return B_End;
     }
+
+    @Override
+    public void click(){
+        this.Switch();
+    }
 }

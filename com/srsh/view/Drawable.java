@@ -49,5 +49,4 @@ public abstract class Drawable {
     protected void setImg(String src) throws IOException {
         this.img = ImageIO.read(new File(src));
     }
-
 }

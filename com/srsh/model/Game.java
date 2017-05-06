@@ -267,5 +267,26 @@ public class Game {
     public void clear(){
         //TODO
     }
+
+    /**
+     * Adott pozíción eseményt kezel
+     * @param x
+     * @param y
+     */
+    public void handleClick(int x, int y){
+        for(Component component : alMap){
+            if(component.isPoint()){
+                double diff = Math.sqrt(
+                        Math.pow(component.getPoint().x - x,2) +
+                                Math.pow(component.getPoint().y - y,2)
+                );
+
+                if(diff < 10){
+                    component.click();
+                    return;
+                }
+            }
+        }
+    }
 }
 
