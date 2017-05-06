@@ -184,7 +184,7 @@ public abstract class Component {
         return new Point((int)x1,(int)y1);
     }
 
-    public void click(){
+    public void click(Game game){
 
     }
 

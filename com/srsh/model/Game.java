@@ -20,6 +20,7 @@ public class Game {
     public Game(View view) {
         this.view = view;
         exit = false;
+        view.addTunnel(tunnel);
     }
 
     /**
@@ -282,7 +283,7 @@ public class Game {
                 );
 
                 if(diff < 10){
-                    component.click();
+                    component.click(this);
                     return;
                 }
             }

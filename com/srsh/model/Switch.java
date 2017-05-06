@@ -93,7 +93,7 @@ public class Switch extends Component {
     }
 
     @Override
-    public void click(){
+    public void click(Game game){
         this.Switch();
     }
 }

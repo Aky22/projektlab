@@ -19,7 +19,6 @@ public class TunnelEnd extends Component {
     public TunnelEnd(double x_0, double y_0, double x_1, double y_1, int id){
         super(x_0, y_0, x_1, y_1, id);
         active = false;
-        System.out.print("created com.srsh.model.TunnelEnd with id: ");
     }
 
     /**
@@ -66,5 +65,24 @@ public class TunnelEnd extends Component {
     @Override
     public boolean isPoint() {
         return true;
+    }
+
+    @Override
+    public void click(Game game){
+        if(tunnel == null) { //aktiváljuk ilyenkor
+            String[] recallParams = {"activate", String.valueOf(id)};
+            game.activate(recallParams);
+        } else {
+            //deaktiváljuk ilyenkor
+            tunnel.invalidate();
+            active = false;
+            tunnel = null;
+        }
+
+    }
+
+    public void invalidate(){
+        active = false;
+        tunnel = null;
     }
 }

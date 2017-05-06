@@ -29,16 +29,26 @@ public class Tunnel {
      */
     public void setEnd(TunnelEnd t, int newId) {
         //TODO: Be kéne kérni egy oldalt paraméternek, és ha az már aktív akkor lecserélni az új kapott oldalra, különben aktiválni.
-        t.activate(this);
-        if(sideA == null) {
+        if(active == false){ //nem aktív
+            if(sideA == null){ //ez az első amit belerakunk
+                sideA = t;
+                A_id = newId;
+                t.activate(this);
+            } else { //ez a második. megvizsgáljuk hogy ugyanannak a sínnek a másik végén van-e
+                Component aA = sideA.A_End;
+                Component aB = sideA.B_End;
+                if(aA == t.A_End || aA == t.B_End || aB == t.A_End || aB == t.B_End){ //ha azt a sínt fogják közre
+                    sideB = t;
+                    B_id = newId;
+                    active = true;
+                    t.activate(this);
+                }
+            }
+        } else { //ha már van alagút, azt törüljük, és újat adunk hozzá
+            invalidate();
             sideA = t;
             A_id = newId;
-        } else if(sideB == null) {
-            sideB = t;
-            B_id = newId;
-        }
-        if(sideA != null && sideB != null){
-            active = true;
+            t.activate(this);
         }
     }
 
@@ -46,7 +56,6 @@ public class Tunnel {
      * @return
      */
     public boolean isActive() {
-        System.out.println("[com.srsh.model.Tunnel].isActive()");
         //valami
         return active;
     }
@@ -72,6 +81,31 @@ public class Tunnel {
                 "com.srsh.model.Tunnel is " + a + "\n" +
                         "A side connected to " + A_id + "\n" +
                         "B side connected to " + B_id + "\n");
+    }
+
+    public void invalidate(){
+        if(sideA != null){
+            sideA.activate(this);//deaktiváljuk
+            sideA.invalidate();
+        }
+        if(sideB != null) {
+            sideB.activate(this);
+            sideB.invalidate();
+        }
+        A_id = 0;
+        B_id = 0;
+        sideA = null;
+        sideB = null;
+        active = false;
+        trainInside = false;
+    }
+
+    public Component getAEnd(){
+        return sideA;
+    }
+
+    public Component getBEnd(){
+        return sideB;
     }
 
 }

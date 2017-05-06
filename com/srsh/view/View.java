@@ -40,7 +40,7 @@ public class View {
 
 
         frame.add(panel);
-        //TODO
+
     }
 
 
@@ -106,6 +106,10 @@ public class View {
 
     public void tunnelActivated() {
         //TODO
+    }
+
+    public void addTunnel(Tunnel tunnel){
+        drawables.add(new GraphicTunnel(tunnel, null, "resources/rail.png"));
     }
 
     /**
