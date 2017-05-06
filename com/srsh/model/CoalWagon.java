@@ -34,27 +34,34 @@ public class CoalWagon extends TrainComponent{
         //ha igen
         if(atEnd){
             //lekéri a következő pályaelemet
+            previousComponent = current;
+
             Component next = current.getNext(previousComponent, this);
 
             //beállítja az aktuálisat és az előzőt
-            previousComponent = current;
             current = next;
 
             //vagont helyez be
             //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal
             //akkor a jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
-            if(previousComponent == current.getNextSide('A'))
-                current.insert(this, 'A',0);
-            else if(previousComponent == current.getNextSide('B'))
-                current.insert(this, 'B',0);
-            else if(previousComponent == current.getNextSide('C'))
-                current.insert(this, 'C',0);
-            else if(previousComponent == current.getNextSide('D'))
-                current.insert(this, 'D',0);
+            if(previousComponent == current.getNextSide('A')) {
+                current.insert(this, 'A', 0);
+                //System.out.println("insert");
+            }
+            else if(previousComponent == current.getNextSide('B')) {
+                //System.out.println("insert");
+                current.insert(this, 'B', 0);
+            } else if(previousComponent == current.getNextSide('C')) {
+               // System.out.println("insert");
+                current.insert(this, 'C', 0);
+            } else if(previousComponent == current.getNextSide('D')) {
+              //  System.out.println("insert");
+                current.insert(this, 'D', 0);
+            }
 
         }
 
-        System.out.println("which moved " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
+        //System.out.println("which moved " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
 
         //következőt lépteti ha van
         if(next != null)

@@ -50,7 +50,9 @@ public abstract class Component {
         y0 = y_0;
         x1 = x_1;
         y1 = y_1;
-        lenght = Math.sqrt(Math.pow(x_0 - x_1, 2) + Math.pow(y_0 - y_1, 2));
+        if(x0 == x1 && y0 == y1)
+            lenght = 0;
+        else lenght = Math.sqrt(Math.pow(x_0 - x_1, 2) + Math.pow(y_0 - y_1, 2));
         this.id = id;
     }
 
@@ -74,8 +76,14 @@ public abstract class Component {
      */
     public Component getNext(Component previous, TrainComponent tc){        // átlépteti a következő elemre a paraméterként kapott komponenst
         //asszem ki is kell szedni kollekcióból - D.
-        tcCollection.remove(tc);
-        if(previous == A_End){
+        switch(tcCollection.getEntrySideOf(tc)){
+            case 'A':
+                return B_End;
+            case 'B':
+                return A_End;
+        }
+        /*if(previous == A_End){
+            System.out.println("A-val egyezik");
             return B_End;
         }
         if(previous == B_End){
@@ -86,7 +94,8 @@ public abstract class Component {
         }
         if(previous == D_End){
             return C_End;
-        }
+        }*/
+        tcCollection.remove(tc);
         return null;
     }
 

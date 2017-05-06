@@ -1,10 +1,10 @@
+create m 100 100 Siding
 create m 100 100 Rail 300 300
+create m 300 300 Switch
 create m 300 300 Rail 400 100
 create m 300 300 Rail 400 350
-create m 300 300 Switch
 create m 400 350 TunnelEnd
-create m 100 100 Siding
-create m 400 100 Station red 10
+create m 400 100 Station red 11
 create m 400 100 Rail 500 200
 create m 500 200 TunnelEnd
 create m 500 200 Rail 600 400
@@ -12,17 +12,16 @@ create m 600 400 TunnelEnd
 create t Locomotive
 create t Wagon blue 10
 create t CoalWagon
-connect m 6 B 1 A
-connect m 1 B 4 A
-connect m 4 C 2 A
-connect m 4 B 3 A
-connect m 3 B 5 A
-connect m 6 A 2 B
-connect m 7 A 6 B
-connect m 8 A 7 B
-connect m 9 A 8 B
-connect m 10 A 9 B
-connect m 11 A 10 B
+connect m 1 B 2 A
+connect m 2 B 3 A
+connect m 3 B 4 A
+connect m 3 C 5 A
+connect m 5 B 6 A
+connect m 4 B 7 A
+connect m 7 B 8 A
+connect m 8 B 9 A
+connect m 9 B 10 A
+connect m 10 B 11 A
 connect t 1 2
 connect t 2 3
-place 1 1 B
+place 1 2 A

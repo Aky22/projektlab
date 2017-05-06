@@ -40,13 +40,16 @@ public class Collection {
         trainComponents.remove(l);
     }
 
+    public char getEntrySideOf(TrainComponent t){
+        return trainComponentsStartSide.get(trainComponents.indexOf(t));
+    }
+
     /**
      * @param l 
      * @return
      */
     public boolean myComponentAtEnd(TrainComponent l) {
         updatePositionOf(l);
-
         float current_poz = trainComponentsPozotions.get(trainComponents.indexOf(l));
 
         //Ha nem 0-a a hossz akkor sín
@@ -76,6 +79,7 @@ public class Collection {
         }
 
         if(trainComponents.contains(l)){
+            System.out.println(l.current._getId()+ " "+ l.current.lenght + " -- " + trainComponentsPozotions.get(trainComponents.indexOf(l)));
             return l.current.lenght <= trainComponentsPozotions.get(trainComponents.indexOf(l));
         }
         else{

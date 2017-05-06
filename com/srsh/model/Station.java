@@ -29,10 +29,11 @@ public class Station extends Component {
      * @param id
      */
     public Station(double x0, double y0, double x1, double y1, Color color, int pNumber, int id){
-        super(x0, y0, y1, x1, id);
+        super(x0, y0, x1, y1, id);
         c = color;
         passengerNumber = pNumber;
-        System.out.print("created com.srsh.model.Station with id: ");
+        System.out.print("created com.srsh.model.Station with id: " + x0 + " " + y0 + " "  +
+        x1 + " " + y1);
     }
 
     /**

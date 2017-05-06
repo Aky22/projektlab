@@ -35,10 +35,10 @@ public class Locomotive extends TrainComponent {
         //ha igen
         if(atEnd){
             //lekéri a következő pályaelemet
+            previousComponent = current;
             Component next = current.getNext(previousComponent, this);
 
             //beállítja az aktuálisat és az előzőt
-            previousComponent = current;
             current = next;
 
             //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a

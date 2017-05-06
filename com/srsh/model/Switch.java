@@ -38,26 +38,30 @@ public class Switch extends Component {
     @Override
     public Component getNext(Component previous, TrainComponent tc){
         //talán így jó???
-        tcCollection.remove(tc);
+
         //       B (false)
         // A---<
         //       C (true)
-        if(previous == A_End){
-            if(state)
-                return C_End;
-            else return A_End;
-        }
-        if(previous == B_End){
-            if(!state)
-                return A_End;
-            else tc.derail();
-        }
-        if(previous == C_End){
-            if(state)
-                return A_End;
-            else tc.derail();
+
+        switch(tcCollection.getEntrySideOf(tc)){
+            case 'A':
+                if(state)
+                    return C_End;
+                else return B_End;
+            case 'B':
+                if(!state)
+                    return A_End;
+                else tc.derail();
+                break;
+            case 'C':
+                if(state)
+                    return A_End;
+                else tc.derail();
+                break;
         }
 
+
+        tcCollection.remove(tc);
         return null;
     }
 
