@@ -28,7 +28,7 @@ public class Collection {
      */
     public void insert(TrainComponent l, char startSide, int offset) {
         trainComponents.add(l);
-        trainComponentsPozotions.add((float)0);
+        trainComponentsPozotions.add((float)offset);
         trainComponentsStartSide.add(startSide);
     }
 
