@@ -8,6 +8,7 @@ import java.awt.*;
 public class Wagon extends TrainComponent {
     Color color;
     int passengerNumber;
+    Point pos;
 
     /**
      * @param c
@@ -101,4 +102,10 @@ public class Wagon extends TrainComponent {
                 " next: " + nextId  + ", previous " + previousId+ ";\ncollided " + this.collided + "; destroyed " + this.destroyed + "; derailed " + derailed +
                 "\npassenger number: " + passengerNumber + ", color: " + color);
     }
+
+    //Getter a szin visszaadasahoz
+    public Color getColor(){return color;}
+
+
+
 }

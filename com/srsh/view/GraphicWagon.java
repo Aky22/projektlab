@@ -1,5 +1,6 @@
 package com.srsh.view;
 
+import com.srsh.model.Station;
 import com.srsh.model.Wagon;
 
 import javax.imageio.ImageIO;
@@ -18,6 +19,18 @@ public class GraphicWagon extends DrawableTrainComponent {
 
     @Override
     public void draw(Graphics g) {
-        //TODO
+
+        Wagon w = (Wagon)tc;
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        //pozicio lekerdezese
+        Point p = w.current.getCollection().getPosition(tc);
+
+
+        //x,y, magas, mely
+        g2d.fillRect(p.x,p.y,20,20);
+
+        g2d.setColor(w.getColor());
     }
 }

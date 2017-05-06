@@ -2,6 +2,7 @@ package com.srsh.view;
 
 import com.srsh.model.CoalWagon;
 import com.srsh.model.TrainComponent;
+import com.srsh.model.Wagon;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -18,6 +19,19 @@ public class GraphicCoalWagon extends DrawableTrainComponent {
 
     @Override
     public void draw(Graphics g) {
-        //TODO
+        CoalWagon w = (CoalWagon)tc;
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        //pozicio lekerdezese
+        Point p = w.current.getCollection().getPosition(tc);
+
+
+
+        //x,y, magas, mely
+        g2d.fillRect(p.x,p.y,20,20);
+
+        //Szenes kocsi fekete lesz
+        g2d.setColor(Color.BLACK);
     }
 }
