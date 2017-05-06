@@ -128,4 +128,8 @@ public class View {
     public void setVisible(boolean value) {
         frame.setVisible(value);
     }
+
+    public void invalidate(){
+        panel.repaint();
+    }
 }

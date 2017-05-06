@@ -39,7 +39,20 @@ public class Controller {
 
     public void run(){
         view.setVisible(true);
-        //view.drawAll();
+        new Thread(){
+            @Override
+            public void run(){
+                while(true) {
+                    try {
+                        Thread.sleep(1000/10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    game.giveCommand("step");
+                    view.invalidate();
+                }
+            }
+        }.start();
     }
 
     public void handleClick(int x, int y){
