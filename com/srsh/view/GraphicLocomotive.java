@@ -20,12 +20,14 @@ public class GraphicLocomotive extends DrawableTrainComponent {
 
         Graphics g2d = (Graphics)g;
 
+        //Locomotive peldany keszitese
         Locomotive loc = (Locomotive)tc;
         //Egyelnore Cyan mert miert ne, majd ki kene talalni valami mas szint neki / fekete a szenes kocsi :(((
         Color c = Color.CYAN;
-        Point p = loc.current.getCollection().getPosition(tc);
+        Point p = loc.current.getCollection().getPosition(tc); //pozicioja, ezt majd step valtoztatja
 
 
+        //Kirajzolja a mozgonyt + szin beallitasa
         g2d.fillRect(p.x,p.y,20,20);
         g2d.setColor(c);
 
