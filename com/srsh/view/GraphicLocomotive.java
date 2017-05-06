@@ -26,10 +26,10 @@ public class GraphicLocomotive extends DrawableTrainComponent {
         Color c = Color.CYAN;
         Point p = loc.current.getCollection().getPosition(tc); //pozicioja, ezt majd step valtoztatja
 
-
+        g2d.setColor(c);
         //Kirajzolja a mozgonyt + szin beallitasa
         g2d.fillRect(p.x,p.y,20,20);
-        g2d.setColor(c);
+
 
     }
 }

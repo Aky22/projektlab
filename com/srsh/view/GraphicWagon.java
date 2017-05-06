@@ -28,11 +28,12 @@ public class GraphicWagon extends DrawableTrainComponent {
         //pozicio lekerdezese
         Point p = w.current.getCollection().getPosition(w);
 
+        //szin beallitasa
+        g2d.setColor(w.getColor());
 
         //x,y, magas, mely
         g2d.fillRect(p.x,p.y,20,20);
 
-        //szin beallitasa
-        g2d.setColor(w.getColor());
+
     }
 }
