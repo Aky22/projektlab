@@ -23,7 +23,7 @@ public class GraphicCoalWagon extends DrawableTrainComponent {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        //pozicio lekerdezese
+        //pozicio lekerdezese a kirajzolashoz
         Point p = w.current.getCollection().getPosition(tc);
 
 
