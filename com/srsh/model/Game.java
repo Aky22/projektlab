@@ -270,7 +270,13 @@ public class Game {
     }
 
     public void clear(){
-        //TODO
+        exit = false;
+        alTrain.clear();
+        alMap.clear();
+        alLocomotive.clear();
+        tunnel = new Tunnel();
+        view.clear();
+        view.addTunnel(tunnel);
     }
 
     /**

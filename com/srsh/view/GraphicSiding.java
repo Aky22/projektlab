@@ -13,6 +13,7 @@ import java.io.IOException;
 public class GraphicSiding extends DrawableComponent {
     GraphicSiding(Siding siding, String img) {
         super(siding, img);
+        this.z_index = 2;
     }
 
     @Override

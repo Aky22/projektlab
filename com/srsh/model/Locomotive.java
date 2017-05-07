@@ -50,23 +50,25 @@ public class Locomotive extends TrainComponent {
             //lekéri a következő pályaelemet
             previousComponent = current;
             Component next = current.getNext(previousComponent, this);
+            if(!derailed) {
 
-            //beállítja az aktuálisat és az előzőt
-            current = next;
+                //beállítja az aktuálisat és az előzőt
+                current = next;
 
-            //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a
-            //jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
-            if(previousComponent == current.getNextSide('A'))
-                current.operateOn(this, 'A');
-            else if(previousComponent == current.getNextSide('B'))
-                current.operateOn(this, 'B');
-            else if(previousComponent == current.getNextSide('C'))
-                current.operateOn(this, 'C');
-            else if(previousComponent == current.getNextSide('D'))
-                current.operateOn(this, 'D');
+                //előző komponensünk megegyezik a jelenlegi A/B/C/D oldallal akkor a
+                //jelenlegi komponensünk azon oldalára kell lehelyezni a vonatelemet
+                if (previousComponent == current.getNextSide('A'))
+                    current.operateOn(this, 'A');
+                else if (previousComponent == current.getNextSide('B'))
+                    current.operateOn(this, 'B');
+                else if (previousComponent == current.getNextSide('C'))
+                    current.operateOn(this, 'C');
+                else if (previousComponent == current.getNextSide('D'))
+                    current.operateOn(this, 'D');
+            }
         }
 
-        System.out.println("stepped " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
+//        System.out.println("stepped " + id + " new position " + current._getId() + " " + current.getCollection()._getMyPosition(this));
 
         //következőt lépteti ha van
         if(next != null)

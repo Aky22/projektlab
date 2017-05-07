@@ -15,6 +15,7 @@ public class GraphicWagon extends DrawableTrainComponent {
 
     GraphicWagon(Wagon wagon, String img)  {
         super(wagon, img);
+        this.z_index = 9;
     }
 
     @Override

@@ -11,6 +11,7 @@ import java.awt.*;
 public class GraphicIntersection extends DrawableComponent {
     public GraphicIntersection(Component c, String image) {
         super(c, image);
+        this.z_index = 2;
     }
 
     @Override

@@ -13,14 +13,16 @@ public class GraphicTunnel extends DrawableComponent {
     public GraphicTunnel(Tunnel tunnel, Component c, String image) {
         super(c, image);
         this.tunnel = tunnel;
+        this.z_index = 10;
     }
 
     @Override
     public void draw(Graphics g) {
         if(tunnel.isActive()){
+            System.out.println("MEGHÍVVVVVA");
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.GRAY);
-            g2d.setStroke(new BasicStroke(5));
+            g2d.setStroke(new BasicStroke(25));
             g2d.drawLine(
                     tunnel.getAEnd().getPoint().x, tunnel.getAEnd().getPoint().y,
                     tunnel.getBEnd().getPoint().x, tunnel.getBEnd().getPoint().y

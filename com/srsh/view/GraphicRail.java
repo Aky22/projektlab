@@ -13,10 +13,9 @@ import java.io.IOException;
  */
 public class GraphicRail extends DrawableComponent {
 
-    protected Rail rail;
-
     GraphicRail(Rail rail, String img) {
         super(rail, img);
+        this.z_index = 1;
     }
 
     @Override

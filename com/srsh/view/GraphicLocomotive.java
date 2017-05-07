@@ -13,6 +13,7 @@ import java.io.IOException;
 public class GraphicLocomotive extends DrawableTrainComponent {
     GraphicLocomotive(Locomotive locomotive, String img) {
         super(locomotive, img);
+        this.z_index = 9;
     }
 
     @Override

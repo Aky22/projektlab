@@ -17,14 +17,14 @@ public class Window {
         JLabel info = new JLabel("Pálya kiválasztása");
         JButton startGame = new JButton("Start");
         JButton exit = new JButton("Kilépés");
-        DefaultListModel listModel = new DefaultListModel();
+        DefaultListModel<String> listModel = new DefaultListModel<String>();
         JList list;
 
         listModel.addElement("Pálya1");
         listModel.addElement("Pálya2");
         listModel.addElement("Pálya3");
 
-        list = new JList(listModel);
+        list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.setVisibleRowCount(3); //lehet több
@@ -32,8 +32,10 @@ public class Window {
 
         exit.addActionListener(e -> System.exit(0));
         startGame.addActionListener(e -> {
-            controller.loadMap((String)list.getSelectedValue());
-            controller.run();
+            if(!controller.gameInProgress()) {
+                controller.loadMap((String) list.getSelectedValue());
+                controller.run();
+            }
         });
 
         frame.setSize(200,200);

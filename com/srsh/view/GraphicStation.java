@@ -19,6 +19,7 @@ public class GraphicStation extends DrawableComponent {
      */
     GraphicStation(Station station, String img) {
        super(station, img);
+       this.z_index = 2;
     }
 
     /**

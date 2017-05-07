@@ -29,8 +29,9 @@ public class Switch extends Component {
      * @return
      */
     public void Switch() {
-        if(lastCrossed != null)
+        if(trainCrossing)
             lastCrossed.derail();
+
         state = !state; //+ valami az iránnyal??
         if(state)
             System.out.println("switched " + id + " new position: C");
@@ -52,9 +53,8 @@ public class Switch extends Component {
         // A---<
         //       C (true)
 
-            lastCrossed = null;
+        if(tc.next == null)
             trainCrossing = false;
-
 
         switch(tcCollection.getEntrySideOf(tc)){
             case 'A':
@@ -75,7 +75,7 @@ public class Switch extends Component {
                 else tc.derail();
                 break;
         }
-        tcCollection.remove(tc);
+        //tcCollection.remove(tc);
         return null;
     }
 

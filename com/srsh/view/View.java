@@ -10,8 +10,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class View {
     protected JFrame frame;
@@ -71,6 +74,7 @@ public class View {
                 break;
             default: break;
         }
+        sortDrawables();
     }
 
     public void addTrainComponent(String[] params, TrainComponent c) throws IOException {
@@ -86,6 +90,7 @@ public class View {
                 break;
             default: break;
         }
+        sortDrawables();
     }
 
     public void trainComponentDerailed(TrainComponent tc) {
@@ -122,7 +127,34 @@ public class View {
     }
 
     public void clear() {
-        //TODO
+        frame = new JFrame("srsh magic vonatos játék 1.0");
+        frame.setSize(800, 800);
+        panel = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g){
+                super.paintComponent(g);
+                drawAll(g);
+            }
+        };
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                controller.handleClick(e.getX(), e.getY());
+                panel.repaint();
+            }
+        });
+        drawables.clear();
+
+        frame.add(panel);
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                controller.gameOver("Map not completed.");
+                controller.setInGame(false);
+            }
+        });
     }
 
     public void setVisible(boolean value) {
@@ -138,5 +170,14 @@ public class View {
                 message,
                 "Game Over",
                 JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void sortDrawables(){
+        drawables.sort(new Comparator<Drawable>() {
+            @Override
+            public int compare(Drawable o1, Drawable o2) {
+                return ((Integer)o1.z_index).compareTo(o2.z_index);
+            }
+        });
     }
 }

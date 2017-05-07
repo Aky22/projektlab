@@ -14,6 +14,7 @@ import java.io.IOException;
 public class GraphicSwitch extends DrawableComponent {
     GraphicSwitch(Switch _switch, String img) {
         super(_switch, img);
+        this.z_index = 2;
     }
 
     @Override

@@ -14,6 +14,7 @@ public class GraphicTunnelEnd extends DrawableComponent {
 
     GraphicTunnelEnd(TunnelEnd tunelend, String img){
         super(tunelend, img);
+        this.z_index = 11;
     }
 
     @Override

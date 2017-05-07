@@ -15,6 +15,7 @@ import java.io.IOException;
 public class GraphicCoalWagon extends DrawableTrainComponent {
     public GraphicCoalWagon(TrainComponent tc, String image){
         super(tc, image);
+        this.z_index = 9;
     }
 
     @Override

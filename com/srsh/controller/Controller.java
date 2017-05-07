@@ -15,6 +15,7 @@ public class Controller {
     private View view;
     private Game game;
     private boolean gameOver = false;
+    private boolean inGame = false;
 
     public Controller(){
         view = new View(this);
@@ -23,7 +24,6 @@ public class Controller {
 
 
     public void loadMap(String file){
-        view.clear();
         game.clear();
 
         try(BufferedReader br = new BufferedReader(new FileReader("resources/" + file + ".txt"))) {
@@ -36,16 +36,18 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        gameOver = false;
     }
 
     public void run(){
         view.setVisible(true);
+        inGame = true;
         new Thread(){
             @Override
             public void run(){
                 while(!gameOver) {
                     try {
-                        Thread.sleep(1000/60);
+                        Thread.sleep(1000/100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -66,5 +68,13 @@ public class Controller {
     public void gameOver(String message){
         gameOver = true;
         view.gameOverDialog(message);
+    }
+
+    public void setInGame(boolean value){
+        inGame = value;
+    }
+
+    public boolean gameInProgress(){
+        return inGame;
     }
 }
