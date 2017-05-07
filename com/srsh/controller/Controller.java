@@ -26,14 +26,18 @@ public class Controller {
     public void loadMap(String file){
         game.clear();
 
-        try(BufferedReader br = new BufferedReader(new FileReader("resources/" + file + ".txt"))) {
+
+
+        try(BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/resources/" + file + ".txt"))) {
             String line;
             while((line = br.readLine()) != null){
                 game.giveCommand(line);
             }
         } catch (FileNotFoundException e) {
+            System.out.println(System.getProperty("user.dir"));
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println(System.getProperty("user.dir"));
             e.printStackTrace();
         }
         gameOver = false;

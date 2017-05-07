@@ -20,9 +20,9 @@ public class Window {
         DefaultListModel<String> listModel = new DefaultListModel<String>();
         JList list;
 
-        listModel.addElement("Pálya1");
-        listModel.addElement("Pálya2");
-        listModel.addElement("Pálya3");
+        listModel.addElement("palya1");
+        listModel.addElement("palya2");
+        listModel.addElement("palya3");
 
         list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
