@@ -45,7 +45,7 @@ public class Controller {
             public void run(){
                 while(!gameOver) {
                     try {
-                        Thread.sleep(1000/240);
+                        Thread.sleep(1000/60);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

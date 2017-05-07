@@ -20,7 +20,7 @@ public class Switch extends Component {
      * @param id
      */
     public Switch(double x0, double y0, double x1, double y1, int id){
-        super(x0, y0, y1, x1, id);
+        super(x0, y0, x1, y1, id);
         state = false;
         System.out.print("created com.srsh.model.Switch with id: ");
     }

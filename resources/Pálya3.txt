@@ -25,13 +25,16 @@ create m 500 500 Rail 700 400
 create m 700 400 Rail 600 50
 create m 600 50 Switch
 create m 600 50 Rail 100 100
+create m 600 50 Rail 650 100
+create m 650 100 Siding
+create m 25 100 Siding
 create t Locomotive
 create t Wagon red 10
 create t CoalWagon
 create t Wagon blue 2
 create t Wagon yellow 30
-create m 600 50 Rail 650 100
-create m 650 100 Siding
+create t Locomotive
+create t CoalWagon
 connect m 1 A 2 A
 connect m 2 B 3 A
 connect m 3 B 4 A
@@ -62,10 +65,13 @@ connect m 24 B 25 A
 connect m 25 B 26 A
 connect m 26 B 27 A
 connect m 1 C 27 B
-connect 26 C 28 A
-connect 29 A 28 B
+connect m 26 C 28 A
+connect m 29 A 28 B
+connect m 30 A 17 B
 connect t 1 2
 connect t 2 3
 connect t 3 4
 connect t 4 5
+connect t 6 7
 place 1 2 A
+place 6 27 B
