@@ -28,7 +28,7 @@ public class GraphicLocomotive extends DrawableTrainComponent {
 
         g2d.setColor(c);
         //Kirajzolja a mozgonyt + szin beallitasa
-        g2d.fillRect(p.x,p.y,20,20);
+        g2d.fillRect(p.x-10,p.y-10,20,20);
 
 
     }
