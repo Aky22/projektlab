@@ -1,12 +1,13 @@
 package com.srsh.model;
 
+import static java.lang.System.exit;
+
 /**
  * 
  */
 public class Switch extends Component {
 
     private boolean state;
-
     /**
      *
      * @param x0
@@ -45,22 +46,23 @@ public class Switch extends Component {
 
         switch(tcCollection.getEntrySideOf(tc)){
             case 'A':
+                tcCollection.remove(tc);
                 if(state)
                     return C_End;
                 else return B_End;
             case 'B':
+                tcCollection.remove(tc);
                 if(!state)
                     return A_End;
                 else tc.derail();
                 break;
             case 'C':
+                tcCollection.remove(tc);
                 if(state)
                     return A_End;
                 else tc.derail();
                 break;
         }
-
-
         tcCollection.remove(tc);
         return null;
     }

@@ -37,6 +37,7 @@ public class Collection {
      */
     public void remove(TrainComponent l) {
         trainComponentsPozotions.remove(trainComponents.indexOf(l));
+        trainComponentsStartSide.remove(trainComponents.indexOf(l));
         trainComponents.remove(l);
     }
 

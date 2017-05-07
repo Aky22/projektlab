@@ -78,8 +78,10 @@ public abstract class Component {
         //asszem ki is kell szedni kollekcióból - D.
         switch(tcCollection.getEntrySideOf(tc)){
             case 'A':
+                tcCollection.remove(tc);
                 return B_End;
             case 'B':
+                tcCollection.remove(tc);
                 return A_End;
         }
         /*if(previous == A_End){
@@ -95,7 +97,6 @@ public abstract class Component {
         if(previous == D_End){
             return C_End;
         }*/
-        tcCollection.remove(tc);
         return null;
     }
 
