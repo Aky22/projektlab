@@ -44,6 +44,8 @@ public class Wagon extends TrainComponent {
 
             return ret; //visszatérünk a leszállt utasok számával
         }
+        if(this.passengerNumber == 0)
+            return ret += next.atStation(c, passengerNumber);
         return ret; //ha nem egyezik a szín felesleges tovább hívni...
     }
 
@@ -109,6 +111,14 @@ public class Wagon extends TrainComponent {
 
     public int getPassengerNumber(){
         return passengerNumber;
+    }
+
+    @Override
+    public int getAllPassengerNumber(){
+        int ret = passengerNumber;
+        if(next != null)
+            return  ret += next.getAllPassengerNumber();
+        return ret;
     }
 
 }

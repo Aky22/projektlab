@@ -108,4 +108,9 @@ public abstract class TrainComponent {
         return n + 1;
     }
 
+    public int getAllPassengerNumber(){
+        if(next != null)
+            return next.getAllPassengerNumber();
+        return 0;
+    }
 }

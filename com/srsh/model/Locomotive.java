@@ -24,7 +24,7 @@ public class Locomotive extends TrainComponent {
         if(next != null) {
             ret += next.atStation(c, passengerNumber); //leszállók száma
         }//
-         return ret;
+        return ret;
     }
 
     @Override

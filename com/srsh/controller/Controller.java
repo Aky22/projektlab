@@ -49,9 +49,11 @@ public class Controller {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    if(!gameOver) //szinkronizációs okok miatt..
-                        game.giveCommand("step");
                     view.invalidate();
+                    game.giveCommand("step");
+                    if(game.allTrainsAreEmpty()){
+                        gameOver("Map completed!");
+                    }
                 }
             }
         }.start();

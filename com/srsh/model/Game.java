@@ -301,5 +301,14 @@ public class Game {
     public void trainDerailed(Locomotive l){
         controller.gameOver(l.id + ". locomotive derailed");
     }
+
+    public boolean allTrainsAreEmpty(){
+        for(TrainComponent locomotive : alLocomotive){
+            Locomotive l = (Locomotive) locomotive;
+            if(l.getAllPassengerNumber() != 0)
+                return false;
+        }
+        return true;
+    }
 }
 
