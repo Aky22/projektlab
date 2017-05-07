@@ -9,6 +9,7 @@ create m 400 100 Rail 500 200
 create m 500 200 TunnelEnd
 create m 500 200 Rail 600 400
 create m 600 400 TunnelEnd
+create m 600 400 Rail 400 350
 create t Locomotive
 create t Wagon blue 10
 create t CoalWagon
@@ -22,6 +23,8 @@ connect m 7 B 8 A
 connect m 8 B 9 A
 connect m 9 B 10 A
 connect m 10 B 11 A
+connect m 11 B 12 B
+connect m 12 A 6 B
 connect t 1 2
 connect t 2 3
 place 1 2 A
