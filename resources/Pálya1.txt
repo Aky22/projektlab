@@ -23,8 +23,8 @@ connect m 7 B 8 A
 connect m 8 B 9 A
 connect m 9 B 10 A
 connect m 10 B 11 A
-connect m 11 B 12 B
-connect m 12 A 6 B
+connect m 11 B 12 A
+connect m 12 B 6 B
 connect t 1 2
 connect t 2 3
 place 1 2 A
