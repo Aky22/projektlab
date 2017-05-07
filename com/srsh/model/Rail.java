@@ -27,13 +27,8 @@ public class Rail extends Component {
         tcCollection.insert(l, startSide,0); //behelyezzük a kollekcióba
     }
 
-    public void placeLocomotive(char side, Locomotive locomotive){
-        //TODO
-        insert(locomotive, side,0);
-        locomotive.next.place(this, side, 0);
-
-
-
+    public void placeLocomotive(char side, Locomotive locomotive, int offset){
+        tcCollection.insert(locomotive, side,offset);
     }
 
     @Override

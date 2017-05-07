@@ -92,7 +92,7 @@ public class Wagon extends TrainComponent {
         this.current = current;
         this.current.insert(this, side, offset);
         if(next != null){
-            next.place(current, side, offset + 40);
+            next.place(current, side, offset - 40);
         }
     }
 
@@ -107,5 +107,8 @@ public class Wagon extends TrainComponent {
     public Color getColor(){return color;}
 
 
+    public int getPassengerNumber(){
+        return passengerNumber;
+    }
 
 }

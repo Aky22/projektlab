@@ -132,4 +132,11 @@ public class View {
     public void invalidate(){
         panel.repaint();
     }
+
+    public void gameOverDialog(String message){
+        JOptionPane.showMessageDialog(frame,
+                message,
+                "Game Over",
+                JOptionPane.ERROR_MESSAGE);
+    }
 }

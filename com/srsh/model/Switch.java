@@ -8,6 +8,9 @@ import static java.lang.System.exit;
 public class Switch extends Component {
 
     private boolean state;
+
+    private boolean trainCrossing = false;
+    private TrainComponent lastCrossed = null;
     /**
      *
      * @param x0
@@ -26,15 +29,20 @@ public class Switch extends Component {
      * @return
      */
     public void Switch() {
-        TrainComponent first = tcCollection.getFirst(); ///<<< ez mi a...?
-        if(first != null){
-            first.derail();
-        }
+        if(lastCrossed != null)
+            lastCrossed.derail();
         state = !state; //+ valami az iránnyal??
         if(state)
             System.out.println("switched " + id + " new position: C");
         else System.out.println("switched " + id + " new position: B");
     }
+
+    @Override
+    public void insert(TrainComponent tc, char startSide, int offset){
+        tcCollection.insert(tc, startSide,offset);
+        lastCrossed = tc;
+    }
+
 
     @Override
     public Component getNext(Component previous, TrainComponent tc){
@@ -43,6 +51,10 @@ public class Switch extends Component {
         //       B (false)
         // A---<
         //       C (true)
+
+            lastCrossed = null;
+            trainCrossing = false;
+
 
         switch(tcCollection.getEntrySideOf(tc)){
             case 'A':
@@ -71,6 +83,8 @@ public class Switch extends Component {
      * @param l
      */
     public void operateOn(Locomotive l, char startSide) {
+        trainCrossing = true;
+        lastCrossed = l;
         tcCollection.insert(l, startSide,0);
     }
 

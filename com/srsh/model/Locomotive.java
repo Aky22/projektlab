@@ -6,13 +6,15 @@ import java.awt.*;
  * 
  */
 public class Locomotive extends TrainComponent {
+    private  Game game;
 
     /**
      *
      * @param id
      */
-    public Locomotive(int id){
+    public Locomotive(int id, Game game){
         super(id);
+        this.game = game;
         System.out.print("created com.srsh.model.Locomotive with id: ");
     }
 
@@ -23,6 +25,12 @@ public class Locomotive extends TrainComponent {
             ret += next.atStation(c, passengerNumber); //leszállók száma
         }//
          return ret;
+    }
+
+    @Override
+    public void derail(){
+        super.derail();
+        game.trainDerailed(this);
     }
 
 
@@ -65,9 +73,19 @@ public class Locomotive extends TrainComponent {
     @Override
     public void place(Component current, char side, int offset) {
         this.current = current;
-        this.current.operateOn(this, side);
+        //this.current.operateOn(this, side);
+
+
+        int l = 0;
+        //vonat hosszát meg határozza
         if(next != null){
-            next.place(current, side, offset + 40);
+            l =  countLength(0);
+        }
+        Rail rail = (Rail)this.current;
+        rail.placeLocomotive(side, this, (l-1)*40);
+
+        if(next != null){
+            next.place(current, side, (l-2) * 40);
         }
         //ellenőrizni kell még hogy van-e már ott traincomponent
     }

@@ -25,15 +25,18 @@ public class GraphicWagon extends DrawableTrainComponent {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        //pozicio lekerdezese
-        Point p = w.current.getCollection().getPosition(w);
+        Point p;
+        if(w.current.isPoint())
+            p = w.current.getPoint();
+        else p = w.current.getCollection().getPosition(w);
+
 
         //szin beallitasa
         g2d.setColor(w.getColor());
 
         //x,y, magas, mely
         g2d.fillRect(p.x-10,p.y-10,20,20);
-
+        g2d.drawString(String.valueOf(w.getPassengerNumber()), p.x - 10, p.y - 15);
 
         g2d.setColor(Color.BLACK);
     }

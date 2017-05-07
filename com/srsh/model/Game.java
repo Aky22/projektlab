@@ -1,5 +1,6 @@
 package com.srsh.model;
 
+import com.srsh.controller.Controller;
 import com.srsh.view.View;
 
 import java.io.*;
@@ -16,9 +17,11 @@ public class Game {
     Tunnel tunnel = new Tunnel();
     private View view;
     boolean exit;
+    private Controller controller;
 
-    public Game(View view) {
+    public Game(View view, Controller controller) {
         this.view = view;
+        this.controller = controller;
         exit = false;
         view.addTunnel(tunnel);
     }
@@ -102,7 +105,7 @@ public class Game {
                 TrainComponent newComponent = null;
                 switch(params[2]){
                     case "Locomotive":
-                        newComponent = new Locomotive((newId));
+                        newComponent = new Locomotive((newId), this);
                         break;
                     case "Wagon":
                         switch(params[3]){ //leszarom, ennyi szín
@@ -289,6 +292,14 @@ public class Game {
                 }
             }
         }
+    }
+
+    /**
+     * L vonat jelenti be hogy kisiklott
+     * @param l
+     */
+    public void trainDerailed(Locomotive l){
+        controller.gameOver(l.id + ". locomotive derailed");
     }
 }
 

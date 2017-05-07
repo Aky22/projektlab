@@ -14,10 +14,11 @@ import java.io.IOException;
 public class Controller {
     private View view;
     private Game game;
+    private boolean gameOver = false;
 
     public Controller(){
         view = new View(this);
-        game = new Game(view);
+        game = new Game(view, this);
     }
 
 
@@ -42,13 +43,14 @@ public class Controller {
         new Thread(){
             @Override
             public void run(){
-                while(true) {
+                while(!gameOver) {
                     try {
-                        Thread.sleep(1000/100);
+                        Thread.sleep(1000/240);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    game.giveCommand("step");
+                    if(!gameOver) //szinkronizációs okok miatt..
+                        game.giveCommand("step");
                     view.invalidate();
                 }
             }
@@ -57,5 +59,10 @@ public class Controller {
 
     public void handleClick(int x, int y){
         game.handleClick(x, y);
+    }
+
+    public void gameOver(String message){
+        gameOver = true;
+        view.gameOverDialog(message);
     }
 }

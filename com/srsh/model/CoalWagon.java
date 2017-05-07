@@ -75,7 +75,7 @@ public class CoalWagon extends TrainComponent{
         this.current.insert(this, side, offset);
         //TODO: ellenőrizni kell még hogy van-e már ott traincomponent
         if(next != null){
-            next.place(current, side, offset + 40);
+            next.place(current, side, offset - 40);
         }
     }
 

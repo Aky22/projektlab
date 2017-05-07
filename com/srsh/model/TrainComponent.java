@@ -102,4 +102,10 @@ public abstract class TrainComponent {
         inTunnel = !inTunnel;
     }
 
+    protected int countLength(int n){
+        if(next != null)
+            return next.countLength(n + 1);
+        return n + 1;
+    }
+
 }
