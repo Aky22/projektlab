@@ -32,8 +32,9 @@ public class GraphicWagon extends DrawableTrainComponent {
         g2d.setColor(w.getColor());
 
         //x,y, magas, mely
-        g2d.fillRect(p.x,p.y,20,20);
+        g2d.fillRect(p.x-10,p.y-10,20,20);
 
 
+        g2d.setColor(Color.BLACK);
     }
 }
