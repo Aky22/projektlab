@@ -83,6 +83,12 @@ public abstract class Component {
             case 'B':
                 tcCollection.remove(tc);
                 return A_End;
+            case 'C':
+                tcCollection.remove(tc);
+                return D_End;
+            case 'D':
+                tcCollection.remove(tc);
+                return C_End;
         }
         /*if(previous == A_End){
             System.out.println("A-val egyezik");
