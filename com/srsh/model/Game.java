@@ -310,5 +310,13 @@ public class Game {
         }
         return true;
     }
+
+    /**
+     * L vonat jelenti be hogy ütközött
+     * @param l
+     */
+    public void trainCollided(Locomotive l){
+        controller.gameOver(l.id + ". locomotive collided");
+    }
 }
 

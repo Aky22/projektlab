@@ -15,12 +15,6 @@ public class GraphicIntersection extends DrawableComponent {
 
     @Override
     public void draw(Graphics g) {
-        //TODO
+        g.fillOval(c.getPoint().x - 5, c.getPoint().y - 5, 10, 10);
     }
-
-    /*protected Intersection intersection;
-
-    GraphicIntersection(Intersection intersection){
-        super()*/
-
 }

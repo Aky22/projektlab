@@ -33,6 +33,11 @@ public class Locomotive extends TrainComponent {
         game.trainDerailed(this);
     }
 
+    @Override
+    public void collision(){
+        super.collision();
+        game.trainCollided(this);
+    }
 
     @Override
     public void step() {

@@ -47,6 +47,14 @@ public abstract class TrainComponent {
         }
     }
 
+    public void collision(){
+        collided = true;
+        destroyed = true;
+        if(next != null)
+            next.collision();
+    }
+
+
     /**
      * Állomásra érés absztrakt metódusa - állomás hívja
      * @param c - Állomás színe

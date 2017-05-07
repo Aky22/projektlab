@@ -63,20 +63,20 @@ public class Collection {
 
                 //nem egyeznek meg És különböző oldalról indultak ÉS abs értékben 1-nél közelebb vannak egymáshoz
                 if((trainComponents.indexOf(l) != i) && (side_) && (1 >=  Math.abs((l.current.lenght - trainComponentsPozotions.get(i))-current_poz))){
-                    l.derail();
-                    trainComponents.get(i).derail();
+                    l.collision();
+                    trainComponents.get(i).collision();
                 }
              //   System.out.println("\n"+"nem egyeznek meg: "+ (trainComponents.indexOf(l) != i)+" oldal egyezés : "+ (side_)+" azonos pont: "+(current_poz == l.current.lenght - trainComponentsPozotions.get(i))+ "Egyik: "+current_poz+" Masik: "+ (l.current.lenght - trainComponentsPozotions.get(i)));
             }
         }
         //ha nem sín akkor a hossz nem 0-a és ha ütközés van akkor a tárolt elemek szám nagyobb mint 1
         else if(l.current.lenght == 0 && trainComponents.size() > 1){
-            trainComponents.get(1).derail();
-            trainComponents.get(0).derail();
+            trainComponents.get(1).collision();
+            trainComponents.get(0).collision();
             if(trainComponents.size() > 2)
-                trainComponents.get(2).derail();
+                trainComponents.get(2).collision();
             if(trainComponents.size() > 3)
-                trainComponents.get(3).derail();
+                trainComponents.get(3).collision();
         }
 
         if(trainComponents.contains(l)){
