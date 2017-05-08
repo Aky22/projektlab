@@ -34,6 +34,5 @@ public class GraphicStation extends DrawableComponent {
         String pn = String.valueOf(((Station) c).getPassengerNumber());
         g.drawString(pn, c.getPoint().x - 5, c.getPoint().y - 10);
         g.setColor(Color.BLACK);
-        //TODO
     }
 }
