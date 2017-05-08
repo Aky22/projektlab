@@ -3,30 +3,74 @@ package com.srsh.model;
 import java.awt.*;
 
 /**
- * 
+ * Pályát alkotó elemek absztrakt ősosztálya
  */
 public abstract class Component {
 
+    /**
+     * Rajta lévő vonatelemek kollekciója
+     */
     protected Collection tcCollection;
+
+    /**
+     * A vége
+     */
     protected Component A_End = null;
+
+    /**
+     * B vége
+     */
     protected Component B_End = null;
+
+    /**
+     * C vége - csak váltónál és kereszteződésnél értelmezett
+     */
     protected Component C_End = null;
+
+    /**
+     * D vége - csak kereszteződésnél értelmezett
+     */
     protected Component D_End = null;
+
+    /**
+     * Hossz
+     */
     protected double lenght;
+
+    /**
+     * Végpontok világ koordinátarendszerben
+     */
     protected double x0, y0, x1, y1;
 
+    /**
+     * Model-beli azonosítószám
+     */
     protected int id = 0;
+
+    /**
+     * A vég modellbeli id-je
+     */
     protected int A_id = 0;
+
+    /**
+     * B vég id-je modellben
+     */
     protected int B_id = 0;
+
+    /**
+     * C vég id-je modellben
+     */
     protected int C_id = 0;
+
+    /**
+     * D véd id-je modellben
+     */
     protected int D_id = 0;
 
-
-    /** Ezek az előző teszthez kellettek, törölhető majd - D.
-    public boolean _TESTEND;
-    public boolean _TESTCOLLISION;
+    /**
+     * Konstuktor
+     * @param id modell id
      */
-
     public Component(int id){
         x0 = 0;
         y0 = 0;
@@ -37,12 +81,12 @@ public abstract class Component {
     }
 
     /**
-     *
-     * @param x_0
-     * @param y_0
-     * @param x_1
-     * @param y_1
-     * @param id
+     * Konstruktor világkoordináta pozíciókkal
+     * @param x_0 A vég x koord.
+     * @param y_0 A vég y koord.
+     * @param x_1 B vég x koord.
+     * @param y_1 B vég y koord.
+     * @param id modell id
      */
     public Component(double x_0, double y_0, double x_1, double y_1, int id){
         tcCollection = new Collection();
@@ -57,11 +101,15 @@ public abstract class Component {
     }
 
     /**
-     * @param l
+     * Új sínelemre lépéskor hívódik meg
+     * Leszármazott osztálynak megfelelően
+     * @param l mozdony ami rálépett
+     * @param startSide kezdőoldala
      */
     abstract public void operateOn(Locomotive l, char startSide);
 
     /**
+     * Visszaadja a kollekciót
      * @return
      */
     public Collection getCollection(){
@@ -69,10 +117,11 @@ public abstract class Component {
     }
 
     /**
-     * @param previous 
-     * @param tc 
-     * @return com.srsh.model.Component
-     * Átlépteti a következő elemre a vonatkomponenst
+     * Visszaadja a paraméterként kapott vonatelemnek a következő
+     * pályaelemet
+     * @param previous vonatelem korábbi pályaeleme
+     * @param tc vonatelem
+     * @return következő pályaelem
      */
     public Component getNext(Component previous, TrainComponent tc){        // átlépteti a következő elemre a paraméterként kapott komponenst
         //asszem ki is kell szedni kollekcióból - D.
@@ -90,24 +139,11 @@ public abstract class Component {
                 tcCollection.remove(tc);
                 return C_End;
         }
-        /*if(previous == A_End){
-            System.out.println("A-val egyezik");
-            return B_End;
-        }
-        if(previous == B_End){
-            return A_End;
-        }
-        if(previous == C_End){
-            return D_End;
-        }
-        if(previous == D_End){
-            return C_End;
-        }*/
         return null;
     }
 
     /**
-     *
+     * Paraméterrel ellentétes oldalt adja vissza
      * @param side
      * @return
      */
@@ -128,7 +164,11 @@ public abstract class Component {
     }
 
     /**
-     * @param tc
+     * Behelyezi a tc-t a kollekcióba megfelelő eltolással
+     * és kezdőoldallal
+     * @param tc berakni kívánt elem
+     * @param startSide kezdőoldala
+     * @param offset eltolás
      */
     public void insert(TrainComponent tc, char startSide, int offset){      //vagont helyez be
         tcCollection.insert(tc, startSide, offset);
@@ -203,35 +243,4 @@ public abstract class Component {
     public void click(Game game){
 
     }
-
-    /**
-     * Beállítja hogy a tesztkörnyezetben a vonat a lépés végén átlép-e a következő elemre
-     * @param yes
-     */
-    /*public void set_TEST_LocomotiveWillBeAtTheEnd(boolean yes){
-        _TESTEND = yes;
-    }*/
-
-    /**
-     * Beállítja hogy a tesztkörnyezetben ezen a pályaelem ütközik-e a vonat
-     * @param yes
-     */
-    //public void set_TEST_Collision(boolean yes) {_TESTCOLLISION = yes;}
-
-
-    /**
-     * Beállítja az A végét az elemnek
-     * @param a
-     */
-   /* public void setAEnd(com.srsh.model.Component a){
-        A_End = a;
-    }*/
-
-    /**
-     * Beállítja az B végét az elemnek
-     * @param b
-     */
-    /*public void setBEnd(com.srsh.model.Component b){
-        B_End = b;
-    }*/
 }

@@ -1,23 +1,34 @@
 package com.srsh.model;
 
-import static java.lang.System.exit;
-
 /**
- * 
+ * Váltót megvalósító osztály
  */
 public class Switch extends Component {
-
+    /**
+     * Státusza
+     *        B (false)
+     *  A---<
+     *       C (true)
+     */
     private boolean state;
 
-    private boolean trainCrossing = false;
-    private TrainComponent lastCrossed = null;
     /**
-     *
-     * @param x0
-     * @param y0
-     * @param x1
-     * @param y1
-     * @param id
+     * Vonat áthaladását jelzi, így az kisiklatható váltáskor
+     */
+    private boolean trainCrossing = false;
+
+    /**
+     * Utoljára áthaladt vonatelem
+     */
+    private TrainComponent lastCrossed = null;
+
+    /**
+     * Konstruktor
+     * @param x0 A x koord
+     * @param y0 A y koord
+     * @param x1 B x koord
+     * @param y1 B y koord
+     * @param id modell id
      */
     public Switch(double x0, double y0, double x1, double y1, int id){
         super(x0, y0, x1, y1, id);
@@ -26,7 +37,8 @@ public class Switch extends Component {
     }
 
     /**
-     * @return
+     * Váltást valósítja meg
+     * Egyben kisiklatja a rajta áthaladó vonatot, ha létezik
      */
     public void Switch() {
         if(trainCrossing)
@@ -38,16 +50,29 @@ public class Switch extends Component {
         else System.out.println("switched " + id + " new position: B");
     }
 
+    /**
+     * Behelyezi a paraméterként kapott elemek a kollekcióba
+     * @param tc berakni kívánt elem
+     * @param startSide kezdőoldala
+     * @param offset eltolás
+     */
     @Override
     public void insert(TrainComponent tc, char startSide, int offset){
         tcCollection.insert(tc, startSide,offset);
         lastCrossed = tc;
     }
 
-
+    /**
+     * Visszaadja a következő pályaelemet
+     * Rossz irányba történő áthaladás esetén kisiklatja a vonatot.
+     * Utolsó kocsi áthaladásakor visszabillenti a flag-et így már
+     * biztonságosan lehet váltani
+     * @param previous vonatelem korábbi pályaeleme
+     * @param tc vonatelem
+     * @return Következő pályaelem
+     */
     @Override
     public Component getNext(Component previous, TrainComponent tc){
-        //talán így jó???
 
         //       B (false)
         // A---<
@@ -80,6 +105,8 @@ public class Switch extends Component {
     }
 
     /**
+     * Elhelyezi a mozdonyt a kollekcióban, egyben jelzi magának
+     * hogy egy vonat halad át rajta
      * @param l
      */
     public void operateOn(Locomotive l, char startSide) {
@@ -88,6 +115,9 @@ public class Switch extends Component {
         tcCollection.insert(l, startSide,0);
     }
 
+    /**
+     * Státusz kiírás standard outputra
+     */
     @Override
     public void list(){
         char s;
@@ -101,17 +131,29 @@ public class Switch extends Component {
                 "C side connected to " + C_id);
     }
 
+    /**
+     * Megadja, hogy pontszerű
+     * @return
+     */
     @Override
     public boolean isPoint() {
         return true;
     }
 
+    /**
+     * Visszatér a kiválasztatott oldallal
+     * @return kiválasztott odlal
+     */
     public Component getSelected(){
         if(state)
             return C_End;
         else return B_End;
     }
 
+    /**
+     * Kattintást kezelő metódus, átváltja a váltót
+     * @param game
+     */
     @Override
     public void click(Game game){
         this.Switch();

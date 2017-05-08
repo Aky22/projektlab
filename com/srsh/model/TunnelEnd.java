@@ -1,19 +1,26 @@
 package com.srsh.model;
 
 /**
- * 
+ * Alagútvéget reprezentáló osztály
  */
 public class TunnelEnd extends Component {
 
+    /**
+     * Megadja, hogy aktív-e az alagútvég
+     */
     private boolean active;
+
+    /**
+     * Ha aktív alagútban van, akkor ez tárolja az alagutat
+     */
     private Tunnel tunnel;
 
     /**
-     *
-     * @param x_0
-     * @param y_0
-     * @param x_1
-     * @param y_1
+     * Konstruktor
+     * @param x_0 A vég x koord
+     * @param y_0 A vég y koord
+     * @param x_1 megegyrezik x_0al
+     * @param y_1 megegyezik y_0al
      * @param id
      */
     public TunnelEnd(double x_0, double y_0, double x_1, double y_1, int id){
@@ -22,8 +29,9 @@ public class TunnelEnd extends Component {
     }
 
     /**
-     *
-     * @param t
+     * Aktiválja az alagútvéget, egyben eltárolja
+     * az alagutat is, amit ő alkot
+     * @param t - Alagút
      */
     protected void activate(Tunnel t) {
         active = !active;
@@ -32,14 +40,15 @@ public class TunnelEnd extends Component {
     }
 
     /**
+     * Megadja, hogy aktív-e az alagút
      * @return
      */
-
     public boolean isActive() {
         return active;
     }
 
     /**
+     * Jelzi a mozdonynak, hogy alagúton halad át, ha aktív
      * @param l
      */
     public void operateOn(Locomotive l, char startSide) {
@@ -50,6 +59,9 @@ public class TunnelEnd extends Component {
         }
     }
 
+    /**
+     * Státusz kiírása standard outputra
+     */
     @Override
     public void list(){
         String act;
@@ -62,11 +74,19 @@ public class TunnelEnd extends Component {
                 "B side connected to " + B_id);
     }
 
+    /**
+     * Visszadja, hogy pontszerű
+     * @return
+     */
     @Override
     public boolean isPoint() {
         return true;
     }
 
+    /**
+     * Kattintásra aktiválja magát
+     * @param game
+     */
     @Override
     public void click(Game game){
         if(tunnel == null) { //aktiváljuk ilyenkor
@@ -81,6 +101,9 @@ public class TunnelEnd extends Component {
 
     }
 
+    /**
+     * Deaktiválja magát, törli az alagútra mutató referenciát
+     */
     public void invalidate(){
         active = false;
         tunnel = null;

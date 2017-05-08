@@ -8,17 +8,51 @@ import java.util.*;
 import java.awt.Color;
 
 /**
+ * Modellt összefogó osztály
  * Created by domba on 2017. 04. 14..
  */
 public class Game {
+    /**
+     * Pályát alkotó elemek kollekciója
+     */
     ArrayList<Component> alMap = new ArrayList<>();
+
+    /**
+     * Vonatokat alkotó elemek kollekciója
+     */
     ArrayList<TrainComponent> alTrain = new ArrayList<>();
+
+    /**
+     * Mozdonyokat alkotó elemek kollekciója
+     */
     ArrayList<TrainComponent> alLocomotive = new ArrayList<>();
+
+    /**
+     * Alagút
+     */
     Tunnel tunnel = new Tunnel();
+
+    /**
+     * Nézet
+     */
     private View view;
+
+    /**
+     * Kilépést jelző flag
+     */
     boolean exit;
+
+    /**
+     * Kontroller
+     */
     private Controller controller;
 
+    /**
+     * Konstruktor, mely eltárolja a nézetet és a kontrollert
+     * hogy tudjon velük kommunikálni
+     * @param view nézet
+     * @param controller kontroller
+     */
     public Game(View view, Controller controller) {
         this.view = view;
         this.controller = controller;
@@ -27,13 +61,10 @@ public class Game {
     }
 
     /**
-     * Végtelen ciklusban olvassa az inputban megjelenő parancsokat.
-     * Parancsnak megfelelő privát metódusokat hív a parancs végrehajtására
-     * a megadott paraméterekkel.
-     * com.srsh.model.Application main függvénye hívja.
+     * Paraméterként kapott parancsot értelmezi és végrehajtja
+     * @param command parancs
      */
     public void giveCommand(String command) {
-        //TODO függvényhívások, azok implementálása
 
         String[] split = command.split(" "); //split szóközök mentén
         switch (split[0]) { //megfelelő metódus hívás, vagy "inline"
@@ -68,7 +99,6 @@ public class Game {
                             //fw = new FileWriter(split[2]);
                             //saving = true;
                         } catch (java.io.IOException e) {
-                            //TODO
                             e.printStackTrace();
                         }
                         break;
@@ -77,7 +107,6 @@ public class Game {
                             fw.close();
                             saving = false;
                         } catch (IOException e) {
-                            //TODO
                             e.printStackTrace();
                         }
                         break;

@@ -4,12 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Főablakot megvalósító osztály
  * Created by Dombai Tamás on 2017. 05. 05..
  */
 public class Window {
+    /**
+     * Kezdőablak
+     */
     private JFrame frame;
+
+    /**
+     * Controller
+     */
     private Controller controller;
 
+    /**
+     * Default konstruktor
+     * Példányosít egy új főablakot, beállítja a gombok
+     * eseménykezelőit, létrehozza a Model-t és View-t vezérlő
+     * kontrollert.
+     */
     public Window(){
         controller = new Controller();
 
@@ -58,6 +72,10 @@ public class Window {
         frame.setVisible(true);
     }
 
+    /**
+     * Aktiválttá teszi az ablakot. Application hívja
+     * @param value
+     */
     public void setVisible(boolean value){
         frame.setVisible(value);
     }

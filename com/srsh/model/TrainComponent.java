@@ -3,25 +3,67 @@ package com.srsh.model;
 import java.awt.*;
 
 /**
- * 
+ * Vonatot alkotó elemek absztrakt ősosztálya
  */
 public abstract class TrainComponent {
-
+    /**
+     * Előző vonatelem
+     */
     public TrainComponent previous = null;
+
+    /**
+     * Következő vonatelem
+     */
     public TrainComponent next = null;
+
+    /**
+     * Az a pályát alkotó elem amin épp rajta van
+     */
     public Component current = null;
+
+    /**+
+     * Az a pályát alkotó elem amin ezt megelőzően volt
+     */
     protected Component previousComponent = null;
+
+    /**
+     * Megsemmisülést jelző flag
+     */
     public boolean destroyed = false;
+
+    /**
+     * Kisiklást jelző flag
+     */
     public boolean derailed = false;
+
+    /**
+     * Ütközést jelző flag
+     */
     public boolean collided = false;
+
+    /**
+     * Azt jelzi hogy alagútban van-e
+     */
     public boolean inTunnel = false;
+
+    /**
+     * modell id
+     */
     public int id = 0;
+
+    /**
+     * következő kocsi id-je
+     */
     protected int nextId = 0;
+
+    /**
+     * előző kocsi id-je
+     */
     protected int previousId = 0;
 
     /**
-     *
-     * @param id
+     * Konstruktor
+     * @param id modell id
      */
     public TrainComponent(int id){
         this.id = id;
@@ -47,6 +89,9 @@ public abstract class TrainComponent {
         }
     }
 
+    /**
+     * Ütközést jelző metódus
+     */
     public void collision(){
         collided = true;
         destroyed = true;
@@ -106,16 +151,28 @@ public abstract class TrainComponent {
      */
     abstract public void list();
 
+    /**
+     * Beállítja az inTunnel flag-et
+     */
     public void setInTunnel(){
         inTunnel = !inTunnel;
     }
 
+    /**
+     * Megadja a mögötte lévő kocsik számát
+     * @param n előtte lévő kocsik száma
+     * @return kocsik száma
+     */
     protected int countLength(int n){
         if(next != null)
             return next.countLength(n + 1);
         return n + 1;
     }
 
+    /**
+     * Megadja a mögötte lévő összes utas számát
+     * @return utasok száma
+     */
     public int getAllPassengerNumber(){
         if(next != null)
             return next.getAllPassengerNumber();

@@ -1,15 +1,37 @@
 package com.srsh.model;
 
 /**
- * 
+ * Alagutat reprezentáló osztály
  */
 public class Tunnel {
-
+    /**
+     * Alagút A vége
+     */
     private TunnelEnd sideA;
+
+    /**
+     * Alagút B vége
+     */
     private TunnelEnd sideB;
+
+    /**
+     * A vég modell id-je
+     */
     private int A_id = 0;
+
+    /**
+     * B vég modell id-je
+     */
     private int B_id = 0;
+
+    /**
+     * Jelzi, hogy halad-e át éppen rajta vonat
+     */
     private boolean trainInside;
+
+    /**
+     * Jelzi hogy az alagút aktív-e
+     */
     private boolean active;
 
     /**
@@ -24,11 +46,14 @@ public class Tunnel {
 
 
     /**
-     * @param t 
-     * @return
+     * Beállítja az paraméterként kapott elemet az alagút egyik végének
+     * VAGY
+     * Deaktiválja a meglévő alagutat, és azt adja hozzá új végnek
+     * Csak egy sín két végén lévő alagútvéget enged aktiválni
+     * @param t új kiválasztott alagútvég
+     * @param newId új alagútvég id-je
      */
     public void setEnd(TunnelEnd t, int newId) {
-        //TODO: Be kéne kérni egy oldalt paraméternek, és ha az már aktív akkor lecserélni az új kapott oldalra, különben aktiválni.
         if(active == false){ //nem aktív
             if(sideA == null){ //ez az első amit belerakunk
                 sideA = t;
@@ -53,23 +78,23 @@ public class Tunnel {
     }
 
     /**
-     * @return
+     * Megadja, hogy aktív-e az alagút
+     * @return aktív-e
      */
     public boolean isActive() {
-        //valami
         return active;
     }
 
     /**
-     * @return
+     * Megadja, hogy van-e benne vonat
+     * @return van-e benne vonat
      */
     public boolean trainInside() {
-        //implement here
         return trainInside;
     }
 
     /**
-     *
+     * Státusz lekérdezése standard outputra írással
      */
     public void list(){
         String a;
@@ -83,6 +108,9 @@ public class Tunnel {
                         "B side connected to " + B_id + "\n");
     }
 
+    /**
+     * Deaktiválja az alagutat, törli a végeit
+     */
     public void invalidate(){
         if(sideA != null){
             sideA.activate(this);//deaktiváljuk
@@ -100,10 +128,18 @@ public class Tunnel {
         trainInside = false;
     }
 
+    /**
+     * A végét adja vissza
+     * @return A vég
+     */
     public Component getAEnd(){
         return sideA;
     }
 
+    /**
+     * B végét adja vissza
+     * @return B vég
+     */
     public Component getBEnd(){
         return sideB;
     }

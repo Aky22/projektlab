@@ -4,17 +4,31 @@ import java.awt.*;
 import java.util.*;
 
 /**
- * 
+ * Egyes pályát alkotó elemekhez rendelt osztály
+ * mely tartalmazza az azon éppen lévő vonatelemeket
+ * Megvalósítja azok mozgatását, ütközések detektálását,
+ * pályaelemek közötti lépés segítését.
  */
 public class Collection {
 
+    /**
+     * Vonatot alkotó elemek kollekciója
+     */
     private ArrayList<TrainComponent> trainComponents;
+
+    /**
+     * Vonatot alkotó elemekhez rendelt pozíció
+     */
     private ArrayList<Float> trainComponentsPozotions;
+
+    /**
+     * Elemek belépési pontja
+     */
     private ArrayList<Character> trainComponentsStartSide;      //a komponens beérkezésének oldala
 
 
     /**
-     * Default constructor
+     * Default konstuktor
      */
     public Collection() {
         trainComponents = new ArrayList<TrainComponent>();
@@ -24,7 +38,10 @@ public class Collection {
 
 
     /**
-     * @param l
+     * Behelyez egy új elemeket a kollekcióba, amikor rálépnek
+     * @param l az új elem
+     * @param startSide kezdőoldal
+     * @param offset eltoltás
      */
     public void insert(TrainComponent l, char startSide, int offset) {
         trainComponents.add(l);
@@ -33,7 +50,8 @@ public class Collection {
     }
 
     /**
-     * @param l
+     * Paraméterként kapott TrainComponent-et eltávolítja a kollekcióból
+     * @param l eltávolítandó TrainComponent
      */
     public void remove(TrainComponent l) {
         trainComponentsPozotions.remove(trainComponents.indexOf(l));
@@ -41,13 +59,20 @@ public class Collection {
         trainComponents.remove(l);
     }
 
+    /**
+     * Megadja a paraméterként kapott elem belépési oldalát
+     * @param t lekérdezni kívánt elem
+     * @return belépési oldal
+     */
     public char getEntrySideOf(TrainComponent t){
         return trainComponentsStartSide.get(trainComponents.indexOf(t));
     }
 
     /**
-     * @param l 
-     * @return
+     * Visszatér azzal, hogy a paraméterként kapott elem elérte-e
+     * ennek a pályaelemnek a végé
+     * @param l lekérdezni kívánt elem
+     * @return végén van-e?
      */
     public boolean myComponentAtEnd(TrainComponent l) {
         updatePositionOf(l);
@@ -89,7 +114,7 @@ public class Collection {
     }
 
     /**
-     *
+     * Visszatér a legelső elemmel
      * @return first
      */
     public TrainComponent getFirst(){
@@ -102,8 +127,8 @@ public class Collection {
 
 
     /**
-     *
-     * @param l
+     * Megvalósítja a léptetését a paraméterként kapott elemnek
+     * @param l léptetni kívánt elem
      */
     private void updatePositionOf(TrainComponent l){
         float current = trainComponentsPozotions.get(trainComponents.indexOf(l));
@@ -111,7 +136,7 @@ public class Collection {
     }
 
     /**
-     *
+     * Ellenőrzi hogy adott pozíción található-e már valami
      * @param position
      * @return
      */
@@ -119,10 +144,22 @@ public class Collection {
         return trainComponentsPozotions.contains(position);
     }
 
+    /**
+     * Visszaadja a paraméterként kapott vonatelem pozícióját a pályaelem
+     * koordinátarendszerében
+     * @param t lekérdezni kívánt elem
+     * @return pozíció
+     */
     public float _getMyPosition(TrainComponent t){
         return trainComponentsPozotions.get(trainComponents.indexOf(t));
     }
 
+    /**
+     * Visszaadja a paraméterként kapott vonatelem pozícióját a világ
+     * koordinátarendszerében
+     * @param tc lekérdezni kívánt elem
+     * @return világkoordináta pozíció
+     */
     public Point getPosition(TrainComponent tc){
         int idx = trainComponents.indexOf(tc);
         Character startSide = trainComponentsStartSide.get(idx);

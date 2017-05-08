@@ -3,14 +3,18 @@ package com.srsh.model;
 import java.awt.*;
 
 /**
- * 
+ * Mozdonyt megvalósító osztály
  */
 public class Locomotive extends TrainComponent {
+    /**
+     * Modell-t összefogó osztály, hogy jelezhesse a kisiklást, ütközést
+     */
     private  Game game;
 
     /**
-     *
-     * @param id
+     * Konstruktor
+     * @param id modell id
+     * @param game modell
      */
     public Locomotive(int id, Game game){
         super(id);
@@ -18,6 +22,13 @@ public class Locomotive extends TrainComponent {
         System.out.print("created com.srsh.model.Locomotive with id: ");
     }
 
+    /**
+     * Állomásra éréskor hívódik meg, mögötte lévő kocsi
+     * azonos metódusát hívja meg
+     * @param c - Állomás színe
+     * @param passengerNumber - Állomáson lévő utasok száma
+     * @return leszállók száma
+     */
     @Override
     public int atStation(Color c, int passengerNumber) {
         int ret = 0;
@@ -27,18 +38,27 @@ public class Locomotive extends TrainComponent {
         return ret;
     }
 
+    /**
+     * Kisikláskor hívódik meg
+     */
     @Override
     public void derail(){
         super.derail();
         game.trainDerailed(this);
     }
 
+    /**
+     * Ütközéskor hívódik meg
+     */
     @Override
     public void collision(){
         super.collision();
         game.trainCollided(this);
     }
 
+    /**
+     * Léptetés
+     */
     @Override
     public void step() {
         Collection collection = current.getCollection();
@@ -76,12 +96,18 @@ public class Locomotive extends TrainComponent {
 
     }
 
-
+    /**
+     * Pálya felépítése után meghívódó inicializáló függvény
+     * Paraméterként kapott sín megfelelő oldalára, megfelelő eltolással
+     * helyezi el a mozdonyt, ill. meghívja az őt követő kocsi
+     * azonos metódusát
+     * @param current sín amire el kell helyezni
+     * @param side oldal
+     * @param offset eltolás
+     */
     @Override
     public void place(Component current, char side, int offset) {
         this.current = current;
-        //this.current.operateOn(this, side);
-
 
         int l = 0;
         //vonat hosszát meg határozza
@@ -94,11 +120,12 @@ public class Locomotive extends TrainComponent {
         if(next != null){
             next.place(current, side, (l-2) * 40);
         }
-        //ellenőrizni kell még hogy van-e már ott traincomponent
     }
 
 
-    //poz-t nem tudom meghivatkozni és az ütközéat a megsemmisüléssel jelzem, máshogy nincs tárolva
+    /**
+     * Státuszt ír standard outputra
+     */
     @Override
     public void list(){
         System.out.println("com.srsh.model.Locomotive "+ this.id +" on "+ this.current.id +  " at " + current.getCollection()._getMyPosition(this) +

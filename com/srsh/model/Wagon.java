@@ -3,17 +3,24 @@ package com.srsh.model;
 import java.awt.*;
 
 /**
- * 
+ * Vagont reprezentáló osztály
  */
 public class Wagon extends TrainComponent {
+    /**
+     * Vagon színe
+     */
     Color color;
-    int passengerNumber;
-    Point pos;
 
     /**
-     * @param c
-     * @param i
-     * @param id
+     * Utasok száma
+     */
+    int passengerNumber;
+
+    /**
+     * Konstruktor
+     * @param c  szín
+     * @param i utasok száma
+     * @param id modell id
      */
     public Wagon(Color c, int i, int id) {
         super(id);
@@ -89,6 +96,14 @@ public class Wagon extends TrainComponent {
     }
 
 
+    /**
+     * Pálya létrehozása után inicializáló metódus, mely
+     * a megadott sínre elhelyezi a kocsit, egyben meghívja
+     * az őt követő elem azonos metódusát
+     * @param current sín amire helyezzük
+     * @param side oldal
+     * @param offset eltolás
+     */
     @Override
     public void place(Component current, char side, int offset) {
         this.current = current;
@@ -98,6 +113,9 @@ public class Wagon extends TrainComponent {
         }
     }
 
+    /**
+     * Státusz kiírás standard outputra
+     */
     @Override
     public void list() {
         System.out.println("com.srsh.model.Wagon " + this.id + " on " + this.current.id + " at " + current.getCollection()._getMyPosition(this) +
@@ -105,14 +123,24 @@ public class Wagon extends TrainComponent {
                 "\npassenger number: " + passengerNumber + ", color: " + color);
     }
 
-    //Getter a szin visszaadasahoz
+    /**
+     * Visszatér a saját színével
+     * @return szín
+     */
     public Color getColor(){return color;}
 
-
+    /**
+     * Megadja az utasok számát
+     * @return utasok száma
+     */
     public int getPassengerNumber(){
         return passengerNumber;
     }
 
+    /**
+     * Összes utas számát adja vissza a vonatban
+     * @return
+     */
     @Override
     public int getAllPassengerNumber(){
         int ret = passengerNumber;

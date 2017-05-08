@@ -3,18 +3,28 @@ package com.srsh.model;
 import java.awt.*;
 
 /**
+ * Szeneskocsit megvalósító osztály, mely a vonatok
+ * felépítéséhez használható
  * Created by Andras on 2017.04.15..
  */
 public class CoalWagon extends TrainComponent{
+
     /**
-     *
-     * @param id
+     * Konstruktor
+     * @param id Szenecskocsi id-je Model-ben
      */
     public CoalWagon(int id){
         super(id);
         System.out.print("created com.srsh.model.CoalWagon with id: ");
     }
 
+    /**
+     * Annak jelzése, hogy állomásra ért
+     * Szeneskocsi esetén nem befolyásolja az utasok mozgását
+     * @param c - Állomás színe
+     * @param passengerNumber - Állomáson lévő utasok száma
+     * @return
+     */
     @Override
     public int atStation(Color c, int passengerNumber) {
         int ret = 0;
@@ -24,6 +34,10 @@ public class CoalWagon extends TrainComponent{
         return ret;
     }
 
+    /**
+     * Szeneskocsi léptetési metódusa
+     * Vonatban őt megelőző elem hívja
+     */
     @Override
     public void step() {
         Collection collection = current.getCollection();
@@ -69,6 +83,13 @@ public class CoalWagon extends TrainComponent{
 
     }
 
+    /**
+     * Kezdeti inicializáló metódus, mely a pálya felépülése után
+     * lehelyezi a szenecskocsit megfelelő eltolással egy sínre
+     * @param current az a sín amire lehelyezzük
+     * @param side oldal
+     * @param offset eltolás kezdőpozícióhoz képest
+     */
     @Override
     public void place(Component current, char side, int offset) {      // ??
         this.current = current;
@@ -79,6 +100,9 @@ public class CoalWagon extends TrainComponent{
         }
     }
 
+    /**
+     * Kiírja a szeneskocsi adatait standard outputra
+     */
     @Override
     public void list(){
         System.out.println("com.srsh.model.Wagon "+ this.id +" on "+ this.current.id +  " at "+ "pos" +
