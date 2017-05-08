@@ -11,6 +11,11 @@ import java.io.IOException;
  * Created by erosa on 2017. 05. 05..
  */
 public class GraphicSiding extends DrawableComponent {
+    /**
+     * constructor for graphical sidings with the component object and string path to img
+     * @param siding
+     * @param img
+     */
     GraphicSiding(Siding siding, String img) {
         super(siding, img);
         this.z_index = 2;

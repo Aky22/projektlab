@@ -12,11 +12,20 @@ import java.io.IOException;
  */
 public class GraphicTunnelEnd extends DrawableComponent {
 
+    /**
+     * constructor for graphical tunnelends
+     * @param tunelend
+     * @param img
+     */
     GraphicTunnelEnd(TunnelEnd tunelend, String img){
         super(tunelend, img);
         this.z_index = 11;
     }
 
+    /**
+     * sets the color of the active tunnelend to green on
+     * @param g
+     */
     @Override
     public void draw(Graphics g) {
 

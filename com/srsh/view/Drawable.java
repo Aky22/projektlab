@@ -14,6 +14,10 @@ public abstract class Drawable {
     protected Image img;
     protected int z_index;
 
+    /**konstruktor a rajzolandó kép elérési útjával
+     *
+     * @param image
+     */
     public Drawable(String image){
         try {
             this.img = ImageIO.read(new File(image));

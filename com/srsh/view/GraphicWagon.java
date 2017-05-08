@@ -13,6 +13,11 @@ import java.io.IOException;
  */
 public class GraphicWagon extends DrawableTrainComponent {
 
+    /**
+     * constructor for graphical wagons with the component object and string path to img
+     * @param wagon
+     * @param img
+     */
     GraphicWagon(Wagon wagon, String img)  {
         super(wagon, img);
         this.z_index = 9;

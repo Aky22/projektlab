@@ -94,23 +94,23 @@ public class View {
     }
 
     public void trainComponentDerailed(TrainComponent tc) {
-        //TODO
+
     }
 
     public void rainComponentCollided(TrainComponent tc) {
-        //TODO
+
     }
 
     public void _switch(Switch s) {
-        //TODO
+
     }
 
     public void tunnelEndActivated(TunnelEnd end) {
-        //TODO
+
     }
 
     public void tunnelActivated() {
-        //TODO
+
     }
 
     public void addTunnel(Tunnel tunnel){

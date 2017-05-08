@@ -10,12 +10,23 @@ import java.awt.*;
  */
 public class GraphicTunnel extends DrawableComponent {
     private Tunnel tunnel;
+
+    /**
+     * constructor for graphical intersections with the tunnel, component object and string path to img
+     * @param tunnel
+     * @param c
+     * @param image
+     */
     public GraphicTunnel(Tunnel tunnel, Component c, String image) {
         super(c, image);
         this.tunnel = tunnel;
         this.z_index = 10;
     }
 
+    /**
+     * draws the tunnel on Graphics g
+     * @param g
+     */
     @Override
     public void draw(Graphics g) {
         if(tunnel.isActive()){
