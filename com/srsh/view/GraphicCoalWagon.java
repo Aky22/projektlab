@@ -18,6 +18,10 @@ public class GraphicCoalWagon extends DrawableTrainComponent {
         this.z_index = 9;
     }
 
+    /**
+     * draws the CoalWagon on the Graphics g
+     * @param g
+     */
     @Override
     public void draw(Graphics g) {
         CoalWagon w = (CoalWagon)tc;

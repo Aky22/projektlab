@@ -9,6 +9,11 @@ import java.awt.*;
  * Created by erosa on 2017. 05. 05..
  */
 public class GraphicIntersection extends DrawableComponent {
+    /**
+     * constructor for graphical intersections with the component object and string path to img
+     * @param c
+     * @param image
+     */
     public GraphicIntersection(Component c, String image) {
         super(c, image);
         this.z_index = 2;

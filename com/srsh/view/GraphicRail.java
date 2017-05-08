@@ -13,6 +13,11 @@ import java.io.IOException;
  */
 public class GraphicRail extends DrawableComponent {
 
+    /**
+     * constructor for graphical rails with the component object and string path to img
+     * @param rail
+     * @param img
+     */
     GraphicRail(Rail rail, String img) {
         super(rail, img);
         this.z_index = 1;

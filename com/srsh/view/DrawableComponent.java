@@ -16,6 +16,11 @@ import java.awt.image.BufferedImage;
 public abstract class DrawableComponent extends Drawable{
     protected Component c;
 
+    /**
+     * Rajzolható elemek konstruktora, paraméterként kapja a komponens mellett a képfájl elérési útját
+     * @param c
+     * @param image
+     */
     public DrawableComponent(Component c, String image){
         super(image);
         this.c = c;
@@ -23,36 +28,8 @@ public abstract class DrawableComponent extends Drawable{
 
     @Override
     public abstract void draw(Graphics g);
-//if(c.isPoint()){
-
-        //TODO kép aki ráér.. (ez amúgy kb jó)
-            /*Point p = c.getPoint();
-            g.drawImage(img, p.x - 25, p.y - 25, 50, 50, null);
-            */
-   // }else{
-
-        //TODO kép aki ráér, ez teljesen rossz
-            /*Point a = c.getAEnd();
-            Point b = c.getBEnd();
-
-            int rotationAnchorX = img.getWidth(null) / 2;
-            int rotationAnchorY = img.getHeight(null) / 2;
-            double rotation = Math.toRadians(30);
-
-            AffineTransform at = new AffineTransform();
-            at.translate(img.getWidth(null) / 2, img.getHeight(null) / 2);
-            at.rotate(Math.toRadians(45));
-            at.translate(-img.getWidth(null)/2, img.getHeight(null)/2);
-
-            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-            //TODO AF !!!!!!!!!!!!!!!
 
 
-            g.drawImage(op.filter((BufferedImage) img, null), 0, 0, 400, 200, null);
-
-
-            //g.drawImage(img, a.x, a.y, , 100, null);*/
-    //}
 
 }
 

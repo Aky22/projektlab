@@ -23,7 +23,7 @@ public class GraphicLocomotive extends DrawableTrainComponent {
 
         //Locomotive peldany keszitese
         Locomotive loc = (Locomotive)tc;
-        //Egyelnore Cyan mert miert ne, majd ki kene talalni valami mas szint neki / fekete a szenes kocsi :(((
+        //Locomotive szinének beállítása ciánra
         Color c = Color.CYAN;
 
         Point p;

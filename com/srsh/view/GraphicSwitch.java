@@ -12,6 +12,11 @@ import java.io.IOException;
  * Created by erosa on 2017. 05. 05..
  */
 public class GraphicSwitch extends DrawableComponent {
+    /**
+     * constructor for graphical switch with the component object and string path to img
+     * @param _switch
+     * @param img
+     */
     GraphicSwitch(Switch _switch, String img) {
         super(_switch, img);
         this.z_index = 2;

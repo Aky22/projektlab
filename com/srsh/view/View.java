@@ -47,6 +47,12 @@ public class View {
     }
 
 
+    /**
+     * addss drawable map component given in the command which is divided to String[] params
+     * @param params
+     * @param c
+     * @throws IOException
+     */
     public void addComponent(String[] params, Component c) throws IOException {
         switch (params[4]) {
             case "Intersection":
@@ -77,6 +83,12 @@ public class View {
         sortDrawables();
     }
 
+    /**
+     * adds drawable train components given in the command which is divided to String[] params
+     * @param params
+     * @param c
+     * @throws IOException
+     */
     public void addTrainComponent(String[] params, TrainComponent c) throws IOException {
         switch (params[2]) {
             case "CoalWagon":
@@ -94,23 +106,23 @@ public class View {
     }
 
     public void trainComponentDerailed(TrainComponent tc) {
-        //TODO
+
     }
 
     public void rainComponentCollided(TrainComponent tc) {
-        //TODO
+
     }
 
     public void _switch(Switch s) {
-        //TODO
+
     }
 
     public void tunnelEndActivated(TunnelEnd end) {
-        //TODO
+
     }
 
     public void tunnelActivated() {
-        //TODO
+
     }
 
     public void addTunnel(Tunnel tunnel){
