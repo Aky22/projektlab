@@ -16,10 +16,9 @@ public class GraphicWagon extends DrawableTrainComponent {
     /**
      * constructor for graphical wagons with the component object and string path to img
      * @param wagon
-     * @param img
      */
-    GraphicWagon(Wagon wagon, String img)  {
-        super(wagon, img);
+    GraphicWagon(Wagon wagon)  {
+        super(wagon);
         this.z_index = 9;
     }
 

@@ -13,8 +13,8 @@ import java.io.IOException;
  * Created by erosa on 2017. 05. 05..
  */
 public class GraphicCoalWagon extends DrawableTrainComponent {
-    public GraphicCoalWagon(TrainComponent tc, String image){
-        super(tc, image);
+    public GraphicCoalWagon(TrainComponent tc){
+        super(tc);
         this.z_index = 9;
     }
 

@@ -15,10 +15,9 @@ public class GraphicSwitch extends DrawableComponent {
     /**
      * constructor for graphical switch with the component object and string path to img
      * @param _switch
-     * @param img
      */
-    GraphicSwitch(Switch _switch, String img) {
-        super(_switch, img);
+    GraphicSwitch(Switch _switch) {
+        super(_switch);
         this.z_index = 2;
     }
 

@@ -19,10 +19,9 @@ public abstract class DrawableComponent extends Drawable{
     /**
      * Rajzolható elemek konstruktora, paraméterként kapja a komponens mellett a képfájl elérési útját
      * @param c
-     * @param image
      */
-    public DrawableComponent(Component c, String image){
-        super(image);
+    public DrawableComponent(Component c){
+        super();
         this.c = c;
     }
 

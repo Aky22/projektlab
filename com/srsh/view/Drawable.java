@@ -11,20 +11,7 @@ import java.io.IOException;
  */
 public abstract class Drawable {
 
-    protected Image img;
     protected int z_index;
-
-    /**konstruktor a rajzolandó kép elérési útjával
-     *
-     * @param image
-     */
-    public Drawable(String image){
-        try {
-            this.img = ImageIO.read(new File(image));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      *
@@ -45,12 +32,4 @@ public abstract class Drawable {
      */
     public abstract void draw(Graphics g);
 
-    /**
-     * Set img
-     * @param src
-     * @throws IOException
-     */
-    protected void setImg(String src) throws IOException {
-        this.img = ImageIO.read(new File(src));
-    }
 }

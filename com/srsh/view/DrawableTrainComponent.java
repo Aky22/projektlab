@@ -13,10 +13,9 @@ public  abstract class DrawableTrainComponent extends Drawable {
     /**
      * constructor with the TrainComponent object and the path to the image
      * @param tc
-     * @param image
      */
-    public DrawableTrainComponent(TrainComponent tc, String image){
-        super(image);
+    public DrawableTrainComponent(TrainComponent tc){
+        super();
         this.tc = tc;
     }
 }

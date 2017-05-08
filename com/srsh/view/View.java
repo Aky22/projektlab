@@ -56,26 +56,26 @@ public class View {
     public void addComponent(String[] params, Component c) throws IOException {
         switch (params[4]) {
             case "Intersection":
-                drawables.add(new GraphicIntersection((Intersection) c, "resources/rail.png"));
+                drawables.add(new GraphicIntersection((Intersection) c));
                 break;
             case "Rail":
-                drawables.add(new GraphicRail((Rail) c, "resources/rail.png"));
+                drawables.add(new GraphicRail((Rail) c));
                 break;
             case "Siding":
-                drawables.add(new GraphicSiding((Siding) c, "resources/vakvagany.png"));
+                drawables.add(new GraphicSiding((Siding) c));
                 break;
             case "Station":
-                drawables.add(new GraphicStation((Station) c, "resources/station.png"));
+                drawables.add(new GraphicStation((Station) c));
                 break;
             case "Switch":
-                drawables.add(new GraphicSwitch((Switch) c, "resources/valto.png"));
+                drawables.add(new GraphicSwitch((Switch) c));
                 break;
             case "TunnelEnd":
                 TunnelEnd t = (TunnelEnd)c;
                 if(t.isActive()){
-                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/aktiv_alagut.png"));
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c));
                 }else{
-                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c, "resources/inaktiv_alagut.png"));
+                    drawables.add(new GraphicTunnelEnd((TunnelEnd) c));
                 }
                 break;
             default: break;
@@ -92,13 +92,13 @@ public class View {
     public void addTrainComponent(String[] params, TrainComponent c) throws IOException {
         switch (params[2]) {
             case "CoalWagon":
-                drawables.add(new GraphicCoalWagon((CoalWagon) c, "resources/szenes.png"));
+                drawables.add(new GraphicCoalWagon((CoalWagon) c));
                 break;
             case "Locomotive":
-                drawables.add(new GraphicLocomotive((Locomotive) c, "resources/locomotive.png"));
+                drawables.add(new GraphicLocomotive((Locomotive) c));
                 break;
             case "Wagon":
-                drawables.add(new GraphicWagon((Wagon) c, "resources/kocsi.png"));
+                drawables.add(new GraphicWagon((Wagon) c));
                 break;
             default: break;
         }
@@ -126,7 +126,7 @@ public class View {
     }
 
     public void addTunnel(Tunnel tunnel){
-        drawables.add(new GraphicTunnel(tunnel, null, "resources/rail.png"));
+        drawables.add(new GraphicTunnel(tunnel, null));
     }
 
     /**
@@ -163,7 +163,8 @@ public class View {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                controller.gameOver("Map not completed.");
+                if(!controller.isGameOver())
+                    controller.gameOver("Map not completed.");
                 controller.setInGame(false);
             }
         });

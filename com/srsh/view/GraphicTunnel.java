@@ -15,10 +15,9 @@ public class GraphicTunnel extends DrawableComponent {
      * constructor for graphical intersections with the tunnel, component object and string path to img
      * @param tunnel
      * @param c
-     * @param image
      */
-    public GraphicTunnel(Tunnel tunnel, Component c, String image) {
-        super(c, image);
+    public GraphicTunnel(Tunnel tunnel, Component c) {
+        super(null);
         this.tunnel = tunnel;
         this.z_index = 10;
     }

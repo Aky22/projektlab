@@ -17,8 +17,8 @@ public class GraphicTunnelEnd extends DrawableComponent {
      * @param tunelend
      * @param img
      */
-    GraphicTunnelEnd(TunnelEnd tunelend, String img){
-        super(tunelend, img);
+    GraphicTunnelEnd(TunnelEnd tunelend){
+        super(tunelend);
         this.z_index = 11;
     }
 

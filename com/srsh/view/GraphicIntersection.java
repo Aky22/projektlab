@@ -12,10 +12,9 @@ public class GraphicIntersection extends DrawableComponent {
     /**
      * constructor for graphical intersections with the component object and string path to img
      * @param c
-     * @param image
      */
-    public GraphicIntersection(Component c, String image) {
-        super(c, image);
+    public GraphicIntersection(Component c) {
+        super(c);
         this.z_index = 2;
     }
 

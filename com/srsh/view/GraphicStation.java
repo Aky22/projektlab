@@ -15,10 +15,9 @@ public class GraphicStation extends DrawableComponent {
     /**
      * Konstruktor a modellben szereplő állomással
      * @param station
-     * @param img
      */
-    GraphicStation(Station station, String img) {
-       super(station, img);
+    GraphicStation(Station station) {
+       super(station);
        this.z_index = 2;
     }
 

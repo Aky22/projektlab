@@ -125,4 +125,12 @@ public class Controller {
     public boolean gameInProgress(){
         return inGame;
     }
+
+    /**
+     * Megadja, hogy vége van-e a pályának
+     * @return
+     */
+    public boolean isGameOver(){
+        return gameOver;
+    }
 }
